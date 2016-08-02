@@ -199,11 +199,16 @@ namespace OrdersExplorer
     public static class DocumentStoreHolder
     {
         private static readonly Lazy<IDocumentStore> LazyStore =
-            new Lazy<IDocumentStore>(() => new DocumentStore
+            new Lazy<IDocumentStore>(() => 
             {
-                Url = "http://localhost:8080",
-                DefaultDatabase = "Northwind"
-            }.Initialize());
+                var store = new DocumentStore
+                {
+                    Url = "http://localhost:8080",
+                    DefaultDatabase = "Northwind"
+                };
+    
+                return store.Initialize();
+            });
 
         public static IDocumentStore Store =>
             LazyStore.Value;
