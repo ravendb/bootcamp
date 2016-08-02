@@ -64,7 +64,7 @@ created in the previous unit (lesson 1).
 Go to the `Indexes tab`, click at the `Trash tool` and then `Delete All Indexes`.  
 After a little processing, all indexes will be deleted for you.
 
-![delete all indexes](images/unit2-deleting-all-indexes.png)
+![delete all indexes](images/unit2-deleting-all-indexes-using-studio.png)
 
 ### Step 3: Create and execute a program which will perform a query
 Create a new Console Application, add the properly NuGet RavenDB reference (`RavenDB.Client`).
