@@ -135,7 +135,7 @@ Note that documents that are in the same collection can have a completely differ
 
 Step 1: Open the RavenDB Management Studio at `http://localhost:8080`
 Step 2: Open the Northwind Database
-Step 3: In the `Documents Tab`, explore all Northwind collection.
+Step 3: In the `Documents Tab`, explore all the collections.
 
 ## Great job! Onto Lesson 2!
 
