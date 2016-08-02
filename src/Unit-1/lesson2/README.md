@@ -3,7 +3,7 @@
 In this lesson, you will write some very simple C# programs which load data from
 the database.
 
-This lesson picks up right where Lesson 1 left off. 
+This lesson picks up right where [Lesson 1](../lesson1/README.md) left off. 
 
 ## Exercise 1: Your first RavenDB client application
 
