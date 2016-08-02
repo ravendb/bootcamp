@@ -101,7 +101,7 @@ namespace Northwind
 
 ## Understanding the concept of `Unique Identifiers`
 As you probably noted, there is no need to inform the source collection when loading
-a document. It is possible because, as you learned in the lesson 1, the collection 
+a document. It is possible because, as you learned in the [Lesson 1](../lesson1/README.md), the collection 
 in RavenDB is just a "virtual" thing.
 
 To load a document you just need to specify his key, also called document Id. Any
