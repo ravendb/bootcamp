@@ -41,7 +41,7 @@ the moment your data size reach any significant size.
 Even when you do not create an index, RavenDB will use one to execute queries.
 In fact there are no *O(N)* operations in general in RavenDB queries. Using indexes,
 are queries using RavenDB are *O(logN)* operations. For those who don't care about 
-algorithms complexity analysis, the difference is between waiting 30 minuts for a result
+algorithms complexity analysis, the difference is between waiting 30 minutes for a result
 and getting it right away.
 
 
@@ -58,7 +58,7 @@ is needed.
 Start RavenDB console (if you didn't it yet), and using the web browser, access the 
 `RavenDB Management Studio` at the address `http://localhost:8080` (which is the
 default address. Change it if you need). Then open the `Northwind database` which you
-created in the previous unit (lesson 1).
+created in the previous unit ([Lesson 1](../../Unit-1/lesson1/README.md)).
 
 ### Step 2: Delete all the exisiting indexes
 Go to the `Indexes tab`, click at the `Trash tool` and then `Delete All Indexes`.  
@@ -82,15 +82,7 @@ namespace IndexingSample
     {
         static void Main()
         {
-            var documentStore = new DocumentStore
-            {
-                Url = "http://localhost:8080",
-                DefaultDatabase = "Northwind"
-            };
-
-            documentStore.Initialize();
-
-            using (var session = documentStore.OpenSession())
+            using (var session = DocumentStoreHolder.Store.OpenSession())
             {
                 var ordersIds = (
                     from order in session.Query<Order>()
@@ -105,6 +97,24 @@ namespace IndexingSample
                 }
             }
         }
+    }
+
+    public static class DocumentStoreHolder
+    {
+        private static readonly Lazy<IDocumentStore> LazyStore =
+            new Lazy<IDocumentStore>(() => 
+            {
+                var store = new DocumentStore
+                {
+                    Url = "http://localhost:8080",
+                    DefaultDatabase = "Northwind"
+                };
+
+                return store.Initialize();
+            });
+
+        public static IDocumentStore Store =>
+            LazyStore.Value;
     }
 
     public class Order
