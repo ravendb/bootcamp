@@ -123,7 +123,7 @@ In a Document Database, documents are organized in collections.
 
 ## Understanding the `Collection` concept
 Documents in RavenDB are all stored in the same storage space. They are not 
-physically grouped in any way. But, you probably expects some level of organization.
+physically grouped in any way. But, you probably expect some level of organization.
 For example, documents holding customers data are very different from documents
 holding products information, and you want to talk about groups of them. 
 RavenDB allows for a document to be stamped with a string value that will be 
@@ -133,8 +133,8 @@ Note that documents that are in the same collection can have a completely differ
 
 ## Exercise: Exploring the Northwind collections
 
-Step 1: Open the RavenDB Management Studio at `http://localhost:8080`
-Step 2: Open the Northwind Database
+Step 1: Open the RavenDB Management Studio at `http://localhost:8080`   
+Step 2: Open the Northwind Database   
 Step 3: In the `Documents Tab`, explore all the collections.
 
 ## Great job! Onto Lesson 2!
