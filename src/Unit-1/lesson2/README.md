@@ -3,7 +3,7 @@
 In this lesson, you will write some very simple C# programs which load data from
 the database.
 
-This lesson picks up right where Lesson 1 left off. 
+This lesson picks up right where [Lesson 1](../lesson1/README.md) left off. 
 
 ## Exercise 1: Your first RavenDB client application
 
@@ -101,7 +101,7 @@ namespace Northwind
 
 ## Understanding the concept of `Unique Identifiers`
 As you probably noted, there is no need to inform the source collection when loading
-a document. It is possible because, as you learned in the lesson 1, the collection 
+a document. It is possible because, as you learned in the [Lesson 1](../lesson1/README.md), the collection 
 in RavenDB is just a "virtual" thing.
 
 To load a document you just need to specify his key, also called document Id. Any
