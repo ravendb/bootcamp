@@ -132,10 +132,15 @@ to specify the key during `DocumentStore` initialization.
 public static class DocumentStoreHolder
 {
     private static readonly Lazy<IDocumentStore> LazyStore =
-        new Lazy<IDocumentStore>(() => new DocumentStore
+        new Lazy<IDocumentStore>(() => 
+        {
+            var store = new DocumentStore
             {
                 ConnectionStringName="RavenDB"
-            }.Initialize());
+            };
+            
+            return store.Initialize();
+        });
 
     public static IDocumentStore Store =>
         LazyStore.Value;
