@@ -12,7 +12,7 @@ Let me provide you a quick start demo.
 ````csharp
 // storing a new document
 string categoryId;
-using (var session = store.OpenSession())
+using (var session = DocumentStoreHolder.Store.OpenSession())
 {
     var newCategory = new Category
     {
@@ -26,7 +26,7 @@ using (var session = store.OpenSession())
 }
 
 // loading and modifying
-using (var session = store.OpenSession())
+using (var session = DocumentStoreHolder.Store.OpenSession())
 {
     var storedCategory = session
         .Load<Category>(categoryId);
@@ -37,7 +37,7 @@ using (var session = store.OpenSession())
 }
 
 // deleting 
-using (var session = store.OpenSession())
+using (var session = DocumentStoreHolder.Store.OpenSession())
 {
     session.Delete(categoryId);
     session.SaveChanges();
@@ -111,10 +111,47 @@ to compile your code.
 Then you will need to add the `using` name space at the top of the `Program.cs``:
 
 ````csharp
-using Raven.Client.Document;
+
 ````
 
 ### Step 2: Initialize the `DocumentStore`
+
+Let's do it using our good friend pattern `DocumentStoreHolder`. You learned about it in the 
+[Lesson 3](../lesson3/README.md).
+
+Note that if the database specified in the `DefaultDatabase` does not exists, a new one will
+be created (Yes! It is simple like that. Remember RavenDB philosophy is "Safe by defaylt. Optimized by
+Efficiency", but could be "Just works!")
+
+````csharp
+using Raven.Client.Document;
+
+namespace ContactsManager
+{
+    public static class DocumentStoreHolder
+    {
+        private static readonly Lazy<IDocumentStore> LazyStore =
+            new Lazy<IDocumentStore>(() => 
+            {
+                var store = new DocumentStore
+                {
+                    Url = "http://localhost:8080",
+                    DefaultDatabase = "ContactsManager"
+                };
+                
+                return store.Initialize();
+            });
+
+        public static IDocumentStore Store =>
+            LazyStore.Value;
+    }
+}
+````
+
+### Step 3: Instancing and running
+
+Now that we have a `DocumentStoreHolder` correctly implemented, let's write
+some application code. 
 
 ````csharp
 using System;
@@ -126,16 +163,8 @@ namespace ContactsManager
 {
     class Program
     {
-        private static IDocumentStore _store;
-
         static void Main(string[] args)
         {
-            _store = new DocumentStore
-            {
-                Url = "http://localhost:8080",
-                DefaultDatabase = "ContactsManager"
-            }.Initialize();
-
             new Program().Run();
         }
 
@@ -145,10 +174,9 @@ namespace ContactsManager
 }
 ````
 
-If the database specified in the `DefaultDatabase` does not exists, a new one will
-be created.
+I don't know about you, but I don't like the idea of having too much static methods.
 
-### Step 3: Create the model class
+### Step 4: Create the model class
 
 In this exercise we will use a very simple model class.
 
@@ -161,7 +189,7 @@ public class Contact
 } 
 ````
 
-### Step 4: Implementing a basic options menu
+### Step 5: Implementing a basic options menu
 
 Let's implement a basic console menu that permits the user to select
 which operation should be executed.
@@ -205,12 +233,12 @@ private void Run()
     }
 }
 ````
-### Step 5: Implementing the logic to create a new contacts
+### Step 6: Implementing the logic to create a new contacts
 
 ````csharp
 private void CreateContact()
 {
-    using (var session = _store.OpenSession())
+    using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         Console.WriteLine("Name: ");
         var name = Console.ReadLine();
@@ -231,14 +259,14 @@ private void CreateContact()
 } 
 ````
 
-### Step 6: Retrieving information
+### Step 7: Retrieving information
 
 ````csharp
 private void RetrieveContact()
 {
     Console.WriteLine("Enter the contact id");
     var id = Console.ReadLine();
-    using (var session = _store.OpenSession())
+    using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         var contact = session.Load<Contact>(id);
 
@@ -254,14 +282,14 @@ private void RetrieveContact()
 }
 ````
 
-### Step 7: Updating a contact
+### Step 8: Updating a contact
 
 ````csharp
 private void UpdateContact()
 {
     Console.WriteLine("Enter the contact id");
     var id = Console.ReadLine();
-    using (var session = _store.OpenSession())
+    using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         var contact = session.Load<Contact>(id);
 
@@ -282,13 +310,13 @@ private void UpdateContact()
 }
 ````
 
-### Step 8: Deleting a contact
+### Step 9: Deleting a contact
 
 ````csharp
 private void DeleteContact()
 {
     var id = Console.ReadLine();
-    using (var session = _store.OpenSession())
+    using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         var contact = session.Load<Contact>(id);
 
@@ -304,12 +332,12 @@ private void DeleteContact()
 }
 ````
 
-### Step 9: List all contacts 
+### Step 10: List all contacts 
 
 ````csharp
 private void QueryAllContacts()
 {
-    using (var session = _store.OpenSession())
+    using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         var contacts = session.Query<Contact>()
             .ToList();
