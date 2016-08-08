@@ -5,7 +5,7 @@ automatically creates and manages indexes for most common queries, but
 for some cases you will need to create indexes yourself.
 
 In this lesson you will learn two ways to create a basic index: Using the RavenDB Studio and
-C#. This is fundamental to get on more advanced concepts.
+the C# API . This is fundamental to get on more advanced concepts.
 
 ## But .. what is an index?
 
@@ -89,13 +89,13 @@ that will feed the index with all the documents.
 
 That's it. You just created your first index.
 
-## Exercise: Creating your first index using the C#
+## Exercise: Creating your first index using the C\# API
 
 So far, we worked with indexes inside the studio. But you probably wnat
 to manage it with your codebase. That is why RavenDB allows you to define indexes
 in code.
 
-In this exercise you will learn how to create a basic index using C# and you 
+In this exercise you will learn how to create a basic index using C# API and you 
 will use the `Northwind` database.
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
@@ -158,7 +158,6 @@ public class AddressClass
 }
 public class Employee
 {
-    public string Id { get; set; }
     public string LastName { get; set; } 
     public string FirstName { get; set; } 
     public string Title { get; set; } 
@@ -173,7 +172,7 @@ public class Employee
 }
 ````
 
-By default, the `Generate Class tool` does not include the `Id` property. This
+By default, the `Generate Class tool` does not include the `Id` property. Here we will not use it. If you want this
 property, add it.
 
 ### Step 4: Write the `index definition` class
@@ -247,7 +246,7 @@ using (var session = DocumentStoreHolder.Store.OpenSession())
 
     foreach (var employee in results)
     {
-        Console.WriteLine(employee.Id);
+        Console.WriteLine($"{employee.LastName}, {employee.FirstName}");
     }
 }
 ````
