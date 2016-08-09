@@ -33,7 +33,7 @@ command:
 This will install the latest RavenDB.Client binaries, which you will need in order
 to compile your code.
 
-Then you will need to add the `using` name space at the top of the `Program.cs``:
+Then you will need to add the `using` name space at the top of the `Program.cs`:
 
 ````csharp
 using Raven.Client.Document;
@@ -210,8 +210,6 @@ The `Search` method allow us to perform advanced querying using all the power
 of the Lucene engine. Here we are only accepting a list of terms and projecting
 the results into a common result format.
 
-We will talk more about the "Projection" magic in the future.
-
 ### Step 6: Use the `Search` utility function
 
 ````csharp
@@ -238,6 +236,16 @@ This code asks the user to provide some seach terms. Then it displays the
 search results.
 
 ![creating new index](images/unit2-multi-map-output.png)
+
+## Some words about projections
+
+In the previous exercise you created a inner class named `Result`. Right? This
+class was used to provide projections. Projections are a way to collect several 
+fields from a document, instead of working with the whole document.
+
+In the index definition, we instructed RavenDB to store the fields in the index. So,
+when querying, the documents will not loaded from the storage and all data will come
+from the index direcly.   
 
 ## Great job! Onto Lesson 4!
 
