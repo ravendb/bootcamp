@@ -178,8 +178,8 @@ class Program
 
             foreach (var result in results)
             {
-                var category = session.LoadDocument<Category>(result.Category);
-                Console.WriteLine($"{category.Name} has {categorySummary.Count} items.");
+                var category = session.Load<Category>(result.Category);
+                Console.WriteLine($"{category.Name} has {result.Count} items.");
             }
         }
     }
