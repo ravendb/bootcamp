@@ -55,12 +55,12 @@ from the database.
 ````csharp
 class Category
 {
-    public string Name { get; }
+    public string Name { get; set; }
 }
 
 class Product
 {
-    public string Category { get; }
+    public string Category { get; set; }
 }
 ````
 
@@ -88,10 +88,9 @@ public class Products_ByCategory : AbstractIndexCreationTask<Product, Products_B
     {
         Map = products => 
             from product in products
-            let categoryName = LoadDocument<Category>(product.Category).Name
             select new
             {
-                Category = categoryName,
+                Category = product.Category,
                 Count = 1
             };
 
@@ -168,14 +167,19 @@ class Program
     {
         using (var session = DocumentStoreHolder.Store.OpenSession())
         {
+            var query = session
+                .Query<Products_ByCategory.Result, Products_ByCategory>()
+                .Include(x => x.Category); 
+ 
             var results = (
-                from result in session.Query<Products_ByCategory.Result, Products_ByCategory>()
+                from result in query
                 select result
                 ).ToList();
 
-            foreach (var categorySummary in results)
+            foreach (var result in results)
             {
-                Console.WriteLine($"{categorySummary.Category} has {categorySummary.Count} items.");
+                var category = session.LoadDocument<Category>(result.Category);
+                Console.WriteLine($"{category.Name} has {categorySummary.Count} items.");
             }
         }
     }
@@ -256,6 +260,7 @@ The difference here is that you are grouping by two fields. Nothing really speci
 
 Now we are ready to perform some queries.
 
+````csharp
 class Program
 {
     static void Main(string[] args)
