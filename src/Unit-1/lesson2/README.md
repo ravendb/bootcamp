@@ -45,6 +45,8 @@ The document store is the starting point for all your interactions with RavenDB.
 > A document store is the main client API object, which establishes and manages the connection channel between an application and a database instance. It acts as the connection manager and also exposes methods to perform all operations that you can run against an associated server instance. 
 The document store object has single URL address that points to RavenDB server, however it can work against multiple databases that exists there.
 
+> To learn more about the `DocumentStore`, access the [official documentation](https://github.com/ravendb/bootcamp/tree/master/src/Unit-2/lesson5).
+
 ### Step 3: Load document from the server
 
 After creating instance of the `DocumentStore` we are ready to interact with the
@@ -113,7 +115,7 @@ a primary key, which is unique per table, the document Id is unique per database
 This also means that whenever you store a new document using a key that is already used
 by a document, that document will get overridden with the new document data. 
 
-By convention, the document Id is stored in the `Id` property.
+> You can learn more about how to work with document ids reading the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/client-api/document-identifiers/working-with-document-ids)
 
 ## Exercise 2: Improving the code with some types
 
