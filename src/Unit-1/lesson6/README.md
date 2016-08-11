@@ -353,6 +353,14 @@ private void QueryAllContacts()
 }
 ````
 
+## Transactions! Transactions!
+
+In RavenDB all actions performed on documents are fully ACID (Atomicity,
+Consistency, Isolation and Durability). All these constraints are ensured
+when you use a session and call the `SaveChanges` method. This is a 
+great thing! Yes, unlike many other NoSQL databases, RavenDB is an ACID
+database.
+
 ## Great Job!
 
 **Congratulations! You know the basics of RavenDB**
