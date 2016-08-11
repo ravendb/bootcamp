@@ -46,7 +46,7 @@ http://localhost:8080/databases/Northwind/indexes/Products/ByCategory?&pageSize=
 Go ahead! Click [here](http://localhost:8080/databases/Northwind/indexes/Products/ByCategory?&pageSize=128&include=Category) and
 check out this query result.
 
-Yes, what you get when you execute this query a big JSON object, right? The nice thing is that you get all data you need with a single request. The bad thing is you receive a lot more than you need.
+Yes, what you get when you execute this query is a big JSON object, right? The nice thing is that you get all data you need with a single request. The bad thing is you receive a lot more than you need.
 In the example all related category documents will be present in the response, but you will use just one property (Please, consider that
 Category is a small document ...).
 
