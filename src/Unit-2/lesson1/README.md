@@ -26,6 +26,7 @@ var results = new List<Order>();
 foreach (var o in GetDocumentsFor("Orders")) {
     if (o.Company == "companies/1")
         results.Add(o);
+}
 
 var orderedResults = results.Sort( (a,b) => a.OrderedAt.CompareTo(b.OrderedAt));
 // ..
