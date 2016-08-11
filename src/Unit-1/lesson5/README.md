@@ -117,6 +117,8 @@ private static void QueryCompanyOrders(int companyId)
 
 The default value of a page size for a query is 128 results. In order to retrieve a different number of results in a single query use `.Take(pageSize)` method.
 
+> You can learn more about paging reading the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/indexes/querying/paging)
+
 ## Great job! Onto Lesson 6!
 
 Awesome! This was a short lesson. We will discuss a lot about querying when we 

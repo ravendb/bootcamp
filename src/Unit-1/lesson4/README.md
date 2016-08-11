@@ -23,12 +23,12 @@ As the name implies, the `Load` method gives you the option of loading a documen
 or a set of documents, passing the document(s) id(s) as parameters. The result will
 be a object representing the document or `null` if document does not exists.
 
-A document is loaded only once in a section. Even though we call the `Load` method
+A document is loaded only once in a session. Even though we call the `Load` method
 twice passing the same document id, only a single remote call to the server will
 be made. Whenever a document is loaded, it is added to a internal dictionary managed
 by the session. 
 
-### Exercise: Confirming that a document is loaded only once in a section
+### Exercise: Confirming that a document is loaded only once in a session
 
 This exercise picks up right where previous one, in the previous lesson, left off.
 
@@ -55,7 +55,7 @@ Product product = session.Load<Product>(1);
 ````
 
 This code is really nice to use, specially in web scenarios. It would work because
-the default RavenDB conventions (remember from lesson 3?) infers the collection
+the default RavenDB conventions (remember from [lesson 3](../lesson3#introducing-conventions)?) infers the collection
 name from the type parameter name.
 
 
@@ -103,7 +103,7 @@ As you probably know, the easiest way to kill your application performance is
 to make a lot of remote calls. RevanDB provides a lot of features to help you
 to mitigate that problem.
 
-Consider the Northwind `product/1` document:
+Consider the Northwind `products/1` document:
 
 ````csharp
 {
@@ -218,7 +218,7 @@ namespace OrdersExplorer
 
 ### Step 3: Add Northwind model classes to your project
 As you learned in lesson 2, you could work only with dynamic objects. Anyway,
-it is a good idea to have compiler/ide support in your projects.
+it is a good idea to have compiler/IDE support in your projects.
 
 Add a new class in your project named NorthwindModels. Then replace the file
 content with [this](NorthwindModels.cs).

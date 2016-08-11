@@ -95,7 +95,7 @@ the conventions. But you can do it every time you need.
 
 We will not touch RavenDB conventions right now. Simple because we don't need 
 to do it. For while, if you want to know more, you can access the [RavenDB conventions
-documentation](https://ravendb.net/docs/article-page/3.0/csharp/client-api/configuration/conventions/what-are-conventions).
+documentation](https://ravendb.net/docs/article-page/latest/csharp/client-api/configuration/conventions/what-are-conventions).
 
 ## Connection Strings
 
@@ -146,6 +146,7 @@ public static class DocumentStoreHolder
         LazyStore.Value;
 }
 ````
+> If you want to check what other parameters you can pass in connection string to the document store please read following [article](http://ravendb.net/docs/article-page/latest/csharp/client-api/setting-up-connection-string).
 
 ## Great job! Onto Lesson 4!
 
