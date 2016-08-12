@@ -1,4 +1,4 @@
-# Unit 2, Lesson 5 - The controversial `LoadDocument`
+# Unit 2, Lesson 5 - The powerful `LoadDocument` server-side function
 
 Hello and welcome to lesson 5.
 
@@ -14,14 +14,10 @@ static void Main(string[] args)
 {
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
-        var query = session
+        var results = session
             .Query<Products_ByCategory.Result, Products_ByCategory>()
-            .Include(x => x.Category);
-
-        var results = (
-            from result in query
-            select result
-            ).ToList();
+            .Include(x => x.Category)
+            .ToList();
 
         foreach (var result in results)
         {

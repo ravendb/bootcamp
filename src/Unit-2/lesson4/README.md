@@ -167,14 +167,10 @@ class Program
     {
         using (var session = DocumentStoreHolder.Store.OpenSession())
         {
-            var query = session
+            var results = session
                 .Query<Products_ByCategory.Result, Products_ByCategory>()
-                .Include(x => x.Category); 
- 
-            var results = (
-                from result in query
-                select result
-                ).ToList();
+                .Include(x => x.Category)
+                .ToList(); 
 
             foreach (var result in results)
             {
@@ -186,7 +182,8 @@ class Program
 }
 ````
 
-This will list all the categories of the products.
+This will list all the categories of the products. Remember that the `Include` function
+ensures that all data is returned from the server in a single response. 
 
 ## Excercise: Employee of the month
 
