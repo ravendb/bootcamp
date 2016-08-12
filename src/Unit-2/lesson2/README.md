@@ -91,7 +91,7 @@ That's it. You just created your first index.
 
 ## Exercise: Creating your first index using the C\# API
 
-So far, we worked with indexes inside the studio. But you probably wnat
+So far, we worked with indexes inside the studio. But you probably want
 to manage it with your codebase. That is why RavenDB allows you to define indexes
 in code.
 
@@ -109,7 +109,7 @@ command:
 This will install the latest RavenDB.Client binaries, which you will need in order
 to compile your code.
 
-Then you will need to add the `using` name space at the top of the `Program.cs``:
+Then you will need to add the `using` name space at the top of the `Program.cs`:
 
 ````csharp
 using Raven.Client.Document;
@@ -215,9 +215,11 @@ class Program
 }
 ````
 
-If you crate or modify an index, when you execute it, RavenDB will create/modify
+If you create or modify an index, when you execute it, RavenDB will create/modify
 the index on the server. If the server side index definition matches the index
 definition in the client, the operation has no effect.
+
+> If you want to learn now other ways to deploy indexes, you can read more about this topic in the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/indexes/creating-and-deploying).
 
 In the next lessons you will learn how to send the indexes definitions 
 during the `Document Store` initialization. Right?

@@ -208,7 +208,7 @@ public static IEnumerable<People_Search.Result> Search(
 
 The `Search` method allow us to perform advanced querying using all the power
 of the Lucene engine. Here we are only accepting a list of terms and projecting
-the results into a common result format.
+the results directly from index stored values into a common result format.
 
 ### Step 6: Use the `Search` utility function
 
@@ -232,8 +232,12 @@ static void Main(string[] args)
 }
 ````
 
-This code asks the user to provide some seach terms. Then it displays the 
+This code asks the user to provide some search terms. Then it displays the 
 search results.
+
+Not that even if we query against aggregated data the map-reduce index have 
+done the pre-calculations in advance so we are not doing any full table scans, 
+just a O(logN) operation
 
 ![creating new index](images/unit2-multi-map-output.png)
 
