@@ -142,5 +142,5 @@ I strongly recommend you to assume *too much* `LoadDocument` as a potential bad 
 
 Awesome! You just learned one of the most powerful and controversial feature of RavenDB.
 
-**Let's move onto [Lesson 6](../lesson5/README.md) **
+**Let's move onto [Lesson 6](../lesson6/README.md) **
 
