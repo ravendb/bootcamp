@@ -179,9 +179,9 @@ And this was the response.
 
 ````JSON
 {
-Results: [
+    "Results": [
     {
-        "$values:" [
+        "$values": [
             {
                 "Name": "White Clover Markets"
             }
