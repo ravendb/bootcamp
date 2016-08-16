@@ -81,6 +81,7 @@ Remember to have started the RavenDB server.
 
 Now, it's time to load a company document from the server.
 
+````csharp
 class Program
 {
     static void Main(string[] args)
@@ -92,6 +93,7 @@ class Program
         }
     }
 }
+````
 
 Easy. Right?
 
@@ -106,30 +108,26 @@ Which produced the following response:
 
 ````json
 {
-    ExternalId: "WHITC",
-    Name: "White Clover Markets",
-    Contact: {
-        Name: "Karl Jablonski",
-        Title: "Owner"
+    "ExternalId": "WHITC",
+    "Name": "White Clover Markets",
+    "Contact": {
+        "Name": "Karl Jablonski",
+        "Title": "Owner"
     },
-    Address: {
-        Line1: "305 - 14th Ave. S. Suite 3B",
-        Line2: null,
-        City: "Seattle",
-        Region: "WA",
-        PostalCode: "98128",
-        Country: "USA"
+    "Address": {
+        "Line1": "305 - 14th Ave. S. Suite 3B",
+        "Line2": null,
+        "City": "Seattle",
+        "Region": "WA",
+        "PostalCode": "98128",
+        "Country": "USA"
     },
-    Phone: "(206) 555-4112",
-    Fax: "(206) 555-4115"
+    "Phone": "(206) 555-4112",
+    "Fax": "(206) 555-4115"
 }
 ````
 
 A lot of information if you just need the `Name` property.
-
-> It's important to understand that RavenDB is smart enough to correctly
-load data from response in a "small" model class. But, it's not exactly good
-to receive all this data if you don't need it.
 
 ### Step 5: Writing your first transformer
 
@@ -167,14 +165,14 @@ static void Main(string[] args)
 }
 ````
 
-Because transformers are server side artifacts, you need to create tham on the
+Because transformers are server side artifacts, you need to create them on the
 server before thay can be used. You can do it calling the `Execute` method (as in the 
 sample code) or using `IndexCreation.CreateIndexes` function.
 
 Now, looking closer what happened you will see that the client API sent the following request to the server:
 
 ````
-http://localhost:8080/databases/Northwind/queries/?&transformer=JustCompanyName&id=companies%2F89
+http://localhost:8080/databases/Northwind/queries/?&transformer=Company%2FJustName&id=companies%2F89
 ````
 
 And this was the response.
@@ -183,19 +181,19 @@ And this was the response.
 {
 Results: [
     {
-        $values: [
+        "$values:" [
             {
-                Name: "White Clover Markets"
+                "Name": "White Clover Markets"
             }
         ],
-        @metadata: {
-            Last-Modified: "2016-08-05T14:02:42.7387677Z",
-            Raven-Last-Modified: "2016-08-05T14:02:42.7387677",
-            @etag: "3AD2616E-A033-8B3B-BE04-BE84ED03B469"
+        "@metadata": {
+            "Last-Modified:" "2016-08-05T14:02:42.7387677Z",
+            "Raven-Last-Modified": "2016-08-05T14:02:42.7387677",
+            "@etag": "3AD2616E-A033-8B3B-BE04-BE84ED03B469"
         }
     }
     ],
-    Includes: [ ]
+    "Includes": [ ]
 }
 ````
 
