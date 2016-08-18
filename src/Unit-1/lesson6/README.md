@@ -5,7 +5,7 @@ Welcome to the last lesson of this unit.
 In this lesson, you will learn how to store, modify and delete documents.
 
 ## Quick start
-Store, modify and delete documents is extremely easy with RavenDB.
+Storing, modifying and deleting documents is extremely easy with RavenDB.
 
 Let me provide you a quick start demo.
 
@@ -48,7 +48,7 @@ Any .NET object can be saved by RavenDB. It only needs to be serializable to
 JSON.
 
 The `Store` method is responsible to register the "storing" intention in the session.
-Just after the `Store` call you can access the document id, even though the document
+You can access the document right after the `Store` call was made, even though the document
 was not saved to the database yet. The `SaveChanges` method applies the registered 
 actions in the session to the database.
 
@@ -57,13 +57,13 @@ update the matching document on the server side. The session keeps track of all 
 entities you have loaded (with `Load` or `Query` methods), and when you call `SaveChanges`,
 all changes to those entities are sent to the database in a *single remote call*.
 
-The `Delete` method, which we used in the last part of the code will delete the 
+The `Delete` method, which we have used in the last part of the code, will delete the 
 matching document in the server side. You can provide the document id or an 
 entity instance.
 
 **Again, all the changes are applied in the server side only after you call the  `SaveChanges` method.**
 
-> The session implements the Unit of Work patter. Learn more reading the [official documentation]( http://ravendb.net/docs/article-page/latest/csharp/client-api/session/what-is-a-session-and-how-does-it-work)
+> The session implements the Unit of Work pattern. Learn more reading the [official documentation]( http://ravendb.net/docs/article-page/latest/csharp/client-api/session/what-is-a-session-and-how-does-it-work)
 
 ## Modifying documents with the `Store` method
 Beyond saving a new entity, the `Store` method is also used to associate entities
@@ -72,7 +72,7 @@ have one endpoint that sends the entity to the user, which modifies that entity 
 then sends it back to your web application. You have a live entity instance, but
 it is not loaded by the session or tracked by it. At that point, you have to 
 call the `Store` method on that entity, and because it doesn't have a null document
-id, it will be treated as an existing document and overwhite the previous version
+id, it will be treated as an existing document and overwrite the previous version
 on the database side.
 
 ````csharp
@@ -91,7 +91,7 @@ public class CategoryRepository
 }
 ```` 
 
-The `SaveChanges` should be called only once per session.
+`SaveChanges` should be called only once per session.
 
 ## Exercise: Creating a basic contacts CRUD
 
@@ -109,7 +109,7 @@ command:
 This will install the latest RavenDB.Client binaries, which you will need in order
 to compile your code.
 
-Then you will need to add the `using` name space at the top of the `Program.cs``:
+Then you will need to add the `using` namespace at the top of `Program.cs`:
 
 ````csharp
 
@@ -117,11 +117,11 @@ Then you will need to add the `using` name space at the top of the `Program.cs``
 
 ### Step 2: Initialize the `DocumentStore`
 
-Let's do it using our good friend pattern `DocumentStoreHolder`. You learned about it in the 
+Let's do it using our good friend pattern `DocumentStoreHolder`. You learned about it in 
 [Lesson 3](../lesson3/README.md).
 
-Note that if the database specified in the `DefaultDatabase` does not exists, a new one will
-be created (Yes! It is simple like that. Remember RavenDB philosophy is "Safe by defaylt. Optimized by
+Note that if the database specified in the `DefaultDatabase` does not exist, a new one will
+be created (Yes! It is simple as that. Remember, RavenDB's philosophy is "Safe by defaylt. Optimized by
 Efficiency", but could be "Just works!")
 
 ````csharp
@@ -234,7 +234,7 @@ private void Run()
     }
 }
 ````
-### Step 6: Implementing the logic to create a new contacts
+### Step 6: Implementing the logic to create a new contact
 
 ````csharp
 private void CreateContact()

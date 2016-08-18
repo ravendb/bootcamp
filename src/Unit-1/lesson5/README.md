@@ -1,6 +1,6 @@
 # Unit 1, Lesson 5 - Querying fundamentals
 
-Querying is a large part of what a database does, and RavenDB not disappoints.
+Querying is a large part of what a database does, and RavenDB doesn't disappoint.
 
 In this lesson, you will learn the fundamentals of querying using RavenDB.
 
@@ -24,7 +24,7 @@ special index).
 
 ## Exercise: Querying orders of a company
 
-This time, you will write an application which requests an company Id. Then 
+This time, you will write an application which requests a company Id. Then 
 you will list the orders made by this company.
 
 I think you got the basics from the previous exercises. So, I will not repeat 
@@ -38,7 +38,7 @@ myself providing you details that you already know.
 
 ### Step 4: Request a company Id
 
-Back to the `Program.cs` let's create a minimal user interface which requests a
+Back to `Program.cs`, let's create a minimal user interface which requests a
 company Id.
 
 ````csharp

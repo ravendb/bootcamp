@@ -2,15 +2,15 @@
 
 In the previous lessons you had setup RavenDB, explored the Studio, wrote
 some code to connect to RavenDB, pulled data out and defined typed classes
-that allowed you to work with RavenDB more easily.
+that allow you to work with RavenDB more easily.
 
 In this lesson, you will understand more about an important member of the Client API:
-`DocumentStore`.
+the `DocumentStore`.
 
 ## What is the purpose of the `DocumentStore`?
 
 You've already used the document store in the previous example. Now it is time
-to understand what is its purpose.
+to understand its purpose.
 
 ````csharp
 var documentStore = new DocumentStore
@@ -86,15 +86,15 @@ class Program
 
 An important RavenDB concept is conventions.
 
-> Conventions are a series of policy decisions that has already been made for you.
+> Conventions are a series of policy decisions that have already been made for you.
 Those range from deciding which property holds the document id to how the entity
 should be serialized to a document.
 
 A lot of thought and effort has gone into ensuring you will have no need to touch
 the conventions. But you can do it every time you need.
 
-We will not touch RavenDB conventions right now. Simple because we don't need 
-to do it. For while, if you want to know more, you can access the [RavenDB conventions
+We will not touch RavenDB conventions right now. Simply because we don't need 
+to do it. If you want to know more, you can access the [RavenDB conventions
 documentation](https://ravendb.net/docs/article-page/latest/csharp/client-api/configuration/conventions/what-are-conventions).
 
 ## Connection Strings
@@ -107,12 +107,12 @@ good news is that you probably know how to deal with it.
 
 ## Exercise: Defining and using a connection string
 
-Again, this exercise picks up right where previous one left off.
+Again, this exercise picks up right where the previous one left off.
 
 ### Step 1: Defining the connection string in `app(web).config`
 
 Add or edit the `app.config` file (we are using a console application). Then,
-modify his content adding the `connectionStrings` section.
+modify its content adding the `connectionStrings` section.
 
 ````xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -146,7 +146,7 @@ public static class DocumentStoreHolder
         LazyStore.Value;
 }
 ````
-> If you want to check what other parameters you can pass in connection string to the document store please read following [article](http://ravendb.net/docs/article-page/latest/csharp/client-api/setting-up-connection-string).
+> If you want to check what other parameters you can pass in the connection string to the document store please read the following [article](http://ravendb.net/docs/article-page/latest/csharp/client-api/setting-up-connection-string).
 
 ## Great job! Onto Lesson 4!
 

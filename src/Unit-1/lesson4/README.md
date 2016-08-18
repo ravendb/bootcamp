@@ -4,7 +4,7 @@ You have been loading documents since [lesson 2](../lesson2/README.md), and now 
 what alternatives you have.
 
 ## Before loading, establishing a `Session`
-The session is the primary way to your code interacts with RavenDB. You need
+The session is the primary way your code interacts with RavenDB. You need
 to create a session, via the document store, and then use the session methods
 to perform operations.
 
@@ -21,16 +21,16 @@ using (var session = DocumentStoreHolder.Store.OpenSession())
 ## The basics of the `Load` method
 As the name implies, the `Load` method gives you the option of loading a document
 or a set of documents, passing the document(s) id(s) as parameters. The result will
-be a object representing the document or `null` if document does not exists.
+be an object representing the document or `null` if the document does not exists.
 
 A document is loaded only once in a session. Even though we call the `Load` method
 twice passing the same document id, only a single remote call to the server will
-be made. Whenever a document is loaded, it is added to a internal dictionary managed
+be made. Whenever a document is loaded, it is added to an internal dictionary managed
 by the session. 
 
 ### Exercise: Confirming that a document is loaded only once in a session
 
-This exercise picks up right where previous one, in the previous lesson, left off.
+This exercise picks up right where the previous one, in the previous lesson, left off.
 
 Change your program to call the `Load` method two times passing the same 
 value as the parameter. Then, use the `Debug.Assert` method to confirm the 
@@ -47,7 +47,7 @@ using (var session = DocumentStoreHolder.Store.OpenSession())
 
 ## Loading documents passing a simpler id
 RavenDB ids are usually in form of `<name-of-collection>/<number>` (like `products/1`, `categories/7`, and so on). 
-This makes it very easy to look at and debug. But sometimes, would be easier to 
+This makes it very easy to look at and debug. But sometimes, it would be easier to 
 specify only the number.
 
 ````csharp
@@ -93,15 +93,15 @@ Category c = (Category) items[1];
 
 Now that you know how to load multiple documents with a single call, you can try it.
 
-I strongly recommend you to get some additional model classes using the 
+I strongly recommend that you get some additional model classes using the 
 `Generate class` tool while editing documents in the RavenDB Studio. Then
 try to load some documents of these types.
 
 ## Loading related documents in a single remote call
 
 As you probably know, the easiest way to kill your application performance is 
-to make a lot of remote calls. RevanDB provides a lot of features to help you
-to mitigate that problem.
+to make a lot of remote calls. RevanDB provides a lot of features to help you 
+mitigate that problem.
 
 Consider the Northwind `products/1` document:
 
@@ -119,7 +119,7 @@ Consider the Northwind `products/1` document:
 }
 ````
 
-As you can see, `Supplier` and `Category` properties are clearly references for
+As you can see, the `Supplier` and `Category` properties are clearly references for
 other documents. 
 
 Considering you need to load the product and the related category, how would you
@@ -152,7 +152,7 @@ Basically, it will:
 When the `session.Load<Category>(p.Category);` is executed, the document is in the
 session cache and no additional remote call is made.
 
-Here is powerful example of application of this technique in a complex scenario.
+Here is a powerful example of application of this technique in a complex scenario.
 
 ````csharp
 var order = session
@@ -171,14 +171,14 @@ in the order.
 In this exercise you will create an "Orders Explorer" for the Northwind database.
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
-As you learned in the lesson 2, 
-Start Visual Studio and create a new `Console Application Project` named
+As you learned in lesson 2, 
+start Visual Studio and create a new `Console Application Project` named
 Northwind. Then, in the `Package Manager Console`, issue the following 
 command: 
 
 ```Install-Package RavenDB.Client```
 
-Then you will need to add the `using` name space at the top of the `Program.cs``:
+Then you will need to add the `using` namespace at the top of `Program.cs`:
 
 ````csharp
 using Raven.Client.Document;
@@ -186,7 +186,7 @@ using Raven.Client.Document;
 
 ### Step 2: Create the `DocumentStoreHolder`
 
-As you learned in the lesson 3, add a new class in your project named `DocumentStoreHolder`.
+As you learned in lesson 3, add a new class in your project named `DocumentStoreHolder`.
 Then replace the file content with:
 
 ````csharp
@@ -224,8 +224,8 @@ Add a new class in your project named NorthwindModels. Then replace the file
 content with [this](NorthwindModels.cs).
 
 ### Step 4: Request an order number
-Back to the `Program.cs` let's create a minimal user interface which requests
-order numbers.
+Back to `Program.cs`, let's create a minimal user interface which requests 
+an order numbers.
 
 ````csharp
 using static System.Console;
@@ -305,7 +305,7 @@ private static void PrintOrder(int orderNumber)
 
 ## Great job! Onto Lesson 5!
 
-Awesome! This *long* lesson is done and you know a lot about the how to load documents from a RavenDB database.
+Awesome! This *long* lesson is done and you know a lot about how to load documents from a RavenDB database.
 
 **Let's move onto [Lesson 5](../lesson5/README.md) and learn about querying.**
 
