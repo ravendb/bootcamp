@@ -20,7 +20,7 @@ command:
 This will install the latest RavenDB.Client binaries, which you will need in order
 to compile your code.
 
-Then you will need to add the `using` name space at the top of the `Program.cs``:
+Then you will need to add the `using` namespace at the top of `Program.cs`:
 
 ````csharp
 using Raven.Client.Document;
@@ -47,9 +47,9 @@ The document store object has single URL address that points to RavenDB server, 
 
 > To learn more about the `DocumentStore`, access the [official documentation](https://ravendb.net/docs/article-page/3.0/csharp/client-api/what-is-a-document-store).
 
-### Step 3: Load document from the server
+### Step 3: Load a document from the server
 
-After creating instance of the `DocumentStore` we are ready to interact with the
+After creating an instance of the `DocumentStore` we are ready to interact with the
 database.
 
 After creating a RavenDB document store, we are ready to use the database server instance it is pointing at. For any operation we want to perform on the DB, we start by obtaining a new Session object from the document store. The Session object will contain everything needed to perform any operation necessary
@@ -62,12 +62,12 @@ using (var session = documentStore.OpenSession())
 }
 ````
 
-RavenDB is schemaless. So, we don't need to create any class to load document
+RavenDB is schemaless. So, we don't need to create any class to load documents
 from the server.
 
 >When you want to store data in a relational database, you first define a schema -
 a defined structure for the database which says what tables and columns exist and
-data types each columns can hold. With RavenDB, storing and loading data is much
+which data types each columns can hold. With RavenDB, storing and loading data is much
 more casual.
 
 That's it! You are already reading data from the server.
@@ -103,12 +103,12 @@ namespace Northwind
 
 ## Understanding the concept of `Unique Identifiers`
 As you probably noted, there is no need to inform the source collection when loading
-a document. It is possible because, as you learned in the [Lesson 1](../lesson1/README.md), the collection 
+a document. It is possible because, as you learned in [Lesson 1](../lesson1/README.md), the collection 
 in RavenDB is just a "virtual" thing.
 
-To load a document you just need to specify his key, also called document Id. Any
-string can be used as document key (or Id). Anyway, RavenDB uses a default convention
-where the collection name is used as prefix followed by a unique value.
+To load a document you just need to specify its key, also called the document Id. Any
+string can be used as a document key (or Id). Anyway, RavenDB uses a default convention
+where the collection name is used as a prefix followed by a unique value.
 
 The document Id is equivalent for the primary key in a relational system. But, unlike
 a primary key, which is unique per table, the document Id is unique per database.
@@ -119,10 +119,10 @@ by a document, that document will get overridden with the new document data.
 
 ## Exercise 2: Improving the code with some types
 
-This exercise picks up right where previous one left off. 
+This exercise picks up right where the previous one left off. 
 
-In the previous exercise we start loading data from the server without writing 
-any class. The schema less nature of RavenDB, combined with the `dynamic` in C#
+In the previous exercise we start loading data from the server without defining 
+any class. The schema less nature of RavenDB, combined with the `dynamic` keyword in C#
 allows us to work in a completely dynamic world. But for most things, we 
 actually do want some structure.
 
@@ -139,9 +139,9 @@ public class Product
 ````
 
 That's good enough if we just want to load partial information of the documents. 
-But we should always define or model class as complete as possible.
+But we should always define or model classes as complete as possible.
 
-In this exercise, we can ask `Studio` to provide type information compatible with
+In this exercise, we can ask the `Studio` to provide type information compatible with
 Northwind through `Task tab`/`Create Sample Data Dialog`/`Show Data Classes`. 
 We can even request the model class while editing a document clicking in the `Generate
 Class` toolbar button.
@@ -166,7 +166,7 @@ is no base class, attributes or even virtual members.
 
 ### Step 2: Using your model class when interacting with RavenDB
 
-Start using model classes is really easy with RavenDB. 
+Starting to use model classes is really easy with RavenDB. 
 
 ````csharp
 using (var session = documentStore.OpenSession())

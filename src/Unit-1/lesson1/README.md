@@ -43,7 +43,7 @@ To start, enter `Northwind` as database name and press the Create Button.
 Congratulations! You just created your first RavenDB database... but, it is empty. 
 
 For learning purposes let's load some sample data into our database. 
-Open the `Northwind database` and go to the `Tasks tab` and then
+Open the `Northwind database` and go to the `Tasks` tab and then
 to `Create Sample Data dialog`. Go ahead and press the `Create Sample Data Buttton`. 
 After a little processing, we have data that we can play with.
 
@@ -52,7 +52,7 @@ Server, it has been used for decades as the sample database in the
 Microsoft community. We choose this database as our sample data
 because it is likely already familiar to you in its relational format.
 
-Go to the `Documents tab` and check out your data.
+Go to the `Documents` tab and check out your data.
 
 ![the northwind database](images/unit1-hello-northwind.png)
 
@@ -129,16 +129,16 @@ holding products information, and you want to talk about groups of them.
 RavenDB allows for a document to be stamped with a string value that will be 
 evidence of its type (like "Customers" and "Products"). 
 
-Note that documents that are in the same collection can have a completely different structure, what is fine because RavenDB is schema-less.
+Note that documents that are in the same collection can have a completely different structure, which is fine because RavenDB is schema-less.
 
 ## Exercise: Exploring the Northwind collections
 
 Step 1: Open the RavenDB Management Studio at `http://localhost:8080`   
 Step 2: Open the Northwind Database   
-Step 3: In the `Documents Tab`, explore all the collections.
+Step 3: In the `Documents` tab, explore all the collections.
 
 ## Great job! Onto Lesson 2!
 
-Awesome! You just done your first lesson.
+Awesome! You have just completed your first lesson.
 
 **Let's move onto [Lesson 2](../lesson2/README.md) and start writing some code.**
