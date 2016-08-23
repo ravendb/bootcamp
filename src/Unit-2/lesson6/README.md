@@ -51,7 +51,7 @@ using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Indexes;
 
-namespace MapReduceIndexes
+namespace LearningTransformers
 {
     public static class DocumentStoreHolder
     {
