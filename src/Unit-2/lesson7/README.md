@@ -5,13 +5,13 @@ RavenDB, and that is awesome. Right?
 
 In this lesson you will learn how to get details of a just executed query.  
 
-## Introducing `RavenQueryStatics`
+## Introducing `RavenQueryStatistics`
 
 Every time you perform a query using the client API, you can request
 some additional info using the `Statistics` method.
 
 ````csharp
-RavenQueryStatics stats;
+RavenQueryStatistics stats;
 
 var orders = (
     from order in session.Query<Order>().Statistics(out stats)
@@ -23,7 +23,7 @@ var orders = (
 Console.WriteLine($"Index used was: {stats.IndexName}");
 ````
 
-The results are avaiable via a [`RavenQueryStatics` object](https://ravendb.net/docs/article-page/latest/all/glossary/raven-query-statistics). 
+The results are avaiable via a [`RavenQueryStatistics` object](https://ravendb.net/docs/article-page/latest/all/glossary/raven-query-statistics). 
 Among the details you can get from the query statistics, you have: 
 
 * Whatever the index was stale or not.
@@ -35,7 +35,7 @@ Among the details you can get from the query statistics, you have:
 
 ## Stale index?
 
-This is a very important fact: **RavenDB supports fully ACID writes but BASE reads**. 
+This is a very important fact: **RavenDB queries are BASE. Read and writes by document ID are always ACID**. 
 
 RavenDB performs indexing in a background thread, which is executed whenever the new data comes in 
 or the existing data is updated. This allows the server to respond quickly, even when large 
@@ -49,7 +49,7 @@ RavenDB is honest and clear about stale indexes. It is really easy to know if a 
 stale index just checking the statistics.
 
 ````csharp
-RavenQueryStatics stats;
+RavenQueryStatistics stats;
 
 var orders = (
     from order in session.Query<Order>().Statistics(out stats)
@@ -73,7 +73,7 @@ have enough time to fully update before the query.
 If you need to make sure that your results are up to date, then you can use the `Customize` method.
 
 ````csharp
-RavenQueryStatics stats;
+RavenQueryStatistics stats;
 
 var query = session.Query<Order>()
     .Customize(q => q.WaitForNonStaleResultsAsOfNow(TimeSpan.FromSeconds(5)));
@@ -92,6 +92,17 @@ Here RavenDB is instructed to use a 5 seconds time-out.
 There is different strategies you could use here. To learn more about how to deal with stale index
 I strongly recommend you to read the [official documentation](https://ravendb.net/docs/article-page/3.5/csharp/indexes/stale-indexes).
 
+### Staleness is a real problem?
+At first sight, the idea of a query that may not be fully up to date sounds scary. Right? 
+But in practice, this is how we almost always work in the real world. 
+
+Try this, call your bank and ask them how much money you have in your account (financial systems should be
+consistent, right?). The answer you’ll get is going to be some variant of: “As of last business day, you had…”.
+
+Much of management occurs with the previous day's data. Strategic decisions usually using even older data. 
+In practice, few queries need to reflect real-time data. So, why to sacrifice computation power and
+responsiveness generating data which nobody cares about?
+
 ## Timings
 
 When testing your application is reasonable to check the timings. RavenDB can provide you 
@@ -101,9 +112,10 @@ you need.
 > By default, detailed timings in queries are turned off, this is due to small overhead that calculation of such timings produces.
 
 ````csharp
-RavenQueryStatics stats;
+RavenQueryStatistics stats;
 
 var query = session.Query<Order>()
+    .Statistics(out stats)
     .Customize(q => q.ShowTimings());
 
 var orders = (
@@ -119,6 +131,64 @@ var detailedInfo = stats.TimingsInMilliseconds;
 
 The `TimingsInMilliseconds` property contains an `Dictionary<string, double>` object where each
 entry corresponds to a specific timing.
+
+## Exercise: Exploring timings results
+
+This exercise picks up right where the previous one, in the [previous lesson](../lesson6/README.md), left off. 
+You already have the DocumentStoreHolder and one transformer.
+
+Let's 
+
+````csharp
+static void Main(string[] args)
+{
+    new Products_ProductAndSupplierName().Execute(DocumentStoreHolder.Store);
+
+    Console.Title = "Timings demo";
+    using (var session = DocumentStoreHolder.Store.OpenSession())
+    {
+        RavenQueryStatistics stats;
+
+        var query = session.Query<Order>()
+            .Statistics(out stats)
+            .Customize(q => q.ShowTimings());
+
+        var orders = (
+            from order in query
+            orderby order.OrderedAt
+            select order
+            )
+            .ToList();
+
+        var detailedInfo = stats.TimingsInMilliseconds;
+
+        Console.WriteLine($"Orders count : {orders.Count}");
+        Console.WriteLine($"Total results: {stats.TotalResults}");
+        Console.WriteLine("");
+
+        Console.WriteLine($"Time (ms)  \t Element");
+        foreach (var entry in detailedInfo)
+        {
+            Console.WriteLine($"{entry.Value} \t\t {entry.Key} ");
+        }
+    }
+}
+````
+
+What are we doing here? It is just a regular query where the timings are enabled.
+
+This is output in my machine.
+
+![timings output](images/unit2-timings.png)
+
+As you can see, in this query, the transforming and the query parsing are almost inexpressive.
+
+
+
+
+ 
+
+
 
 ## Great Job!
 

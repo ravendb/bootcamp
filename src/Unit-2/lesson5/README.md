@@ -7,7 +7,7 @@ server-side `LoadDocument` function.
 
 ## Something about size!
 
-In the [previous lesson](../lesson3/README.md) you wrote this code:
+In the [previous lesson](../lesson4/README.md) you wrote this code:
 
 ````csharp
 static void Main(string[] args)
