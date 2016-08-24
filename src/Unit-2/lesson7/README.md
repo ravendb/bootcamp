@@ -179,15 +179,18 @@ What are we doing here? It is just a regular query where the timings are enabled
 
 This is output in my machine.
 
-![timings output](images/unit2-timings.png)
+````
+Orders count : 128
+Total results: 830
+
+Time (ms)        Element
+16               Lucene search
+1                Loading documents
+0                Transforming results
+0                Query parsing
+````
 
 As you can see, in this query, the transforming and the query parsing are almost inexpressive.
-
-
-
-
- 
-
 
 
 ## Great Job!
