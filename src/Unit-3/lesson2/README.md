@@ -9,7 +9,7 @@ in case.
 
 ## What are RavenDB Commands?
 
-Commands are a set operations that can be used to manipulate data and change 
+Commands are a set of operations that can be used to manipulate data and change 
 configuration on a server. But, wait a minute! Isn't exactly what you do using 
 the `session` object?
 
@@ -17,7 +17,7 @@ The `session` is a high level interface to RavenDB which provides the identity m
 and Linq queries. But if you want do something in the low-level, then you should 
 start using the commands.
 
-There are a exaustive list of RavenDB commands avaiable in the [official documentation](https://ravendb.net/docs/article-page/3.5/csharp/client-api/commands/what-are-commands).
+There is an exaustive list of RavenDB commands avaiable in the [official documentation](https://ravendb.net/docs/article-page/3.5/csharp/client-api/commands/what-are-commands).
 
 ## First-time using RavenDB Commands
 
@@ -38,7 +38,7 @@ static void Main()
 The `Head` method expose a low level way to check if a potentialy large document
 exists, without loading it.
 
-## Exercise: Adding a order's line into a order document without loading the entire document
+## Exercise: Adding an order's line into an order document without loading the entire document
 Consider the document `orders/816` from the Northwind database.
 
 ````csharp
@@ -84,7 +84,7 @@ Consider the document `orders/816` from the Northwind database.
 }
 ```` 
 
-What if you want to add a order's line? Would we need to load the entire document? No!
+What if you want to add an order's line? Would we need to load the entire document? No!
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
 
