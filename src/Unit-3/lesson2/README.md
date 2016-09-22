@@ -1,4 +1,4 @@
-# Unit 3, Lesson 2 - Commands!
+# Unit 3, Lesson 2 - Getting started with Commands!
 
 This has been a long journey, right? You already know the basics of RavenDB. But
 there are a lot of specifics that can help you to create amazing solutions.
@@ -139,34 +139,29 @@ static void Main()
 {
     var commands = DocumentStoreHolder.Store.DatabaseCommands;
 
-    var requestToAddLine = new PatchRequest
-    {
-        Type = PatchCommandType.Add,
-        Name = "Lines",
-        Value = RavenJToken.FromObject(new
-        {
-            Product = "products/1",
-            ProductName = "Chai",
-            PricePerUnit = 18,
-            Quantity = 1,
-            Discount = 0
-        })
-    };
-
     commands.Patch(
         "orders/816",
-        new [] { requestToAddLine }
-    );
+        new ScriptedPatchRequest
+        {
+            Script = @"this.Lines.push({ 
+                        'Product': 'products/1',
+                        'ProductName': 'Chai',
+                        'PricePerUnit': 18,
+                        'Quantity': 1,
+                        'Discount': 0
+                        });"
+        });
 }
 ````
 
 In this example, you used the `Patch` command which performs partial document updates without having to load, 
-modify, and save a full document. 
+modify, and save a full document. The `Script` needs to be in JavaScript.  
 
 Learn about the `Patch` command reading the [official documentation](https://ravendb.net/docs/article-page/latest/csharp/client-api/commands/patches/how-to-work-with-patch-requests)
 
 ## Great job! Onto Lesson 3!
 
-Awesome! You just learned about the commands. 
+Awesome! You just learned about the basics about commands. In the next lesson you will learn 
+how to change multiple documents with a single request. 
 
 **Let's move onto [Lesson 3](../lesson3/README.md).**
