@@ -25,7 +25,7 @@ Still confused? Let's write some code and make it clearer.
 
 I think the best way to learn about Map-Reduce indexes are writing some code.
 
-In this first excercise let's create perform a very simple task. Let's just
+In this first excercise let's perform a very simple task. Let's just
 count the number of products for each category. 
 
 Again, let's do it using the C# API.
@@ -41,7 +41,7 @@ command:
 This will install the latest RavenDB.Client binaries, which you will need in order
 to compile your code.
 
-Then you will need to add the `using` name space at the top of the `Program.cs`:
+Then you will need to add the `using` name space at the top of `Program.cs`:
 
 ````csharp
 using Raven.Client.Document;
@@ -72,7 +72,7 @@ is specified by the Id in the `Category` property.
 One way to create a Map-Reduce index  definition is inheriting from `AbstractIndexCreationTask`.
 
 In the [previous lesson](../lesson3/README.md), you learned how to create multi-map indexes.
-It's importante you know that you could can combine the power of multi-map with map-reduce just
+It's importante you know that you can combine the power of multi-map with map-reduce by
 providing multiple map functions. 
 
 ````csharp
@@ -107,8 +107,8 @@ public class Products_ByCategory : AbstractIndexCreationTask<Product, Products_B
 ````  
 
 There are some points to note here. The "counting" task is performed by
-two expresions. The `Map` just get data from the documents and the the
-`Reduce` perform the aggregation. This allows the RavenDB engine to 
+two expresions. The `Map` just gets data from the documents and the `Reduce` 
+performs the aggregation. This allows the RavenDB engine to 
 treat each step in isolation, that means it is not required to run them
 sequentially and at the same time.
 
@@ -153,7 +153,7 @@ namespace MapReduceIndexes
 }
 ````
 
-Again, we are asking to the client API to  find all indexes classes automatically and send them altogether to the server. 
+Again, we are asking the client API to  find all indexes classes automatically and send them altogether to the server. 
 You can do that, using the `IndexCreation.CreateIndexes` method.
 
 ### Step 5: Consuming the index
@@ -187,11 +187,11 @@ ensures that all data is returned from the server in a single response.
 
 ## Excercise: Employee of the month
 
-In the Northind, we have employees and orders. I this excercise you will
-create and index thet will select the "Employee of the Month", which 
+In Northind, we have employees and orders. In this excercise you will
+create an index that will select the "Employee of the Month", which 
 will be the employee with the most sales in a particular month.
 
-This exercise picks up right where previous one left off. 
+This exercise picks up right where the previous one left off. 
 
 ### Step 1: Write the model classes
 

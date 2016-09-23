@@ -18,9 +18,9 @@ do that using a single query with an index that maps multiple collections.
 As you learned in the [previous lesson](../lesson2/README.md), you can create indexes using the 
 `RavenDB Management Studio` or using the C# API.
 
-In this exercise you will learn how to create a multi-map index using C# API and you 
-will use the `Northwind` database. You will write a program that allows the use to
-search persons from multiple collections (employees, companies and suppliers).
+In this exercise you will learn how to create a multi-map index using the C# API and you 
+will use the `Northwind` database. You will write a program that allows the user to
+search people from multiple collections (employees, companies and suppliers).
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
 
@@ -42,7 +42,7 @@ using Raven.Client.Document;
 ### Step 2: Write the model classes
 
 As you learned, you don't need to write "complete" model classes when you are only reading
-from the database. For this lesson, you just will need the names and ids.
+from the database. For this lesson, you will just need the names and ids.
 
 ````csharp
 public class Employee
@@ -133,7 +133,7 @@ namespace MultimapIndexes
 ````
 
 You can define as many `map functions` as you need. Each map function is defined using
-the `AddMap` method and have to produce the same output type. The "source" collection is specified
+the `AddMap` method and has to produce the same output type. The "source" collection is specified
 by the generic parameter type you specify in the `AddMap` function.   
 
 The `Index` method here was used to mark the `Name` class as `Analyzed`
@@ -243,21 +243,21 @@ just a O(logN) operation
 
 ## Some words about projections
 
-In the previous exercise you created a inner class named `Result`. Right? This
+In the previous exercise you created an inner class named `Result`. Right? This
 class was used to provide projections. Projections are a way to collect several 
 fields from a document, instead of working with the whole document.
 
 In the index definition, we instructed RavenDB to store the fields in the index. So,
-when querying, the documents will not loaded from the storage and all data will come
-from the index direcly.   
+when querying, the documents will not be loaded from storage and all data will come 
+direcly from the index.   
 
 ## Great job! Onto Lesson 4!
 
-Awesome! You just learned how to create multi-map indexes using RavenDB C# API. 
-Before you, I strongly recommend you to try to create multi-map index using the `RavenDB Management Studio`. You will
-see how easy it is.
+Awesome! You just learned how to create multi-map indexes using the RavenDB C# API. 
+Before you proceed, I strongly recommend that you try creating a multi-map index 
+using the `RavenDB Management Studio`. You will see how easy it is.
 
-**Let's move onto [Lesson 4](../lesson3/README.md) **
+**Let's move onto [Lesson 4](../lesson4/README.md) **
 
 
 

@@ -13,7 +13,7 @@ An index is a data structure which RavenDB engine uses to perform all queries.
 Thanks to this data structure, RavenDB can quickly locate data without having
 to search every document in the database.
 
-Internally, RavenDB uses Lucene as index store, [Lucene.net](https://lucenenet.apache.org/) to be more exact - a port of the Lucene Search engine library
+Internally, RavenDB uses Lucene as the index store, [Lucene.net](https://lucenenet.apache.org/) to be more exact - a port of the Lucene Search engine library
 written in C#.
 
 ## The `Map` function 
@@ -21,10 +21,10 @@ written in C#.
 The first thing you need to realize is that RavenDB databases are schema-free,
 and as such, the engine has no knowledge of the structure of the documents
 it contains. The basic element of an index definition is the `Map` function which
-is responsible for chrunch and convert a document in JSON format into a
+is responsible for converting a document in JSON format into an
 index entry. 
 
-The `Map` function extract pieces of data you will be willing to search on
+The `Map` function extracts pieces of data you will be willing to search on
 from the documents.
 
 You will use LINQ syntax to express how the data should be extracted (or mapped).
@@ -40,7 +40,7 @@ select new {
 }
 ````
 
-> You can check it yourself just editing the index using the `RavenDB Management Studio`
+> You can check it out yourself just by editing the index using the `RavenDB Management Studio`
 
 This tells RavenDB to look only at documents of the `Orders` collection and
 to map the properties `OrderedAt` and `Company`. The output, as you can deduce, is a set of anonymous objects.
@@ -57,7 +57,7 @@ default address. Change it if you need). Then open the `Northwind database` whic
 created in the previous unit ([Lesson 1](../../Unit-1/lesson1/README.md)).
 
 ### Step 2: Start the creation of a new Index 
-Go to the `Indexes tab`, click at the `New Index`.
+Go to the `Indexes tab`, click on the `New Index`.
 
 ### Step 3: Specify the index name
 There is no fixed naming rules with RavenDB. But, I strongly recommend you
@@ -79,7 +79,7 @@ select new {
 error message if there is something wrong.
 
 In the expression, `docs` represents the entire collection of documents
-stored in the database. `docs.Employees` represents all documents from `Employees` collection.
+stored in the database. `docs.Employees` represents all documents from the `Employees` collection.
 
 ![creating new index](images/unit2-creating-new-index.png)
 
@@ -93,9 +93,9 @@ That's it. You just created your first index.
 
 So far, we worked with indexes inside the studio. But you probably want
 to manage it with your codebase. That is why RavenDB allows you to define indexes
-in code.
+using code.
 
-In this exercise you will learn how to create a basic index using C# API and you 
+In this exercise you will learn how to create a basic index using the C# API and you 
 will use the `Northwind` database.
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
@@ -109,7 +109,7 @@ command:
 This will install the latest RavenDB.Client binaries, which you will need in order
 to compile your code.
 
-Then you will need to add the `using` name space at the top of the `Program.cs`:
+Then you will need to add the `using` name space at the top of `Program.cs`:
 
 ````csharp
 using Raven.Client.Document;
@@ -194,7 +194,7 @@ public class Employees_ByFirstAndLastName : AbstractIndexCreationTask<Employee>
 ````
 
 The class name `Employees_ByFirstAndLastName`, by convention, will generate
-and index named `Employees/ByFirstAndLastName`.
+an index named `Employees/ByFirstAndLastName`.
 
 The class inherits from `AbstractIndexCreationTask<Employee>`, which indicates
 this class as an index that operates on the `Employees` collection.
@@ -219,7 +219,7 @@ If you create or modify an index, when you execute it, RavenDB will create/modif
 the index on the server. If the server side index definition matches the index
 definition in the client, the operation has no effect.
 
-> If you want to learn now other ways to deploy indexes, you can read more about this topic in the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/indexes/creating-and-deploying).
+> If you want to learn other ways to deploy indexes, you can read more about this topic in the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/indexes/creating-and-deploying).
 
 In the next lessons you will learn how to send the indexes definitions 
 during the `Document Store` initialization. Right?
@@ -235,7 +235,7 @@ You will see a new index is created for you.
 ## Querying
 
 RavenDB is smart enough to select the right index for you. But, if you want,
-you can specify what index should be used using and additional type parameter
+you can specify what index should be used using an additional type parameter
 of the `Query` method.
 
 ````csharp

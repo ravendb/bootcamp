@@ -7,15 +7,15 @@ It's time to learn about an important RavenDB concept: result transformers.
 ## What are transformers? 
 
 Transformers are server side transformations that allow you to project
-specific data to the client! This allows you to save some band-width.
+specific data to the client! This allows you to save some bandwidth.
 
 ## Exercise: Getting started with transformers
 
-To learn a new concept, nothing better than doing some little experiment. Right?
+To learn a new concept, there's nothing better than doing some little experiment. Right?
 Let's do it.
 
-In this exercise we will load a `Company` document from the server and then
-to write the company name on the console. First we will do it using what you already
+In this exercise we will load a `Company` document from the server and then 
+write the company name on the console. First we will do it using what you already
 know. Then, let's change the code to use transformers.
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
@@ -133,7 +133,7 @@ A lot of information if you just need the `Name` property.
 
 Transformers are LINQ-based server side projection functions. Just it! 
 
-Similarly to indexes, you create transformers definitions writing a class.
+Similarly to indexes, you create transformers definitions as a class.
 
 ````csharp
 public class Company_JustName : AbstractTransformerCreationTask<Company>
@@ -166,10 +166,10 @@ static void Main(string[] args)
 ````
 
 Because transformers are server side artifacts, you need to create them on the
-server before thay can be used. You can do it calling the `Execute` method (as in the 
-sample code) or using `IndexCreation.CreateIndexes` function.
+server before they can be used. You can do it calling the `Execute` method (as in the 
+sample code) or using the `IndexCreation.CreateIndexes` function.
 
-Now, looking closer what happened you will see that the client API sent the following request to the server:
+Now, looking closer at what happened, you will see that the client API sent the following request to the server:
 
 ````
 http://localhost:8080/databases/Northwind/queries/?&transformer=Company%2FJustName&id=companies%2F89
@@ -206,7 +206,7 @@ you need are present.
 ## Using transformers to load information from multiple documents
 
 Now you know that transformers are pretty cool. Right? One very important 
-feature is the ability to reference another documents. 
+feature is the ability to reference other documents. 
 
 Let's learn how to do it.
 
@@ -216,7 +216,7 @@ In this exercise you will learn how to reference other documents using
 transformers. You will write a program to load product information combined with
 the referenced supplier.  
 
-This exercise picks up right where previous one left off.
+This exercise picks up right where the previous one left off.
 
 ### Step 1:  Write the model classes 
 What we want to do is to learn the product name and the supplier name. So
@@ -292,6 +292,6 @@ No more multiple `Load` to get data.
 
 ## Great job! Onto Lesson 7!
 
-Awesome! You just learned how to save a lot of band-width with transformers.
+Awesome! You just learned how to save a lot of bandwidth with transformers.
 
-**Let's move onto [Lesson 7](../lesson6/README.md) **
+**Let's move onto [Lesson 7](../lesson7/README.md) **
