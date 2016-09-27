@@ -26,10 +26,10 @@ Console.WriteLine($"Index used was: {stats.IndexName}");
 The results are avaiable via a [`RavenQueryStatistics` object](https://ravendb.net/docs/article-page/latest/all/glossary/raven-query-statistics). 
 Among the details you can get from the query statistics, you have: 
 
-* Whatever the index was stale or not.
+* Whether the index was stale or not.
 * The duration of the query on the server side.
 * The total number of results (regardless of paging).
-* The name of the index that this query run against.
+* The name of the index that this query ran against.
 * The last document etag indexed by the index.
 * The timestamp of the last document indexed by the index.
 
@@ -37,13 +37,13 @@ Among the details you can get from the query statistics, you have:
 
 This is a very important fact: **RavenDB queries are BASE. Read and writes by document ID are always ACID**. 
 
-RavenDB performs indexing in a background thread, which is executed whenever the new data comes in 
-or the existing data is updated. This allows the server to respond quickly, even when large 
-amounts of data have been changed, however in that case you may query stale indexes and, because
+RavenDB performs indexing in a background thread, which is executed whenever new data comes in 
+or existing data is updated. This allows the server to respond quickly, even when large 
+amounts of data have been changed. However, in that case you may query stale indexes and, because
 of that, some query results may not be fully up to date. Usually, the time between a document being
 updated and the relevant indexes being updated is measured in milliseconds.
 
-### How to know if a index is stale?
+### How to know if an index is stale?
 
 RavenDB is honest and clear about stale indexes. It is really easy to know if a query used a 
 stale index just checking the statistics.
@@ -89,23 +89,23 @@ var orders = (
 
 Here RavenDB is instructed to use a 5 seconds time-out.
 
-There is different strategies you could use here. To learn more about how to deal with stale index
+There are different strategies you could use here. To learn more about how to deal with stale indexes
 I strongly recommend you to read the [official documentation](https://ravendb.net/docs/article-page/3.5/csharp/indexes/stale-indexes).
 
-### Staleness is a real problem?
+### Is staleness a real problem?
 At first sight, the idea of a query that may not be fully up to date sounds scary. Right? 
 But in practice, this is how we almost always work in the real world. 
 
 Try this, call your bank and ask them how much money you have in your account (financial systems should be
 consistent, right?). The answer you’ll get is going to be some variant of: “As of last business day, you had…”.
 
-Much of management occurs with the previous day's data. Strategic decisions usually using even older data. 
-In practice, few queries need to reflect real-time data. So, why to sacrifice computation power and
+Much of management occurs with the previous day's data. Strategic decisions usually use even older data. 
+In practice, few queries need to reflect real-time data. So, why sacrifice computation power and
 responsiveness generating data which nobody cares about?
 
 ## Timings
 
-When testing your application is reasonable to check the timings. RavenDB can provide you 
+When testing your application, it's reasonable to check the timings. RavenDB can provide you 
 detailed timing information about the query parsing, lucene processing, loading documents and transforming results as 
 you need.
 
@@ -129,7 +129,7 @@ var orders = (
 var detailedInfo = stats.TimingsInMilliseconds;
 ````
 
-The `TimingsInMilliseconds` property contains an `Dictionary<string, double>` object where each
+The `TimingsInMilliseconds` property contains a `Dictionary<string, double>` object where each
 entry corresponds to a specific timing.
 
 ## Exercise: Exploring timings results
@@ -177,7 +177,7 @@ static void Main(string[] args)
 
 What are we doing here? It is just a regular query where the timings are enabled.
 
-This is output in my machine.
+This is the output in my machine.
 
 ````
 Orders count : 128
