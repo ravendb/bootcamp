@@ -1,4 +1,4 @@
-# Unit 3, Lesson 2 - Getting started with Commands!
+# Unit 3, Lesson 3 - Performing batch operations using commands!
 
 As you learned in the [previous lesson](../lesson2/README.md), RavenDB
 provides a low-level API that you can use to execute not trivial tasks.
