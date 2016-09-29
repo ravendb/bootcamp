@@ -29,7 +29,7 @@ an operation definition. RavenDB will perform that operation on the
 query results. 
 
 It is not easy as performing a simple SQL command, but I think it's easy
-enought to be implemented considering the impact of these operations.  
+enough to be implemented considering the impact of these operations.  
 
 ## Exercise: Increasing the `PricePerUnit` for non-discontinued products
 
