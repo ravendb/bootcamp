@@ -22,7 +22,7 @@ DELETE Products WHERE Descontinued = true;
 Anyway, this is not the case when using NoSQL databases, where batch 
 operations are not supported.
 
-## RavenDB support for batch operations
+## RavenDB approach for batch operations
 Using RavenDB, you can perform batch operations using the `UpdateByIndex`
 and `DeleteByIndex` commands, by passing it a query and 
 an operation definition. RavenDB will perform that operation on the 
