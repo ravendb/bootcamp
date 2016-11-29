@@ -57,27 +57,27 @@ using Raven.Client.Indexes;
 namespace BatchOperationsWithRavenDB
 {
     public static class DocumentStoreHolder
-        {
-            private static readonly Lazy<IDocumentStore> LazyStore =
-                new Lazy<IDocumentStore>(() =>
+    {
+        private static readonly Lazy<IDocumentStore> LazyStore =
+            new Lazy<IDocumentStore>(() =>
+            {
+                var store = new DocumentStore
                 {
-                    var store = new DocumentStore
-                    {
-                        Url = "http://localhost:8080",
-                        DefaultDatabase = "Northwind"
-                    };
+                    Url = "http://localhost:8080",
+                    DefaultDatabase = "Northwind"
+                };
 
-                    store.Initialize();
+                store.Initialize();
 
-                    var asm = Assembly.GetExecutingAssembly();
-                    IndexCreation.CreateIndexes(asm, store);
+                var asm = Assembly.GetExecutingAssembly();
+                IndexCreation.CreateIndexes(asm, store);
 
-                    return store;
-                });
+                return store;
+            });
 
-            public static IDocumentStore Store =>
-                LazyStore.Value;
-        }
+        public static IDocumentStore Store =>
+            LazyStore.Value;
+    }
 }
 ````
 
