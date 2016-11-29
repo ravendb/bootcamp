@@ -9,15 +9,15 @@ namespace CollaborativeCategoryEditing
 {
     public partial class EditCategoryForm : Form
     {
-        private IDocumentSession _session;
-        private Category _category;
-        private IDisposable _subscription;
-        private Etag _localEtag;
-
         public EditCategoryForm()
         {
             InitializeComponent();
         }
+
+        private IDocumentSession _session;
+        private Category _category;
+        private IDisposable _subscription;
+        private Etag _localEtag;
 
         private void LoadAndSubscribeButton_Click(object sender, EventArgs e)
         {
