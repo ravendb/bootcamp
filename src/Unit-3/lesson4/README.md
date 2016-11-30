@@ -119,7 +119,7 @@ the user, as soon as the document has updated, that it needs to be refreshed?
 This is a good scenario to use the Changes API. In this excercise you will learn 
 how to do that.
 
-The source code of this exercise is avaiable [here](CollaborativeCategoryEditing). 
+The source code of this exercise is available [here](CollaborativeCategoryEditing). 
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` and `System.Reactive.Core` packages
 
