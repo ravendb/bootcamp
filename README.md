@@ -32,5 +32,6 @@ In RavenDB Bootcamp you will learn how to write applications using RavenDB. You 
     * [Lesson 1: Document Metadata](src/Unit-3/lesson1)
     * [Lesson 2: Getting started with Commands!](src/Unit-3/lesson2)
     * [Lesson 3: Performing batch operations](src/Unit-3/lesson3)
+    * [Lesson 4: I am going through changes ...](src/Unit-3/lesson4)
 
 [Let's begin!](src/Unit-1/lesson1)
