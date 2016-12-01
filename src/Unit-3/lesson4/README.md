@@ -259,9 +259,10 @@ The `_savesCount` field will be used later to determine if the change was made b
  The application is subscribing for notifications on the document when this is loaded. 
 
  ````csharp 
- private bool DocumentChangedByOtherUser(DocumentChangeNotification change)
+private bool DocumentChangedByOtherUser(DocumentChangeNotification change)
 {
     if (_savesCount == 0) return true;
+    if (change.Etag.Restarts != _localEtag.Restarts) return true;
 
     var numberOfServerChanges = change.Etag.Changes - _localEtag.Changes;
     return (numberOfServerChanges > _savesCount);

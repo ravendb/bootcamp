@@ -48,6 +48,7 @@ namespace CollaborativeCategoryEditing
         private bool DocumentChangedByOtherUser(DocumentChangeNotification change)
         {
             if (_savesCount == 0) return true;
+            if (change.Etag.Restarts != _localEtag.Restarts) return true;
 
             var numberOfServerChanges = change.Etag.Changes - _localEtag.Changes;
             return (numberOfServerChanges > _savesCount);
