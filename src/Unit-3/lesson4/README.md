@@ -2,7 +2,7 @@
 
 At this point you already know how to perform low-level operations with RavenDB. Nice!
 
-In this lesson, you will learn how to uses the [Changes API](http://ravendb.net/docs/article-page/3.5/csharp/client-api/changes/what-is-changes-api)
+In this lesson, you will learn how to use the [Changes API](http://ravendb.net/docs/article-page/3.5/csharp/client-api/changes/what-is-changes-api)
 
 ## What is the `Changes API`
 
@@ -18,8 +18,8 @@ In this exercise, you will learn how to get notifications whenever any document 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` and `System.Reactive.Core` packages
 
 Start Visual Studio and create a new `Console Application Project` named
-`BasicsOfChangesAPI`. Then, in the `Package Manager Console`, issue the following 
-commands: 
+`BasicsOfChangesAPI`. Then, in the `Package Manager Console`, issue the following
+commands:
 
 ```
 Install-Package RavenDB.Client
@@ -28,7 +28,7 @@ Install-Package System.Reactive.Core
 
 Yeap! RavenDB is reactive!
 
-### Step 2: Initialize the `DocumentStore` 
+### Step 2: Initialize the `DocumentStore`
 
 As you already know, we will manage the `DocumentStore` using our great friend `DocumentStoreHolder` pattern.  
 
@@ -62,7 +62,7 @@ namespace BasicsOfChangesAPI
 
 ````
 
-### Step 3: Subscribing changes
+### Step 3: Subscribing to changes
 
 Now, it's time to subscribe!
 
@@ -74,7 +74,7 @@ using Raven.Client.Document;
 namespace BasicsOfChangesAPI
 {
     using static Console;
-  
+
     class Program
     {
         static void Main(string[] args)
@@ -93,15 +93,15 @@ namespace BasicsOfChangesAPI
 }
 ````
 
-It is amazing! Now, everytime something changes a document in the server (Put, Delete), your application will get notified. Test it! Change some documents using the Studio and confirm it.
+It is amazing! Now, every time something changes a document in the server (Put, Delete), your application will get notified. Test it! Change some documents using the Studio and confirm it.
 
 Notice that the change notification include the document (or index) id and the
 type of the operation performed. Put or Delete in the case of documents, most
 often. If you want to actually access the document in question, you’ll need to
-load it using a session (as you already knows).
+load it using a session (as you already know).
 
-In a real application, you can take actions, such as notify the user (using
-SignalR if we are running in web application, for example). 
+In a "real world" application, you can take actions, such as notify the user (e.g. using
+SignalR if you are running a web application).
 
 ## What changes are supported by the Changes API?
 
@@ -116,16 +116,16 @@ document. What would be the experience from the point of the user? Well,
 either we let the Last Write Win, or we use Optimistic Concurrency. Either
 way we’re going to have to annoy someone. How about being able to notify
 the user, as soon as the document has updated, that it needs to be refreshed?
-This is a good scenario to use the Changes API. In this excercise you will learn 
+This is a good scenario to use the Changes API. In this exercise you will learn
 how to do that.
 
-The source code of this exercise is available [here](CollaborativeCategoryEditing). 
+The source code of this exercise is available [here](CollaborativeCategoryEditing).
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` and `System.Reactive.Core` packages
 
 Start Visual Studio and create a new `Windows Forms Application` named
-`CollaborativeCategoryEditing`. Then, in the `Package Manager Console`, issue the following 
-commands: 
+`CollaborativeCategoryEditing`. Then, in the `Package Manager Console`, issue the following
+commands:
 
 ```
 Install-Package RavenDB.Client
@@ -134,10 +134,9 @@ Install-Package System.Reactive.Core
 
 Yeap! RavenDB is reactive!
 
-### Step 2: Initialize the `DocumentStore` 
+### Step 2: Initialize the `DocumentStore`
 
-As you already know, we will manage the `DocumentStore` using our great friend `DocumentStoreHolder` pattern.  You can use here the 
-same code from the previous exercise.
+As you already know, we will manage the `DocumentStore` using our great friend `DocumentStoreHolder` pattern. You can use the code from previous exercise here.
 
 ### Step 3: Creating the persistence model  
 
@@ -160,10 +159,10 @@ namespace CollaborativeCategoryEditing
 The form layout should have some basic elements:
 
 * `CategoryIdTextbox`: Where the user can specify the id of the category that should be loaded.
-* `LoadAndSubscribeButton`: Loads the category, creates the subscription object monitoring server-side changes to the specified document, and enables the editing features.
+* `LoadAndSubscribeButton`: Loads the category, creates the subscription object monitoring server-side changes to the specified document, and enables edition related features.
 * `NameTextbox` and `DescriptionTextbox`: Document properties.
-* `SaveButton`: Save the user changes in the server side
-* `UnsubscribeButton`: Disposes the subscription and disables the editing. 
+* `SaveButton`: Saves changes server-side
+* `UnsubscribeButton`: Disposes the subscription and disables edition.
 * `CategoryIdLabel`, `NameLabel` and `DescriptionLabel`: Labels for the textboxes.
 
 Here is our layout recommendation.
@@ -227,18 +226,18 @@ private void ToggleEditing()
 }
 ````
 
-In this excercise you will preserve the session instance to use it again.
+In this exercise you will preserve the session instance to use it again.
 
 When the document is loaded, the associated `ETag` is retrieved, the UI is updated and a subscription for changes in this document is created.
 
-> An etag in RavenDB is a 128 bit number that is associated with a document. Whenever a document is created or updated, an etag is assigned to that document. The etags are always incrementing, and they are heavily used inside RavenDB.
+> An etag in RavenDB is a 128 bit number that is associated with a document. Whenever a document is created or updated, an etag assigned to that document is incremented. Etags are heavily used inside RavenDB.
 
 Changes API is compatible with the `Reactive Extensions`, which is great. Because of that we can use filter for events using the familiar LINQ syntax. We will
 implement the `DocumentChangedByOtherUser` and `DocumentChangedOnServer` in the following steps.
 
 ### Step 6: Saving changes
 
-Whenever the `SaveButton` receives a click the application will send the data to the server.
+Whenever the `SaveButton` is clicked the application will send the data to the server.
 
 ````csharp
 private int _savesCount = 0;
@@ -252,13 +251,13 @@ private void SaveButton_Click(object sender, EventArgs e)
 ````
 The category object is mapped by the session instance. So it is not necessary to call the `Store` method.
 
-The `_savesCount` field will be used later to determine if the change was made by other user.
+The `_savesCount` field will be used later to determine if the change was made by another user.
 
- ### Step 7: Dealing with change notifications
+### Step 7: Dealing with change notifications
 
- The application is subscribing for notifications on the document when this is loaded. 
+The application is subscribing to notifications when document is loaded.
 
- ````csharp 
+````csharp
 private bool DocumentChangedByOtherUser(DocumentChangeNotification change)
 {
     if (_savesCount == 0) return true;
@@ -290,11 +289,11 @@ private void DocumentChangedOnServer(DocumentChangeNotification change)
 ````
 
 The `DocumentChangedByOtherUser` method is used to filter only notifications from other users. `DocumentChangedOnServer`
-asks the user if data should be refreshed. In case positive, model and UI are properly updated.
+asks the user if data should be refreshed. Given a positive response, model and UI are properly updated.
 
 ### Step 8: Canceling the subscription
 
-When the user wants to stop editing a document and cancel the subscription, then he just need to click on the `UnsubscribeButton`.
+When the user wants to stop editing a document and cancel the subscription, he needs to click on the `UnsubscribeButton`.
 
 ````csharp
 private void UnsubscribeButton_Click(object sender, EventArgs e)
@@ -309,11 +308,8 @@ That's it. I strongly recommend you to run two or more instances of this applica
 
 ## Great job! Onto Lesson 5!
 
-You just learned how to use the Changes API. 
+You just learned how to use the Changes API.
 
-This is a extremelly powerful feature that enables an whole host of interesting scenarios. 
+This is an extremely powerful feature that enables a whole host of interesting scenarios.
 
 **Let's move onto [Lesson 5](../lesson5/README.md).**
-
-
-

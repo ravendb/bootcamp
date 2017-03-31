@@ -1,13 +1,13 @@
 # Unit 3, Lesson 1 - Document Metadata
 
-Here we go! Welcome to your first lesson of Unit 3. It's time to learn about 
+Here we go! Welcome to your first lesson of Unit 3. It's time to learn about
 an important RavenDB concept: Metadata.
 
 ## What is the Document Metadata?
 
 The Metadata is a place that RavenDB uses to store additional information about the documents.
 
-Every document in RavenDB has metadata attached to it. The metadata, like the 
+Every document in RavenDB has metadata attached to it. The metadata, like the
 document data, is also stored in JSON format.
 
 You can use it as well if you want or need.
@@ -21,17 +21,17 @@ In this exercise you will learn how to get access to a document metadata.
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
-`GettingMetadata`. Then, in the `Package Manager Console`, issue the following 
-command: 
+`GettingMetadata`. Then, in the `Package Manager Console`, issue the following
+command:
 
 ```Install-Package RavenDB.Client```
 
 This will install the latest RavenDB.Client binaries, which you will need in order
 to compile your code.
 
-### Step 2: Initialize the `DocumentStore` 
+### Step 2: Initialize the `DocumentStore`
 
-Here we go again. let's manage the `DocumentStore` using the `DocumentStoreHolder` pattern.  
+Here we go again. Let's manage the `DocumentStore` using the `DocumentStoreHolder` pattern.  
 
 ````csharp
 using System;
@@ -63,7 +63,7 @@ namespace GettingMetadata
 }
 ````
 
-Remember to have started the RavenDB server.
+Remember to start the RavenDB server.
 
 ### Step 3: Loading the metadata
 
@@ -90,10 +90,10 @@ class Program
 class Product { }
 ````
 
-What are we doing here? First we are asking an instance of the document. Then, using this instance
+What are we doing here? First we are asking for an instance of the document. Then, using this instance
 we get the metadata.
 
-This is the output in my machine:
+This is the output on my machine:
 
 ````
 Raven-Entity-Name: Products
@@ -138,17 +138,17 @@ class Product { }
 
 ## Some words about `Raven-Entity-Name` property
 `Raven-Entity-Name` specifies the name of the document collection. As you will learn soon,
-you can change the value of a metadata property. But, you should not try to do this with 
+you can change the value of a metadata property. But, you should not try to do this with
 `Raven-Entity-Name`.
 
-RavenDB engine do a lot of optimizations based on the collection name, and no support
-whatsover for changing it.
+RavenDB engine does a lot of optimizations based on the collection name, and no support
+whatsoever for changing it.
 
-## Exercise: Loading only  document metadata 
+## Exercise: Loading only document metadata
 
-Sometimes you would to get only the metadata information. It's easy to get with RavenDB. 
+Sometimes you would like to get only the metadata information. It's easy to get with RavenDB.
 
-This exercise picks up right where previous one left off. You will just need to change the `main` method.
+This exercise picks up right where previous one left off. You will just need to change the `Main` method.
 
 ````csharp
 static void Main()

@@ -1,25 +1,25 @@
 # Unit 3, Lesson 5 - Working with Listeners
 
-This is the last lesson of this bootcamp. You already know the basics about how to use RabenDB and you are ready to move on. Please,
+This is the last lesson of this bootcamp. You already know the basics about how to use RavenDB and you are ready to move on. Please,
 note that there is an [extensive documentation](http://ravendb.net/docs) available on-line.
 
 In this last lesson, you will learn how to work with Listeners.
 
 ## Listeners?
 
-Yes, Listeners! Using the client API you can define an additional behavior for whenever your code do something with RavenDB. 
+Yes, Listeners! Using the client API you can define an additional behavior for whenever your code does something with RavenDB.
 
 ## Writing a listener
 
-Listeners are simple classes that implements at least one of the following interfaces:
+Listeners are simple classes implementing at least one of the following interfaces:
 
 * `IDocumentStoreListener` - called when an entity is stored on the server
-* `IDocuemntDeleteListener` - called when an entity is deleted on the server
+* `IDocumentDeleteListener` - called when an entity is deleted on the server
 * `IDocumentQueryListener` - called before a query is executed in the server
 * `IDocumentConversionListener` - called when converting an entity to a document and vice versa.
 * `IDocumentConflictListener` - called when a replication conflict is encountered. Anyway, replication is an important concept that is out of scope of this bootcamp.
 
-Creating a listener you could, for example, to prevent deletion of a document based on your business logic. Interesting, huh?
+By creating a listener you could e.g. prevent deletion of a document based on your business logic. Interesting, huh?
 
 ## Exercise: Listening when a document is stored
 
@@ -28,8 +28,8 @@ In this exercise, you will learn how to listen when a document is stored. Someth
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
-`WorkingWithListeners`. Then, in the `Package Manager Console`, issue the following 
-commands: 
+`WorkingWithListeners`. Then, in the `Package Manager Console`, issue the following
+commands:
 
 ```
 Install-Package RavenDB.Client
@@ -47,7 +47,9 @@ public class MyDocumentStoreListener : IDocumentStoreListener
     {
         Console.WriteLine($"Before storing {key}.");
         var allow = key != "categories/99";
-        if (!allow) throw  new InvalidOperationException("'{key}' is not an acceptable id.");
+        if (!allow)
+            throw  new InvalidOperationException($"'{key}' is not an acceptable id.");
+
         return false;
     }
 
@@ -58,7 +60,7 @@ public class MyDocumentStoreListener : IDocumentStoreListener
 }
 ````
 
-This listener prevents your code of to store a document with id `categories/99`.
+This listener prevents your code from storing a document with id `categories/99`.
 
 ### Step 3: Initialize the `DocumentStore` and register the listener
 
@@ -92,7 +94,7 @@ At this time, there is an important modification here: we are registering our li
 
 ### Step 4: Write the model classes
 
-In this excercise we will work only with entities of type `Category`
+In this exercise we will work only with entities of type `Category`.
 
 ````csharp
 public class Category
@@ -118,7 +120,7 @@ class Program
                 Name = "Forbidden",
                 Description = "Forbidden"
             };
-                
+
             session.Store(document);
             session.SaveChanges();
         }
@@ -130,7 +132,7 @@ Running this code you will get an exception raised by the listener. Great!
 
 ## Using listeners to prevent documents of being deleted
 
-You can easily prevent documents of being deleted creating and registering the following listener:
+You can easily prevent documents from being deleted by creating and registering the following listener:
 
 ````csharp
 public class PreventDeleteListener : IDocumentDeleteListener
@@ -153,8 +155,8 @@ You can include additional metadata information easily. In this example we are i
 ````csharp
 public class AuditStoreListener : IDocumentStoreListener
 {
-    public bool BeforeStore(string key, object entityInstance, 
-        RavenJObject metadata, 
+    public bool BeforeStore(string key, object entityInstance,
+        RavenJObject metadata,
         RavenJObject original)
     {
         metadata["Last-Modified-By"] = WindowsIdentity.GetCurrent().Name;

@@ -50,7 +50,7 @@ What if you could load the documents in the server-side to produce only the info
 
 ## Welcome `LoadDocument`
 
-When writing your index definitions you can use the `LoadDocument` function to get information from related documents. 
+When writing your index definitions you can use the `LoadDocument` function to get information from related documents.
 
 Let's rewrite the `Products_ByCategory` index using the `LoadDocument` function.
 
@@ -86,7 +86,7 @@ public class Products_ByCategory : AbstractIndexCreationTask<Product, Products_B
 }
 ````
 
-What does it mean? Now we are no longer storing the category `Id`, but the `Name`. So, now we 
+What does it mean? Now we are no longer storing the category `Id`, but the `Name`. So, now we
 can rewrite our program with no includes.
 
 ````csharp
@@ -124,15 +124,15 @@ http://localhost:8080/databases/Northwind/indexes/Products/ByCategory?&pageSize=
 ## It's really good, but...
 
 The `LoadDocument` feature is a really awesome one, but it is also something that should
-be used carefully. 
+be used carefully.
 
-As you know, `LoadDocument` allows you to load another document during index, and use its data in your index and that is great!
-The problem with Load Document is that is allows users to keep a relational
+As you know, `LoadDocument` allows you to load another document during indexing, and use its data in your index and that is great!
+The problem with `LoadDocument` is that it allows users to keep a relational
 model when they work with RavenDB, and use `LoadDocument` to get away with
 it when they need to do something that is hard to do with RavenDB natively.
 That wouldn’t be so bad, if `LoadDocument` didn’t have several important costs
 associated with it. For example, anytime a common referenced document is updated, an
-indexing process will be triggered, and it can cost a lot for your server. 
+indexing process will be triggered, and it can cost a lot for your server.
 
 `LoadDocument` is an important feature and you could and should use it eventually. But,
 I strongly recommend you to treat `LoadDocument` as a potential "bad smell".   
@@ -143,4 +143,3 @@ I strongly recommend you to treat `LoadDocument` as a potential "bad smell".
 Awesome! You just learned one of the most powerful and controversial features of RavenDB.
 
 **Let's move onto [Lesson 6](../lesson6/README.md) **
-

@@ -1,40 +1,40 @@
-# Unit 2, Lesson 4 - Mapping(, filtering) and reducing 
+# Unit 2, Lesson 4 - Mapping(, filtering) and reducing
 
 Hello again!
 
 In the [previous lesson](../lesson3/README.md), you learned how to create
 multi-map indexes and that was amazing. Right?
 
-In this lesson you will learn how to create `Map-Reduce indexes`. 
+In this lesson you will learn how to create `Map-Reduce indexes`.
 
 ## What is Map-Reduce?
 
 In essence, it is just a way to take a big task and divide it into discrete
-tasks that can be done in parallel. 
+tasks that can be done in parallel.
 
 A Map-Reduce process is composed of a `Map` function that projects data from
 documents into a common output (expected) and a `Reduce` function that performs
 a summary operation.
 
-I strongly recommend you to read this [blog post](https://ayende.com/blog/4435/map-reduce-a-visual-explanation). 
+I strongly recommend you to read this [blog post](https://ayende.com/blog/4435/map-reduce-a-visual-explanation).
 Go ahead! I will be waiting for you.
 
 Still confused? Let's write some code and make it clearer.
 
-## Excercise: Your first map-reduce index
+## Exercise: Your first map-reduce index
 
-I think the best way to learn about Map-Reduce indexes are writing some code.
+I think the best way to learn about Map-Reduce indexes is to write some code.
 
-In this first excercise let's perform a very simple task. Let's just
-count the number of products for each category. 
+In this first exercise let's perform a very simple task. Let's just
+count the number of products for each category.
 
 Again, let's do it using the C# API.
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
-`MapReduceIndexes`. Then, in the `Package Manager Console`, issue the following 
-command: 
+`MapReduceIndexes`. Then, in the `Package Manager Console`, issue the following
+command:
 
 ```Install-Package RavenDB.Client```
 
@@ -50,7 +50,7 @@ using Raven.Client.Document;
 ### Step 2: Write the model classes
 
 Again and it will never be enough,  you don't need to write "complete" model classes when you are only reading
-from the database. 
+from the database.
 
 ````csharp
 class Category
@@ -72,8 +72,8 @@ is specified by the Id in the `Category` property.
 One way to create a Map-Reduce index  definition is inheriting from `AbstractIndexCreationTask`.
 
 In the [previous lesson](../lesson3/README.md), you learned how to create multi-map indexes.
-It's importante you know that you can combine the power of multi-map with map-reduce by
-providing multiple map functions. 
+It's important you know that you can combine the power of multi-map with map-reduce by
+providing multiple map functions.
 
 ````csharp
 public class Products_ByCategory : AbstractIndexCreationTask<Product, Products_ByCategory.Result>
@@ -86,7 +86,7 @@ public class Products_ByCategory : AbstractIndexCreationTask<Product, Products_B
 
     public Products_ByCategory()
     {
-        Map = products => 
+        Map = products =>
             from product in products
             select new
             {
@@ -94,7 +94,7 @@ public class Products_ByCategory : AbstractIndexCreationTask<Product, Products_B
                 Count = 1
             };
 
-        Reduce = results => 
+        Reduce = results =>
             from result in results
             group result by result.Category into g
             select new
@@ -107,13 +107,13 @@ public class Products_ByCategory : AbstractIndexCreationTask<Product, Products_B
 ````  
 
 There are some points to note here. The "counting" task is performed by
-two expresions. The `Map` just gets data from the documents and the `Reduce` 
-performs the aggregation. This allows the RavenDB engine to 
+two expressions. The `Map` just gets data from the documents and the `Reduce`
+performs the aggregation. This allows the RavenDB engine to
 treat each step in isolation, that means it is not required to run them
 sequentially and at the same time.
 
 The output from the `Map` and `Reduce` steps needs to be the same. This
-allow the engine to perform multi reduce stages. 
+allows the engine to perform multiple reduce stages.
 
 ### Step 4: Initialize the `DocumentStore` and register the index on the server
 
@@ -153,7 +153,7 @@ namespace MapReduceIndexes
 }
 ````
 
-Again, we are asking the client API to  find all indexes classes automatically and send them altogether to the server. 
+Again, we are asking the client API to find all indexes classes automatically and send them altogether to the server.
 You can do that, using the `IndexCreation.CreateIndexes` method.
 
 ### Step 5: Consuming the index
@@ -170,7 +170,7 @@ class Program
             var results = session
                 .Query<Products_ByCategory.Result, Products_ByCategory>()
                 .Include(x => x.Category)
-                .ToList(); 
+                .ToList();
 
             foreach (var result in results)
             {
@@ -183,15 +183,15 @@ class Program
 ````
 
 This will list all the categories of the products. Remember that the `Include` function
-ensures that all data is returned from the server in a single response. 
+ensures that all data is returned from the server in a single response.
 
-## Excercise: Employee of the month
+## Exercise: Employee of the month
 
-In Northind, we have employees and orders. In this excercise you will
-create an index that will select the "Employee of the Month", which 
+In Northwind, we have employees and orders. In this exercise you will
+create an index that will select the "Employee of the Month", which
 will be the employee with the most sales in a particular month.
 
-This exercise picks up right where the previous one left off. 
+This exercise picks up right where the previous one left off.
 
 ### Step 1: Write the model classes
 
@@ -213,7 +213,7 @@ public class Employee
 ### Step 2: Write the `Map-Reduce index definition`
 
 ````csharp
-public class Employees_SalesPerMonth : 
+public class Employees_SalesPerMonth :
     AbstractIndexCreationTask<Order, Employees_SalesPerMonth.Result>
 {
     public class Result
@@ -242,7 +242,7 @@ public class Employees_SalesPerMonth :
                 result.Month
             }
             into g
-            select new 
+            select new
             {
                 g.Key.Employee,
                 g.Key.Month,
@@ -271,7 +271,7 @@ class Program
             var results = (
                 from result in query
                 where result.Month == "1998-03"
-                orderby result.TotalSales descending 
+                orderby result.TotalSales descending
                 select result
                 ).ToList();
 
@@ -292,4 +292,3 @@ Nice!
 Awesome! You just learned the basics of Map-Reduce and how to use it with RavenDB.
 
 **Let's move onto [Lesson 5](../lesson5/README.md) **
-

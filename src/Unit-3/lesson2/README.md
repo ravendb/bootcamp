@@ -3,21 +3,21 @@
 This has been a long journey, right? You already know the basics of RavenDB. But
 there are a lot of specifics that can help you to create amazing solutions.
 
-In this lesson you will learn about RavenDB Commands. For the most part, that is 
-something you rarely need to use. But is good to know that this is avaiable, just 
+In this lesson you will learn about RavenDB Commands. For the most part, that is
+something you rarely need to use. But is good to know that this is available, just
 in case.
 
 ## What are RavenDB Commands?
 
-Commands are a set of operations that can be used to manipulate data and change 
-configuration on a server. But, wait a minute! Isn't exactly what you do using 
+Commands are a set of operations that can be used to manipulate data and change
+configuration on a server. But, wait a minute! Isn't exactly what you do using
 the `session` object?
 
 The `session` is a high level interface to RavenDB which provides the identity map
-and Linq queries. But if you want do something in the low-level, then you should 
+and LINQ queries. But if you want do something in the low-level, then you should
 start using the commands.
 
-There is an exaustive list of RavenDB commands avaiable in the [official documentation](https://ravendb.net/docs/article-page/3.5/csharp/client-api/commands/what-are-commands).
+There is an exhaustive list of RavenDB commands available in the [official documentation](https://ravendb.net/docs/article-page/3.5/csharp/client-api/commands/what-are-commands).
 
 ## First-time using RavenDB Commands
 
@@ -35,7 +35,7 @@ static void Main()
     }
 }
 ````
-The `Head` method expose a low level way to check if a potentialy large document
+The `Head` method expose a low-level way to check if a potentially large document
 exists, without loading it.
 
 ## Exercise: Adding an order's line into an order document without loading the entire document
@@ -82,21 +82,21 @@ Consider the document `orders/816` from the Northwind database.
         }
     ]
 }
-```` 
+````
 
 What if you want to add an order's line? Would we need to load the entire document? No!
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
-`UsingCommands`. Then, in the `Package Manager Console`, issue the following 
-command: 
+`UsingCommands`. Then, in the `Package Manager Console`, issue the following
+command:
 
 ```Install-Package RavenDB.Client```
 
-### Step 2: Initialize the `DocumentStore` 
+### Step 2: Initialize the `DocumentStore`
 
-Here we go again. let's manage the `DocumentStore` using our great friend `DocumentStoreHolder` pattern.  
+Here we go again. Let's manage the `DocumentStore` using our great friend `DocumentStoreHolder` pattern.  
 
 ````csharp
 using System;
@@ -130,9 +130,9 @@ namespace UsingCommands
 
 Remember to have started the RavenDB server.
 
-### Step 3: Update the document using a PatchRequest
+### Step 3: Update the document using a `PatchRequest`
 
-It's easy to change the document. 
+It's easy to change the document.
 
 ````csharp
 static void Main()
@@ -143,7 +143,7 @@ static void Main()
         "orders/816",
         new ScriptedPatchRequest
         {
-            Script = @"this.Lines.push({ 
+            Script = @"this.Lines.push({
                         'Product': 'products/1',
                         'ProductName': 'Chai',
                         'PricePerUnit': 18,
@@ -154,14 +154,14 @@ static void Main()
 }
 ````
 
-In this example, you used the `Patch` command which performs partial document updates without having to load, 
+In this example, you used the `Patch` command which performs partial document updates without having to load,
 modify, and save a full document. The `Script` needs to be in JavaScript.  
 
 Learn about the `Patch` command reading the [official documentation](https://ravendb.net/docs/article-page/latest/csharp/client-api/commands/patches/how-to-work-with-patch-requests)
 
 ## Great job! Onto Lesson 3!
 
-Awesome! You just learned about the basics about commands. In the next lesson you will learn 
-how to change multiple documents with a single request. 
+Awesome! You just learned about the basics about commands. In the next lesson you will learn
+how to change multiple documents with a single request.
 
 **Let's move onto [Lesson 3](../lesson3/README.md).**
