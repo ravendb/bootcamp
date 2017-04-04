@@ -82,7 +82,8 @@ namespace BasicsOfChangesAPI
             var subscription = DocumentStoreHolder.Store
                 .Changes()
                 .ForAllDocuments()
-                .Subscribe(change => WriteLine($"{change.Type} on document {change.Id}"));
+                .Subscribe(change =>
+                    WriteLine($"{change.Type} on document {change.Id}"));
 
             WriteLine("Press any key to exit...");
             ReadKey();
@@ -263,7 +264,9 @@ private bool DocumentChangedByOtherUser(DocumentChangeNotification change)
     if (_savesCount == 0) return true;
     if (change.Etag.Restarts != _localEtag.Restarts) return true;
 
-    var numberOfServerChanges = change.Etag.Changes - _localEtag.Changes;
+    var numberOfServerChanges =
+        change.Etag.Changes - _localEtag.Changes;
+
     return (numberOfServerChanges > _savesCount);
 }
 

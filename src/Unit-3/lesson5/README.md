@@ -159,12 +159,16 @@ public class AuditStoreListener : IDocumentStoreListener
         RavenJObject metadata,
         RavenJObject original)
     {
-        metadata["Last-Modified-By"] = WindowsIdentity.GetCurrent().Name;
+        metadata["Last-Modified-By"] =
+            WindowsIdentity.GetCurrent().Name;
+            
         return false;
     }
 
-    public void AfterStore(string key, object entityInstance, RavenJObject metadata)
-    {}
+    public void AfterStore(
+        string key, object entityInstance, RavenJObject metadata)
+    {
+    }
 }
 ````
 

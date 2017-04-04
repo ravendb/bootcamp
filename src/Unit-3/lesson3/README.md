@@ -136,12 +136,13 @@ class Program
             new IndexQuery { Query = "Discontinued:false" },
             new ScriptedPatchRequest
             {
-                Script = @"this.PricePerUnit = this.PricePerUnit * 1.1"
-            }
-            );
+                Script =
+                    @"this.PricePerUnit = this.PricePerUnit * 1.1"
+            });
 
         operation.WaitForCompletion();
-        Console.WriteLine("All active products had Price per unit increased in 10%");
+        Console.WriteLine(
+            "All active products had Price per unit increased in 10%");
     }
 }
 ````
