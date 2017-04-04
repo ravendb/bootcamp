@@ -27,24 +27,24 @@ First, you will learn how to install and make it work on your machine. As you wi
 * [Lesson 4: Loading documents](src/Unit-1/lesson4)
 * [Lesson 5: Querying fundamentals](src/Unit-1/lesson5)
 * [Lesson 6: Storing, modifying and deleting documents](src/Unit-1/lesson6)
- 
+
 ### Unit 2 - Beyond the basics
 
-In Unit 2, you are going to learn intermediate RavenDB features. You will see how fast RavenDB is and understand the why. 
+In Unit 2, you are going to learn intermediate RavenDB features. You will see how fast RavenDB is and understand the why.
 
 As you will learn, you can perform very complex queries easily using  only RavenDB (without additional tools). For example, you will understand what is Map-reduce and know when to use it to extract more value from your data.
 
 * [Lesson 1: Getting started with indexes](src/Unit-2/lesson1)
 * [Lesson 2: Creating an index and querying using it](src/Unit-2/lesson2)
 * [Lesson 3: Multi-map indexes](src/Unit-2/lesson3)
-* [Lesson 4: Mapping(, filtering) and reducing](src/Unit-2/lesson4) 
+* [Lesson 4: Mapping(, filtering) and reducing](src/Unit-2/lesson4)
 * [Lesson 5: The powerful LoadDocument server-side function](src/Unit-2/lesson5)
 * [Lesson 6: Getting started with Transformers](src/Unit-2/lesson6)
 * [Lesson 7: Statistics and some words about stale indexes!](src/Unit-2/lesson7)
 
 ### Unit 3 - Almost advanced!
 
-In Unit 3, you will learn some Advanced RavenDB features. 
+In Unit 3, you will learn some Advanced RavenDB features.
 
 You do not need to know these features in your daily work. Anyway, you can use this knowlodge to build very powerful solutions, obtaining still better performance, improved safety or creating trully reactive user interfaces.
 
@@ -57,4 +57,3 @@ You do not need to know these features in your daily work. Anyway, you can use t
 [Let's begin!](src/Unit-1/lesson1).
 
 That is all. Enjoy the RavenDB bootcamp and feel free to provide us your feedback.
-

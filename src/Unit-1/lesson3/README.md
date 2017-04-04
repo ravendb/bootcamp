@@ -1,6 +1,6 @@
 # Unit 1, Lesson 3 - Basics of the `DocumentStore`
 
-In the previous lessons you had setup RavenDB, explored the Studio, wrote
+In the previous lessons you have set up RavenDB, explored the Studio, written
 some code to connect to RavenDB, pulled data out and defined typed classes
 that allow you to work with RavenDB more easily.
 
@@ -25,7 +25,7 @@ documentStore.Initialize();
 The document store holds the RavenDB URL, the default database and the credentials
 that should be used.
 
-The document store holds all client side configuration for RavenDB, how we are 
+The document store holds all client-side configuration for RavenDB - how we are
 going to serialize entities, how to handle failure scenarios, what sort of caching
 strategy to use, and much more.
 
@@ -44,14 +44,14 @@ a typical initialization pattern.
 public static class DocumentStoreHolder
 {
     private static readonly Lazy<IDocumentStore> LazyStore =
-        new Lazy<IDocumentStore>(() => 
+        new Lazy<IDocumentStore>(() =>
         {
             var store = new DocumentStore
             {
                 Url = "http://localhost:8080",
                 DefaultDatabase = "Northwind"
             };
-            
+
             return store.Initialize();
         });
 
@@ -72,7 +72,7 @@ class Program
 {
     static void Main()
     {
- 
+
         using (var session = DocumentStoreHolder.Store.OpenSession())
         {
             var p = session.Load<Product>("products/1");
@@ -90,10 +90,10 @@ An important RavenDB concept is conventions.
 Those range from deciding which property holds the document id to how the entity
 should be serialized to a document.
 
-A lot of thought and effort has gone into ensuring you will have no need to touch
+A lot of thought and effort was put into ensuring you will have no need to touch
 the conventions. But you can do it every time you need.
 
-We will not touch RavenDB conventions right now. Simply because we don't need 
+We will not touch RavenDB conventions right now. Simply because we don't need
 to do it. If you want to know more, you can access the [RavenDB conventions
 documentation](https://ravendb.net/docs/article-page/latest/csharp/client-api/configuration/conventions/what-are-conventions).
 
@@ -103,7 +103,7 @@ You might have noticed that when we defined the document store so far, we
 have done so using hard code URL and database. It is easy, but not practical.
 
 Different environments will use different URLs, databases and credentials. The
-good news is that you probably know how to deal with it. 
+good news is that you probably know how to deal with it.
 
 ## Exercise: Defining and using a connection string
 
@@ -132,13 +132,13 @@ to specify the key during `DocumentStore` initialization.
 public static class DocumentStoreHolder
 {
     private static readonly Lazy<IDocumentStore> LazyStore =
-        new Lazy<IDocumentStore>(() => 
+        new Lazy<IDocumentStore>(() =>
         {
             var store = new DocumentStore
             {
                 ConnectionStringName="RavenDB"
             };
-            
+
             return store.Initialize();
         });
 
@@ -153,5 +153,3 @@ public static class DocumentStoreHolder
 Awesome! The third lesson is done and you know a lot about the `DocumentStore`.
 
 **Let's move onto [Lesson 4](../lesson4/README.md) and learn more about how to load documents.**
-
-

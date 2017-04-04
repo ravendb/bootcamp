@@ -6,7 +6,7 @@ In this lesson you will learn how to install RavenDB and start using it.
 
 ## RavenDB installation alternatives
 
-There are several ways to run RavenDB. 
+There are several ways to run RavenDB.
 
 The console mode is very useful for development, because you can see the incoming
 requests to RavenDB, and you can interact with the server directly. For
@@ -19,7 +19,7 @@ In this lesson we will learn how to start RavenDB in the console.
 ## Exercise: Setting Up Everything
 
 Go to the [RavenDB download page](http://ravendb.net/download), and download the
-lastest version. It is just a zip file - get it and extract it. 
+latest version. It is just a zip file - get it and extract it.
 
 Go ahead and do it, I'll wait.
 
@@ -29,27 +29,27 @@ browser to point to RavenDB Management Studio.
 
 ![ravendb first screen](images/unit1-hello-ravendb.png)
 
-Congratulations! Now you have RavenDB up and running on your computer. 
+Congratulations! Now you have RavenDB up and running on your computer.
 
 By default, RavenDB will try to use `http://localhost:8080` as its endpoint.
-But, if you have a service already taking this port, RavenDB will try port 8081, 
+But, if you have a service already taking this port, RavenDB will try port 8081,
 and so on.
 
 ## Exercise: Creating your first RavenDB database
 
-First time opening the Studio, it will ask you to create a database. Let's do it! 
+First time opening the Studio, it will ask you to create a database. Let's do it!
 To start, enter `Northwind` as database name and press the Create Button.
 
-Congratulations! You just created your first RavenDB database... but, it is empty. 
+Congratulations! You just created your first RavenDB database... but, it is empty.
 
-For learning purposes let's load some sample data into our database. 
+For learning purposes let's load some sample data into our database.
 Open the `Northwind database` and go to the `Tasks` tab and then
-to `Create Sample Data dialog`. Go ahead and press the `Create Sample Data Buttton`. 
+to `Create Sample Data dialog`. Go ahead and press the `Create Sample Data button`.
 After a little processing, we have data that we can play with.
 
 > The Northwind database is the sample database that came with SQL
 Server, it has been used for decades as the sample database in the
-Microsoft community. We choose this database as our sample data
+Microsoft community. We chose this database as our sample data
 because it is likely already familiar to you in its relational format.
 
 Go to the `Documents` tab and check out your data.
@@ -61,17 +61,17 @@ Go to the `Documents` tab and check out your data.
 That's great. We just launched RavenDB in console mode, created our first database
 and loaded some sample data. But, wait! It looks remarkably similar to what
 you see in a relational database. Right? The data is shown in a grid format with
-the tables on the left. 
+the tables on the left.
 
 If you click on any "record" you will start to see the NoSQL magic!
 
 ![ravendb document](images/unit1-hello-document.png)
 
-Yes! All RavenDB data is stored as JSON. 
+Yes! All RavenDB data is stored as JSON.
 
-## Understanding the `Document` concept 
+## Understanding the `Document` concept
 
-Using the `Go to document` feature (the text box in the Studio toolbar), go to the 
+Using the `Go to document` feature (the text box in the Studio toolbar), go to the
 document `orders/101`.
 
 ````json
@@ -110,24 +110,24 @@ document `orders/101`.
 }
 ````
 
-It is very different of what we see in relational databases. 
+It is very different from what we're used to in relational databases.
 
 > A document is a self-describing, hierarchical tree data structure which can
-consist of maps, collections, and scalar values. 
+consist of maps, collections, and scalar values.
 
-Being practical, RavenDB databases stores documents, which are plain JSON formatted
+Being practical, RavenDB database stores documents, which are plain JSON formatted
 data. So, we can aggregate related information into a common object, as in the case
 of the `ShipTo` property which has all the shipping information.
 
 In a Document Database, documents are organized in collections.
 
 ## Understanding the `Collection` concept
-Documents in RavenDB are all stored in the same storage space. They are not 
+Documents in RavenDB are all stored in the same storage space. They are not
 physically grouped in any way. But, you probably expect some level of organization.
 For example, documents holding customers data are very different from documents
-holding products information, and you want to talk about groups of them. 
-RavenDB allows for a document to be stamped with a string value that will be 
-evidence of its type (like "Customers" and "Products"). 
+holding products information, and you want to talk about groups of them.
+RavenDB allows for a document to be stamped with a string value that will be
+evidence of its type (like "Customers" and "Products").
 
 Note that documents that are in the same collection can have a completely different structure, which is fine because RavenDB is schema-less.
 

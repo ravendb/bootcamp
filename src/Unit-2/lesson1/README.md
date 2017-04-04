@@ -2,13 +2,13 @@
 
 Here we go! Welcome to your first lesson of Unit 2.
 
- 
+
 ## RavenDB does no table scans!
 
 Yes, you read that right. But what does it mean? In Unit-1 you wrote a query similar
 to the following:
 
-````csharp 
+````csharp
 var orders = (
     from order in session.Query<Order>()
     where order.Company == "companies/1"
@@ -23,12 +23,13 @@ You might assume that the following pseudo code is run in the server side. Am I 
 //..
 var results = new List<Order>();
 
-foreach (var o in GetDocumentsFor("Orders")) {
+foreach (var o in GetDocumentsFor("Orders"))
+{
     if (o.Company == "companies/1")
         results.Add(o);
 }
 
-var orderedResults = results.Sort( (a,b) => a.OrderedAt.CompareTo(b.OrderedAt));
+var orderedResults = results.Sort((a,b) => a.OrderedAt.CompareTo(b.OrderedAt));
 // ..
 ````
 
@@ -41,14 +42,14 @@ the moment your data size reaches any significant size.
 
 Even when you do not create an index, RavenDB will use one to execute queries.
 In fact there are no *O(N)* operations in general in RavenDB queries. Using indexes,
-queries using RavenDB are *O(logN)* operations. For those who don't care about 
+queries in RavenDB are *O(logN)* operations. For those who don't care about
 algorithms complexity analysis, the difference is between waiting 30 minutes for a result
 and getting it right away.
 
 
- RavenDB is safe by default and whenever you make a query, the query optimizer will try
- to select an appropriate index to use. **If there is no such appropriate index, then
- the query optimizer will create an index for you.**
+RavenDB is safe by default and whenever you make a query, the query optimizer will try
+to select an appropriate index to use. **If there is no such appropriate index, then
+the query optimizer will create an index for you.**
 
 ## Exercise 1: Confirming that index can be automatically created
 In this lesson you will confirm that RavenDB creates indexes automatically when it
@@ -56,7 +57,7 @@ is needed.
 
 ### Step 1: Access Northwind database using the Management Studio
 
-Start RavenDB console (if you didn't do it yet), and using the web browser, access the 
+Start RavenDB console (if you didn't do it yet), and using the web browser, access the
 `RavenDB Management Studio` at the address `http://localhost:8080` (which is the
 default address. Change it if you need). Then open the `Northwind database` which you
 created in the previous unit ([Lesson 1](../../Unit-1/lesson1/README.md)).
@@ -103,7 +104,7 @@ namespace IndexingSample
     public static class DocumentStoreHolder
     {
         private static readonly Lazy<IDocumentStore> LazyStore =
-            new Lazy<IDocumentStore>(() => 
+            new Lazy<IDocumentStore>(() =>
             {
                 var store = new DocumentStore
                 {
@@ -124,7 +125,7 @@ namespace IndexingSample
         public string Company { get; set; }
         public DateTimeOffset OrderedAt { get; set; }
     }
-} 
+}
 ````
 Note that the `Order model class` has just enough code here.
 
@@ -142,13 +143,3 @@ RavenDB chooses good names for "auto created indexes".
 Awesome! You just learned a little bit about how RavenDB performs queries.
 
 **Let's move onto [Lesson 2](../lesson2/README.md) and learn how to create and index by your own.**
-
-
-
-
-
-
-
-
-
-
