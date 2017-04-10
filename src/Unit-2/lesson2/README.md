@@ -1,4 +1,4 @@
-# Unit 2, Lesson 2 - Creating an index and querying using it
+# Unit 2, Lesson 2 - Creating an index and querying it
 
 As you learned in the [previous lesson](../lesson1/README.md), RavenDB
 automatically creates and manages indexes for most common queries, but
