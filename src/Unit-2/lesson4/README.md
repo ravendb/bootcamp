@@ -76,7 +76,8 @@ It's important you know that you can combine the power of multi-map with map-red
 providing multiple map functions.
 
 ````csharp
-public class Products_ByCategory : AbstractIndexCreationTask<Product, Products_ByCategory.Result>
+public class Products_ByCategory :
+    AbstractIndexCreationTask<Product, Products_ByCategory.Result>
 {
     public class Result
     {
@@ -291,4 +292,4 @@ Nice!
 
 Awesome! You just learned the basics of Map-Reduce and how to use it with RavenDB.
 
-**Let's move onto [Lesson 5](../lesson5/README.md) **
+**Let's move onto [Lesson 5](../lesson5/README.md).**

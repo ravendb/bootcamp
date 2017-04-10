@@ -240,7 +240,8 @@ public class Supplier
 Having the model classes, let's write the transformer.
 
 ````csharp
-public class Products_ProductAndSupplierName : AbstractTransformerCreationTask<Product>
+public class Products_ProductAndSupplierName :
+    AbstractTransformerCreationTask<Product>
 {
     public class Result
     {
@@ -294,4 +295,4 @@ No more multiple `Load` calls to get data.
 
 Awesome! You just learned how to save a lot of bandwidth with transformers.
 
-**Let's move onto [Lesson 7](../lesson7/README.md) **
+**Let's move onto [Lesson 7](../lesson7/README.md).**

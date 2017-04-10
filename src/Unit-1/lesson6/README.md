@@ -365,4 +365,4 @@ database.
 
 ## Great Job!
 
-**Congratulations! You know the basics of RavenDB**
+**Congratulations! You know the basics of RavenDB.**

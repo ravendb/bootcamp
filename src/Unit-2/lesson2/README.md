@@ -257,4 +257,4 @@ using (var session = DocumentStoreHolder.Store.OpenSession())
 
 Awesome! You just learned how to create indexes using RavenDB.
 
-**Let's move onto [Lesson 3](../lesson3/README.md) **
+**Let's move onto [Lesson 3](../lesson3/README.md).**

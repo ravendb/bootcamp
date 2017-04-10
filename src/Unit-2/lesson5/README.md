@@ -55,7 +55,8 @@ When writing your index definitions you can use the `LoadDocument` function to g
 Let's rewrite the `Products_ByCategory` index using the `LoadDocument` function.
 
 ````csharp
-public class Products_ByCategory : AbstractIndexCreationTask<Product, Products_ByCategory.Result>
+public class Products_ByCategory :
+    AbstractIndexCreationTask<Product, Products_ByCategory.Result>
 {
     public class Result
     {
@@ -142,4 +143,4 @@ I strongly recommend you to treat `LoadDocument` as a potential "bad smell".
 
 Awesome! You just learned one of the most powerful and controversial features of RavenDB.
 
-**Let's move onto [Lesson 6](../lesson6/README.md) **
+**Let's move onto [Lesson 6](../lesson6/README.md).**
