@@ -118,7 +118,8 @@ modify its content adding the `connectionStrings` section.
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
     <connectionStrings>
-      <add name="RavenDB" connectionString="Url=http://localhost:8080;Database=Northwind"/>
+      <add name="RavenDB"
+           connectionString="Url=http://localhost:8080;Database=Northwind"/>
     </connectionStrings>
 </configuration>
 ````

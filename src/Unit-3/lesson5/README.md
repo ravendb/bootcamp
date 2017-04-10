@@ -42,8 +42,11 @@ As you know, to create a listener you just need to write a class that implements
 ````csharp
 public class MyDocumentStoreListener : IDocumentStoreListener
 {
-    public bool BeforeStore(string key,
-        object entityInstance, RavenJObject metadata, RavenJObject original)
+    public bool BeforeStore(
+        string key,
+        object entityInstance,
+        RavenJObject metadata,
+        RavenJObject original)
     {
         Console.WriteLine($"Before storing {key}.");
         var allow = key != "categories/99";
@@ -53,7 +56,10 @@ public class MyDocumentStoreListener : IDocumentStoreListener
         return false;
     }
 
-    public void AfterStore(string key, object entityInstance, RavenJObject metadata)
+    public void AfterStore(
+        string key,
+        object entityInstance,
+        RavenJObject metadata)
     {
         Console.WriteLine($"After storing {key}.");
     }
@@ -161,7 +167,7 @@ public class AuditStoreListener : IDocumentStoreListener
     {
         metadata["Last-Modified-By"] =
             WindowsIdentity.GetCurrent().Name;
-            
+
         return false;
     }
 

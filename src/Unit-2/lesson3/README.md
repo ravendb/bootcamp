@@ -81,7 +81,8 @@ using Raven.Client.Indexes;
 
 namespace MultimapIndexes
 {
-    public class People_Search : AbstractMultiMapIndexCreationTask<People_Search.Result>
+    public class People_Search :
+        AbstractMultiMapIndexCreationTask<People_Search.Result>
     {
         public class Result
         {
@@ -198,7 +199,10 @@ public static IEnumerable<People_Search.Result> Search(
     )
 {
     var results = session.Query<People_Search.Result, People_Search>()
-        .Search(r => r.Name, searchTerms, escapeQueryOptions: EscapeQueryOptions.AllowAllWildcards)
+        .Search(
+            r => r.Name,
+            searchTerms,
+            escapeQueryOptions: EscapeQueryOptions.AllowAllWildcards)
         .ProjectFromIndexFieldsInto<People_Search.Result>()
         .ToList();
 
@@ -257,4 +261,4 @@ Awesome! You just learned how to create multi-map indexes using the RavenDB C# A
 Before you proceed, I strongly recommend that you try creating a multi-map index
 using the `RavenDB Management Studio`. You will see how easy it is.
 
-**Let's move onto [Lesson 4](../lesson4/README.md) **
+**Let's move onto [Lesson 4](../lesson4/README.md).**
