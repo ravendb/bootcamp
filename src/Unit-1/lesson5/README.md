@@ -108,7 +108,7 @@ private static void QueryCompanyOrders(int companyId)
 
         foreach (var order in orders)
         {
-            WriteLine($"  {order.Id} - {order.OrderedAt}");
+            WriteLine($"{order.Id} - {order.OrderedAt}");
         }
     }
 }
@@ -117,7 +117,7 @@ private static void QueryCompanyOrders(int companyId)
 
 The default value of a page size for a query is 128 results. In order to retrieve a different number of results in a single query use `.Take(pageSize)` method.
 
-> You can learn more about paging reading the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/indexes/querying/paging)
+> You can learn more about paging reading the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/indexes/querying/paging).
 
 ## Great job! Onto Lesson 6!
 
