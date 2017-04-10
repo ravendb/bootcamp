@@ -57,9 +57,7 @@ public class MyDocumentStoreListener : IDocumentStoreListener
     }
 
     public void AfterStore(
-        string key,
-        object entityInstance,
-        RavenJObject metadata)
+        string key, object entityInstance, RavenJObject metadata)
     {
         Console.WriteLine($"After storing {key}.");
     }
@@ -143,7 +141,10 @@ You can easily prevent documents from being deleted by creating and registering 
 ````csharp
 public class PreventDeleteListener : IDocumentDeleteListener
 {
-	public void BeforeDelete(string key, object entityInstance, RavenJObject metadata)
+	public void BeforeDelete(
+        string key,
+        object entityInstance,
+        RavenJObject metadata)
 	{
 		throw new NotSupportedException();
 	}
@@ -161,7 +162,9 @@ You can include additional metadata information easily. In this example we are i
 ````csharp
 public class AuditStoreListener : IDocumentStoreListener
 {
-    public bool BeforeStore(string key, object entityInstance,
+    public bool BeforeStore(
+        string key,
+        object entityInstance,
         RavenJObject metadata,
         RavenJObject original)
     {
@@ -172,7 +175,9 @@ public class AuditStoreListener : IDocumentStoreListener
     }
 
     public void AfterStore(
-        string key, object entityInstance, RavenJObject metadata)
+        string key,
+        object entityInstance,
+        RavenJObject metadata)
     {
     }
 }

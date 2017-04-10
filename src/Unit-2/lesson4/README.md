@@ -279,7 +279,9 @@ class Program
             foreach (var result in results)
             {
                 var employee = session.Load<Employee>(result.Employee);
-                Console.WriteLine($"{employee.FirstName} {employee.LastName} made {result.TotalSales} sales.");
+                Console.WriteLine(
+                    $"{employee.FirstName} {employee.LastName}"
+                    + $" made {result.TotalSales} sales.");
             }
         }
     }
