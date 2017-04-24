@@ -80,23 +80,6 @@ This will result in an array with three documents in it, **retrieved in a single
 remote call from the server**. The order in the array matches the order
 of the ids passed to the `Load` call.
 
-You can even load documents belonging to multiple types in a single call, like so:
-
-````csharp
-object[] items = session.Load<object>("products/1", "categories/2");
-
-Product p = (Product) items[0];
-Category c = (Category) items[1];
-````
-
-## Exercise: Loading multiple documents with a single `Load` call
-
-Now that you know how to load multiple documents with a single call, you can try it.
-
-I strongly recommend that you get some additional model classes using the
-`Generate class` tool while editing documents in the RavenDB Studio. Then
-try to load some documents of these types.
-
 ## Loading related documents in a single remote call
 
 As you probably know, the easiest way to kill your application performance is
