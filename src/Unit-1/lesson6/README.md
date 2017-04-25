@@ -306,7 +306,7 @@ private void UpdateContact()
         Console.WriteLine("New name: ");
         contact.Name = Console.ReadLine();
         Console.WriteLine($"Actual Email: {contact.Email}");
-        Console.WriteLine("New name: ");
+        Console.WriteLine("New email address: ");
         contact.Email = Console.ReadLine();
         session.SaveChanges();
     }
