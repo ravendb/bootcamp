@@ -81,7 +81,7 @@ public class CategoryRepository
     // ...
     public void Update(Category category)
     {
-        var (session = DocumentStoreHolder.Store.CreateSession())
+        var (session = DocumentStoreHolder.Store.OpenSession())
         {
             session.Store(category);
             session.SaveChanges();
