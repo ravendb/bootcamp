@@ -318,6 +318,7 @@ private void UpdateContact()
 ````csharp
 private void DeleteContact()
 {
+    Console.WriteLine("Enter the contact id");
     var id = Console.ReadLine();
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
