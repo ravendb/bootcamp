@@ -24,6 +24,7 @@ commands:
 ```
 Install-Package RavenDB.Client
 Install-Package System.Reactive.Core
+Install-Package System.Reactive.Linq
 ```
 
 Yeap! RavenDB is reactive!
