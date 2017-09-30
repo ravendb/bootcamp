@@ -17,7 +17,6 @@ namespace CollaborativeCategoryEditing
         private IDocumentSession _session;
         private Category _category;
         private IDisposable _subscription;
-        private Etag _localEtag;
 
         private void LoadAndSubscribeButton_Click(object sender, EventArgs e)
         {
@@ -34,7 +33,6 @@ namespace CollaborativeCategoryEditing
                 NameTextbox.Text = _category.Name;
                 DescriptionTextbox.Text = _category.Description;
 
-                _localEtag = _session.Advanced.GetEtagFor(_category);
                 _subscription = DocumentStoreHolder.Store
                     .Changes()
                     .ForDocument(CategoryIdTextbox.Text)
@@ -47,26 +45,20 @@ namespace CollaborativeCategoryEditing
 
         private bool DocumentChangedByOtherUser(DocumentChangeNotification change)
         {
-            if (_savesCount == 0) return true;
-            if (change.Etag.Restarts != _localEtag.Restarts) return true;
-
-            var numberOfServerChanges = change.Etag.Changes - _localEtag.Changes;
-            return (numberOfServerChanges > _savesCount);
+            return !_saving;
         }
 
         private void DocumentChangedOnServer(DocumentChangeNotification change)
         {
             var shouldRefresh = MessageBox.Show(
-                "Document was changed on the server. Would like to refresh?",
-                "Alert", MessageBoxButtons.YesNo
-            ) == DialogResult.Yes;
+                                    "Document was changed on the server. Would like to refresh?",
+                                    "Alert", MessageBoxButtons.YesNo
+                                ) == DialogResult.Yes;
 
             if (shouldRefresh)
             {
                 _session.Advanced.Refresh(_category);
-                _savesCount = 0;
-                _localEtag = _session.Advanced.GetEtagFor(_category);
-                this.Invoke((MethodInvoker) delegate
+                this.Invoke((MethodInvoker)delegate
                 {
                     NameTextbox.Text = _category.Name;
                     DescriptionTextbox.Text = _category.Description;
@@ -92,13 +84,14 @@ namespace CollaborativeCategoryEditing
             UnsubscribeButton.Enabled = !isEditing;
         }
 
-        private int _savesCount = 0;
+        private bool _saving;
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            _saving = true;
             _category.Name = NameTextbox.Text;
             _category.Description = DescriptionTextbox.Text;
-            _savesCount++;
             _session.SaveChanges();
+            _saving = false;
         }
 
         private void UnsubscribeButton_Click(object sender, EventArgs e)
