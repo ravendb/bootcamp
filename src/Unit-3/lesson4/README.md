@@ -181,7 +181,6 @@ Loading document data from server is easy.
 private IDocumentSession _session;
 private Category _category;
 private IDisposable _subscription;
-private Etag _localEtag;
 
 private void LoadAndSubscribeButton_Click(object sender, EventArgs e)
 {
@@ -230,10 +229,6 @@ private void ToggleEditing()
 
 In this exercise you will preserve the session instance to use it again.
 
-When the document is loaded, the associated `ETag` is retrieved, the UI is updated and a subscription for changes in this document is created.
-
-> An etag in RavenDB is a 128 bit number that is associated with a document. Whenever a document is created or updated, an etag assigned to that document is incremented. Etags are heavily used inside RavenDB.
-
 Changes API is compatible with the `Reactive Extensions`, which is great. Because of that we can use filter for events using the familiar LINQ syntax. We will
 implement the `DocumentChangedByOtherUser` and `DocumentChangedOnServer` in the following steps.
 
@@ -242,18 +237,19 @@ implement the `DocumentChangedByOtherUser` and `DocumentChangedOnServer` in the 
 Whenever the `SaveButton` is clicked the application will send the data to the server.
 
 ````csharp
-private int _savesCount = 0;
+private bool _saving = false;
 private void SaveButton_Click(object sender, EventArgs e)
 {
+    _saving = true;
     _category.Name = NameTextbox.Text;
     _category.Description = DescriptionTextbox.Text;
-    _savesCount++;
     _session.SaveChanges();
+    _saving = false;
 }
 ````
 The category object is mapped by the session instance. So it is not necessary to call the `Store` method.
 
-The `_savesCount` field will be used later to determine if the change was made by another user.
+The `_saving` field will be used later to determine if a notification from server was received during a save process.
 
 ### Step 7: Dealing with change notifications
 
@@ -262,13 +258,7 @@ The application is subscribing to notifications when document is loaded.
 ````csharp
 private bool DocumentChangedByOtherUser(DocumentChangeNotification change)
 {
-    if (_savesCount == 0) return true;
-    if (change.Etag.Restarts != _localEtag.Restarts) return true;
-
-    var numberOfServerChanges =
-        change.Etag.Changes - _localEtag.Changes;
-
-    return (numberOfServerChanges > _savesCount);
+    return !_saving;
 }
 
 private void DocumentChangedOnServer(DocumentChangeNotification change)
