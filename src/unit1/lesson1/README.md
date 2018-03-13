@@ -5,7 +5,6 @@ Working with databases do not have to be boring. RavenDB makes your life easier.
 Enough of spending time thinking about how to accommodate your data in rows and 
 columns. 
 
-
 You already know RavenDB?! No problem. You will get good surprises and learn some 
 new tricks in this Bootcamp.
 
@@ -20,8 +19,6 @@ running on your computer. Right?! For production scenarios, I recommend you to c
 other online resources.
 
 ### Exercise: Running on the live demo instance
-
-Don’t want to download bits and bytes? No problem!
 
 Don’t want to download bits and bytes? No problem! Point your browser to our public 
 demo at <http://live-test.ravendb.net>.
