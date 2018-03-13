@@ -16,7 +16,7 @@ After you complete this boot camp, not only will you be confident to store your 
 
 ### Unit 1 - Fundamentals
 
-You will learn how to install RavenDB and make it work on your machine. RavenDB makes starting easy by providing an embedded sample database –think "Northwind," which you can use for your learning process with minimal effort. 
+You will learn how to install RavenDB and make it work on your machine. RavenDB makes starting easy by providing an embedded sample database – think "Northwind", which you can use for your learning process with minimal effort. 
 
 You will write some code to connect to the database and store, load, modify and delete documents.
 
