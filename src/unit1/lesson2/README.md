@@ -1,17 +1,17 @@
-Unit 1, Lesson 2 – It's querying time!
+Unit 1, Lesson 2 – Lets Query!
 ======================================
 
 In the previous lesson, you learned how to install RavenDB on your computer,
-create a database and load sample data. Also, you learned some fundamental
+create a database, and load sample data. You also learned some fundamental
 concepts about document databases.
 
-In this lesson, you will learn how to write your queries using RQL.
+In this lesson you will learn how to write your own queries using RQL.
 
-RQL? What is it?
+What is RQL?
 ----------------
 
-RQL is one of the most exciting features of RavenDB 4. It is a powerful, easy to
-use and learn, language that we design to make your life simpler.
+RQL is one of the most exciting features of RavenDB 4. It is a powerful and easy to
+learn language that we designed to make your job easier.
 
 From the Documentation:
 
@@ -22,40 +22,37 @@ overwhelming to the user.
 
 The [RQL
 documentation](https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/what-is-rql)
-is really good. You should consider reading it.
+is really good. Please consider reading it.
 
 
-Exercise: Getting ready to write queries
+Exercise: Getting Ready to Write Queries
 ----------------------------------------
 
-It’s time to stop talking and to write some code. So, let’s do that.
+It’s time to stop talking and to write some code. So, let’s do it!
 
-1.  Open the `RavenDB Management Studio` (<http://localhost:8080> by default.
-    Remember?)
+1.  Open the `RavenDB Management Studio` (<http://localhost:8080> by default.)
 2.  In the left panel, click on `Databases`
 3.  Open the database we created in the previous lesson (Northwind, if you
     followed our recommendation)
 4.  In the left panel, select the `Documents` section.
 5.  Click on `Query`.
 
-There are other paths to this. I will let you discover it.
-
 ![](media/23k4h1k2j4hk24kh12khj243.png)
 
-Exercise: You first query
+Exercise: You First Query
 -------------------------
 
 Let’s start easy.
 
 1.  Assuming you are already in the Query editor (inside the RavenDB Management
-    Studio). Type the following query.
+    Studio), type the following query.
 
 ```
 from Employees
 ```
 2.  Click on the `Run` button.
 
-Yes. You are right. This query returns all the documents inside the `Employees` collection. I think you got it.
+This query returns all the documents inside the `Employees` collection. 
 
 Now, go ahead and try other queries like these. Get all the documents from the `Products` collection.
 
@@ -69,8 +66,7 @@ from Employees
 where FirstName=="Nancy"
 ```
 
-Yes! I think you got it. FirstName is the name of one of the properties present
-in the documents from the Employees collection.
+FirstName is the name of one of the properties present in the documents from the Employees collection.
 
 ```json
 {
@@ -108,10 +104,10 @@ in the documents from the Employees collection.
 }
 ```
 
-Exercise: Shaping the query result
+Exercise: Shaping the Query Result
 ----------------------------------
 
-Until now, we are just getting documents. Let’s say we want to shape what we get. Consider the following query.
+Up to this point we are simply retrieving documents. Let’s say we want to shape what we get. Consider the following query.
 
 ```
 from Orders
@@ -119,9 +115,9 @@ where Lines.Count > 4
 select Lines[].ProductName as ProductNames, OrderedAt, ShipTo.City
 ```
 
-Again, I am sure you understand what is going on. We are not interested in all data from the Orders documents. So, we are specifying a shape.
+Here, we are not interested in all data from the Orders documents. We are specifying a shape.
 
-One of the results will look like that:
+One of the results will look like:
 
 ```
 {
@@ -147,9 +143,9 @@ One of the results will look like that:
 
 We will talk about the `metadata` in the future.
 
-Exercise: Using Javascript in the query projections
+Exercise: Using JavaScript in the query projections
 ---------------------------------------------------
-The last query was nice. But, let’s say you want to do more customization.
+Say you want to do more customization.
 
 ```
 from Orders as o
@@ -160,16 +156,16 @@ select {
     LinesCount: o.Lines.length
 }
 ```
-RavenDB allows you to use Javascript (Everybody knows the basics of Javascript,
-right?) when defining projections for the query results.
+RavenDB allows you to use JavaScript when defining projections for the query results.
 
 There is another interesting thing in this query, as you probably noted. The
 Company field of an Order document contains the ID of another document stored in
 the database. The load instruction is smart enough to get that document for you.
-So you can use it to project data as well.
+You can use it to project data as well.
 
-Exercise: Map and reduce (Oh Yeah!)
+Exercise: Map and Reduce
 -----------------------------------
+
 Consider the following query:
 
 ```
@@ -180,15 +176,15 @@ order by count() desc
 select count() as Count, key() as Company
 ```
 
-What are we doing here? We are grouping the Orders using the Company field as
-grouping key. So we are adding a filter to get only groups with five documents
-at least, and then, ordering this groups by the number of elements in descending
+Here, we are grouping the Orders using the Company field as
+grouping key. We are adding a filter to get only groups with five documents
+at least, then, ordering these groups by the number of elements in descending
 order. Finally, we are projecting the number of documents per group and the
 group key.
 
-In “business words” this query results in a list of top buyers companies.
+This query results in a list of top buyers companies.
 
-How it works
+How it Works
 ------------
 
 For a while, you shouldn’t care about our implementation details. But, it’s
@@ -197,16 +193,11 @@ techniques to deliver results as fast as possible (even more!).
 
 All queries in RavenDB are supported by a sophisticated and efficient indexing
 mechanism. In simple words, we use indexes for all the queries. But, I will
-explain it with more details in the future.
+explain it to greater detail in the future.
 
-Great job! Onto Lesson 3!   
+Lesson 3
 -------------------------
 
-Awesome! You have just completed the second lesson. Now you know the basics about Querying with RavenDB. 
+You have just completed the second lesson. Now you know the basics about Querying with RavenDB. 
 
-
-**Let's move onto** [Lesson 3](../lesson3/README.md) **and start coding.**
-
-
-
-
+**Let's move on to** [Lesson 3](../lesson3/README.md) **and start coding.**
