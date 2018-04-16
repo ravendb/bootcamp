@@ -15,9 +15,9 @@ the `session` object?
 
 The `session` is a high level interface to RavenDB which provides the identity map
 and LINQ queries. But if you want do something in the low-level, then you should
-start using the Operations.
+start using the Operations. Also, there are operations for Database Maintenance, Server Maintenance and Patching
 
-There is an exhaustive list of RavenDB commands available in the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/operations/what-are-operations).
+There is an exhaustive list of RavenDB operations available in the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/operations/what-are-operations).
 
 ## First-time using RavenDB Operations and Commands
 
@@ -108,8 +108,7 @@ Here we go again. Let's manage the `DocumentStore` using our great friend `Docum
 ````csharp
 using System;
 using Raven.Client;
-using Raven.Client.Document;
-using Raven.Client.Indexes;
+using Raven.Client.Documents;
 
 namespace GettingMetadata
 {
@@ -205,7 +204,9 @@ This version is a lot easier. Right?
 
 ## Great job! Onto Lesson 4!
 
-Awesome! You just learned about the basics about commands. In the next lesson you will learn
+Awesome! You just learned about the basics about operations. In the next lesson you will learn
 how to change multiple documents with a single request.
+
+If you want to know more about Patching we recomend you to use the [documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/operations/patching/single-document)
 
 **Let's move onto [Lesson 4](../lesson4/README.md).**

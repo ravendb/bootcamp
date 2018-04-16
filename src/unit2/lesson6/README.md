@@ -90,11 +90,11 @@ from Employees as e select output(e)
 ```
 
 OMG! Yes, that is it! We can define functions when coding with RQL. These
-functions are pure Javascript (You shouldn't have doubts about the0 Javascript power)
+functions are pure JavaScript (You shouldn't have doubts about the JavaScript power)
 
 ## Great job! Onto Lesson 7!
 
 Want to learn more about this functionality, I recommend you to read to read our article that covers 
-the projection functionality which can be found [here](https://ravendb.net/docs/article-page/4.0/csharp/client-api/session/querying/how-to-project-query-results).
+the projection functionality which can be found [here]( https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/projections).
 
 **Let's move onto [Lesson 7](../lesson7/README.md).**

@@ -36,8 +36,8 @@ Here we go again. Let's manage the `DocumentStore` using the `DocumentStoreHolde
 ````csharp
 using System;
 using Raven.Client;
-using Raven.Client.Document;
-using Raven.Client.Indexes;
+using Raven.Client.Documents;
+using Raven.Client.Documents.Indexes;
 
 namespace GettingMetadata
 {
@@ -110,7 +110,7 @@ class Program
     {
         using (var session = DocumentStoreHolder.Store.OpenSession())
         {
-            var product = session.Load<Product>("products/1");
+            var product = session.Load<Product>("products/1-A");
             var metadata = session.Advanced.GetMetadataFor(product);
 
             metadata["last-modified-by"] = "Oren Eini";
@@ -129,6 +129,8 @@ you can change the value of a metadata property. But, you should not try to do t
 
 RavenDB engine does a lot of optimizations based on the collection name, and no support
 whatsoever for changing it.
+
+You can read more about collection concept [here](https://ravendb.net/docs/article-page/4.0/csharp/client-api/faq/what-is-a-collection)
 
 ## Exercise: Loading only document metadata
 

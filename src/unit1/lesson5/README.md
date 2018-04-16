@@ -53,9 +53,9 @@ Load can also read more than a single document at a time. For example:
 
 ````csharp
 var products = session.Load<Product>(new [] {
-    "products/1",
-    "products/2",
-    "products/3"
+    "products/1-A",
+    "products/2-A",
+    "products/3-A"
 });
 ````
 
@@ -67,20 +67,22 @@ remote call from the server**.
 The easiest way to kill your application performance is to make a lot of remote calls. RavenDB provides a lot of features to help you
 mitigate that problem.
 
-Consider the Northwind `products/1` document:
+Consider the Northwind `products/1-A` document:
 
 ````csharp
 {
     "Name": "Chai",
-    "Supplier": "suppliers/1",
-    "Category": "categories/1",
+    "Supplier": "suppliers/1-A",
+    "Category": "categories/1-A",
     "QuantityPerUnit": "10 boxes x 20 bags",
     "PricePerUnit": 18,
-    "UnitsInStock": 39,
-    "UnitsOnOrder": 0,
+    "UnitsInStock": 1,
+    "UnitsOnOrder": 39,
     "Discontinued": false,
-    "ReorderLevel": 10
-}
+    "ReorderLevel": 10,
+    "@metadata": {
+        "@collection": "Products"
+    }
 ````
 
 As you can see, the `Supplier` and `Category` properties are clearly references to
@@ -109,9 +111,9 @@ The `Include` session method changes the way RavenDB will process the request.
 
 It will:
 
-* Find a document with the key: `products/1-A`
+* Find a document with the id: `products/1-A`
 * Read its `Category` property value
-* Find a document with that key
+* Find a document with that id
 * Send both documents back to the client
 
 When the `session.Load<Category>(p.Category);` is executed, the document is in the
@@ -156,7 +158,7 @@ Then replace the file content with:
 ````csharp
 using System;
 using Raven.Client;
-using Raven.Client.Document;
+using Raven.Client.Documents;
 
 namespace OrdersExplorer
 {
@@ -191,7 +193,7 @@ Back to `Program.cs`, let's create a minimal user interface which requests order
 
 ````csharp
 using static System.Console;
-using Raven.Client.Document;
+using Raven.Client.Documents;
 using NorthwindModels;
 
 namespace OrdersExplorer

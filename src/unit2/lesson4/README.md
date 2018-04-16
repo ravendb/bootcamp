@@ -36,7 +36,7 @@ Start Visual Studio and create a new `Console Application Project` named
 `MapReduceIndexes`. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client```
+```Install-Package RavenDB.Client -Version 4.0.2```
 
 This will install the latest RavenDB.Client binaries, which you will need in order
 to compile your code.
@@ -44,7 +44,7 @@ to compile your code.
 Then you will need to add the `using` name space at the top of `Program.cs`:
 
 ````csharp
-using Raven.Client.Document;
+using Raven.Client.Documents;
 ````
 
 ### Step 2: Write the model classes
@@ -107,11 +107,9 @@ public class Products_ByCategory :
 }
 ````  
 
-There are some points to note here. The "counting" task is performed by
-two expressions. The `Map` just gets data from the documents and the `Reduce`
-performs the aggregation. This allows the RavenDB engine to
-treat each step in isolation, that means it is not required to run them
-sequentially and at the same time.
+There are some points to note here. In 4.0 we do run map and reduce  sequentially in the same transaction. 
+It works as follows: map phase produces the map entries which are stored into reduce trees (b+trees), 
+next they are processed by the reduce worker under the same transaction.
 
 The output from the `Map` and `Reduce` steps needs to be the same. This
 allows the engine to perform multiple reduce stages.
@@ -124,8 +122,8 @@ this point, you probably know that this is the pattern to follow. Right?
 ````csharp
 using System;
 using Raven.Client;
-using Raven.Client.Document;
-using Raven.Client.Indexes;
+using Raven.Client.Documents;
+using Raven.Client.Documents.Indexes;
 
 namespace MapReduceIndexes
 {
@@ -303,7 +301,7 @@ Before you go, I recommend you to check
 ## The Map-Reduce Visualizer
 
 If you want to understand better what is going on when using Map/Reduce, you
-can use the `Map-Reduce Visualizer` tool. It is available in the `Index` section.
+can use the `Map-Reduce Visualizer` tool. It is available in the `Indexes` section.
 
 ![creating new index](media/a92uh2jlj43rj3ndj3ndj2jd2.png)
 

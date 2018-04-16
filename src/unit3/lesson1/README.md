@@ -18,7 +18,7 @@ You can configure the revisions feature using the Studio: 
 
 When activated, by default, RavenDB will track history for all documents. Also, by default, RavenDB will never purge old revisions. 
 
-As the administrator, you could configure this for all collections.  But you could specify a different setup for a specific collection. By default, RavenDB will track history for all documents. Also, by default, RavenDB will never purge old revisions.
+As the administrator, you could configure this for all collections.  But you could specify a different setup for a specific collection. By default, RavenDB will track history for all documents.
 
 The options you have are;
 

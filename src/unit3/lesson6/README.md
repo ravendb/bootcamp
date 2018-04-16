@@ -71,8 +71,7 @@ Here we go again. let's manage the `DocumentStore` using our great friend `Docum
 ````csharp
 using System;
 using Raven.Client;
-using Raven.Client.Document;
-using Raven.Client.Indexes;
+using Raven.Client.Documents;
 
 namespace BatchOperationsWithRavenDB
 {

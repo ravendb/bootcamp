@@ -15,7 +15,7 @@ Queries allow you to load documents that match a particular predicate.
 You get access to LINQ support via the `Query` method from the session object.
 
 Like documents loaded via the `Load` call, documents that were loaded via
-`Query` are managed by the session.
+`Query` are managed by the session (unless you are doing a projection).
 
 Queries in RavenDB don't behave like queries in relational databases. RavenDB
 does not allow computation during queries, and it doesn't have problems with

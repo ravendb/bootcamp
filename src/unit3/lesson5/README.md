@@ -36,7 +36,7 @@ As you already know, we will manage the `DocumentStore` using our great friend `
 ````csharp
 using System;
 using Raven.Client;
-using Raven.Client.Document;
+using Raven.Client.Documents;
 
 namespace BasicsOfChangesAPI
 {
@@ -72,7 +72,7 @@ Now, it's time to subscribe!
 ````csharp
 using System;
 using Raven.Client;
-using Raven.Client.Document;
+using Raven.Client.Documents;
 
 namespace BasicsOfChangesAPI
 {

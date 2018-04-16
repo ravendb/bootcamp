@@ -3,7 +3,7 @@
 As you learned in the [previous lesson](../lesson3/README.md), RavenDB
 provides a low-level API that you can use to execute not trivial tasks.
 
-In this lesson, you will learn how to use commands to update 
+In this lesson, you will learn how to use operations to update 
 a large amount of documents answering a certain criteria.
 
 ## The need to batch operations
@@ -48,8 +48,7 @@ Here we go again. let's manage the `DocumentStore` using our great friend `Docum
 ````csharp
 using System;
 using Raven.Client;
-using Raven.Client.Document;
-using Raven.Client.Indexes;
+using Raven.Client.Documents;
 
 namespace BatchOperationsWithRavenDB
 {
@@ -96,8 +95,6 @@ RQL for the win!
 
 There is a very good list of examples available on the [RavenDB documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/operations/patching/set-based). 
 
-Please note that we are using a low-level command here. There is no need to have
-a session in this case.
 
 Run it! And check the results. Amazing!
 

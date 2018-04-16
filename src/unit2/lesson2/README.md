@@ -73,7 +73,7 @@ select new
 }
 ````
 
-> PRO TIP: Use the `Format Maps and Reduce tool` to get a nice formatting of your code. You will receive an
+> PRO TIP: Use the `Format` to get a nice formatting of your code. You will receive an
 error message if there is something wrong.
 
 In the expression, `docs` represents the entire collection of documents
@@ -146,7 +146,7 @@ to compile your code.
 Then you will need to add the `using` name space at the top of `Program.cs`:
 
 ````csharp
-using Raven.Client.Document;
+using Raven.Client.Documents;
 ````
 
 ### Step 2: Initialize the `DocumentStore`
@@ -277,8 +277,8 @@ You will see a new index is created for you.
 
 ## Querying
 
-RavenDB is smart enough to select the right index for you. But, if you want,
-you can specify what index should be used using an additional type parameter
+RavenDB is smart enough to select the right index for you if it was created by the server. 
+But, if you want to use a static index, you can specify what index should be used using an additional type parameter
 of the `Query` method.
 
 ````csharp
