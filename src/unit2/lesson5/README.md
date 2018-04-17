@@ -132,14 +132,16 @@ The problem with `LoadDocument` is that it allows users to keep a relational
 model when they work with RavenDB, and use `LoadDocument` to get away with
 it when they need to do something that is hard to do with RavenDB natively.
 That wouldn’t be so bad, if `LoadDocument` didn’t have several important costs
-associated with it. For example, anytime a common referenced document is updated, an
-indexing process will be triggered, and it can cost a lot for your server.
+associated with it. 
 
 `LoadDocument` is an important feature and you could and should use it eventually. But,
-I strongly recommend you to treat `LoadDocument` as a potential "bad smell".   
+I strongly recommend you to treat `LoadDocument` with caution.   
 
 ## Great job! Onto Lesson 6!
 
 Awesome! You just learned one of the most powerful and controversial features of RavenDB.
+
+Before moving on, I would recommend you to read about how works 
+the [indexing process for related documents](https://ravendb.net/docs/article-page/4.0/csharp/indexes/indexing-related-documents).
 
 **Let's move onto [Lesson 6](../lesson6/README.md).**

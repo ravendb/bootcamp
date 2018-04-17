@@ -22,12 +22,12 @@ var documentStore = new DocumentStore
 documentStore.Initialize();
 ````
 
-The document store holds the RavenDB URL, the default database, and the credentials
+The document store holds the RavenDB URL, the default database, and the certificate
 that should be used.
 
 The document store holds all client-side configuration for RavenDB - how we are
-going to serialize entities, how to handle failure scenarios, what sort of caching
-strategy to use, and much more.
+going to serialize entities, how to load balance reads, cache sizes, timeouts, 
+and much more.
 
 **In  typical applications, you will have a single document store per application.**
 

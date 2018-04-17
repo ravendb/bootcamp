@@ -112,7 +112,7 @@ Up to this point we are simply retrieving documents. Let’s say we want to shap
 ```
 from Orders
 where Lines.Count > 4
-select Lines[].ProductName as ProductNames, OrderedAt, ShipTo.City
+select Lines[].ProductName as ProductNames, OrderedAt, ShipTo.City as City
 ```
 
 Here, we are not interested in all data from the Orders documents. We are specifying a shape.

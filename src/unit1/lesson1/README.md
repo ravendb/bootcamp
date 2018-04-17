@@ -39,6 +39,8 @@ docker run -e UNSECURED_ACCESS_ALLOWED=PublicNetwork -p 8080:8080 ravendb/ravend
 Docker will now get the latest RavenDB version and spin up a new container to
 host it. Note that we run it in developer mode without any authentication.
 
+You can learn a lot about how RavenDB works on Docker following the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/start/installation/running-in-docker-container).
+
 ### Exercise: Running on Windows, Linux or MacOS
 
 
@@ -49,19 +51,15 @@ a folder of your preference.
 
 Done? 
 
-Now, run the `./Server/Raven.Server.exe` located in RavenDB folder. This will start 
+Now, run the `./run.ps` (or `./run.sh` depending on your operational system) located in RavenDB folder. This will start 
 a console application in interactive mode, inside a console application. The script
  will open your browser and start the RavenDB Management Studio.
 
-By default, RavenDB will try to use `http://localhost:8080` as its endpoint.
-If something is already using port 8080, RavenDB will fail to start and
-give you an “address in use” error (more specifically, EADDRINUSE). In this
-case, you will need to configure RavenDB (You can [follow the documentation to
-get it
-done](https://ravendb.net/docs/article-page/4.0/csharp/server/configuration/configuration-options)).
+RavenDB wizard will determine the right address for you. Let's assume in this tutorial it is `http://localhost:8080`.
 
 Running RavenDB for the first time, you will need to do a little setup. You just
-need to answer the questions to get it done.
+need to answer the questions to get it done. More information is available in the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/start/getting-started)
+
 
 Your First Database
 -------------------
@@ -105,7 +103,7 @@ For learning purposes let’s load some sample data into our database.
 it has been used for decades as the sample database in the Microsoft
 community. We chose this database as our sample data because you will be familiar with its relational format.
 
-Going to the `Documents` session (left panel), you will see that we created a
+Going to the `Documents` section (left panel), you will see that we created a
 lot of documents for you.
 
 ![](media/3f24692d124b788b08cb11e49d8fb66f.png)
@@ -133,37 +131,45 @@ the document `orders/101-A`.
 
 ```json
 {
-    "Company": "companies/86",
-    "Employee": "employees/4",
-    "OrderedAt": "1996-11-07T00:00:00.0000000",
-    "RequireAt": "1996-12-05T00:00:00.0000000",
-    "ShippedAt": "1996-11-15T00:00:00.0000000",
-    "ShipTo": {
-        "Line1": "Adenauerallee 900",
-        "Line2": null,
-        "City": "Stuttgart",
-        "Region": null,
-        "PostalCode": "70563",
-        "Country": "Germany"
-    },
-    "ShipVia": "shippers/2",
+    "Company": "companies/86-A",
+    "Employee": "employees/4-A",
     "Freight": 0.78,
     "Lines": [
         {
-            "Product": "products/1",
-            "ProductName": "Chai",
+            "Discount": 0.15,
             "PricePerUnit": 14.4,
-            "Quantity": 15,
-            "Discount": 0.15
+            "Product": "products/1-A",
+            "ProductName": "Chai",
+            "Quantity": 15
         },
         {
-            "Product": "products/23",
-            "ProductName": "Tunnbröd",
+            "Discount": 0,
             "PricePerUnit": 7.2,
-            "Quantity": 25,
-            "Discount": 0
+            "Product": "products/23-A",
+            "ProductName": "Tunnbröd",
+            "Quantity": 25
         }
-    ]
+    ],
+    "OrderedAt": "1996-11-07T00:00:00.0000000",
+    "RequireAt": "1996-12-05T00:00:00.0000000",
+    "ShipTo": {
+        "City": "Stuttgart",
+        "Country": "Germany",
+        "Line1": "Adenauerallee 900",
+        "Line2": null,
+        "Location": {
+            "Latitude": 48.7794494,
+            "Longitude": 9.1852878
+        },
+        "PostalCode": "70563",
+        "Region": null
+    },
+    "ShipVia": "shippers/2-A",
+    "ShippedAt": "1996-11-15T00:00:00.0000000",
+    "@metadata": {
+        "@collection": "Orders",
+        "@flags": "HasRevisions"
+    }
 }
 ```
 
@@ -195,7 +201,7 @@ Exercise: Exploring the Northwind Collections
 
 1.  Open the RavenDB Management Studio at <http://localhost:8080>
 2.  Open the Northwind Database
-3.  In the `Documents` session, explore all the collections.
+3.  In the `Documents` section, explore all the collections.
 
 The user interface is pretty simple. We strongly recommend you to try to create your documents, edit and so on.
 You can create another database and load the sample data if you want.

@@ -36,7 +36,7 @@ to compile your code.
 Then you will need to add the `using` name space at the top of the `Program.cs`:
 
 ````csharp
-using Raven.Client.Document;
+using Raven.Client.Documents;
 ````
 
 ### Step 2: Write the model classes
@@ -76,7 +76,6 @@ Every time you create a multi-map index, the index definition class inherits fro
 
 ````csharp
 using System.Linq;
-using Raven.Abstractions.Indexing;
 using Raven.Client.Indexes;
 
 namespace MultimapIndexes
@@ -150,8 +149,7 @@ Again, let's do it using our good friend pattern `DocumentStoreHolder`.
 ````csharp
 using System;
 using Raven.Client;
-using Raven.Client.Document;
-using Raven.Client.Indexes;
+using Raven.Client.Documents;
 
 namespace MultimapIndexes
 {

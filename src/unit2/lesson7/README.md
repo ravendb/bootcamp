@@ -47,7 +47,7 @@ RavenDB is honest and clear about stale indexes. It is really easy to know if a 
 stale index just checking the statistics.
 
 ````csharp
-RavenQueryStatistics stats;
+QueryStatistics stats;
 
 var orders = (
     from order in session.Query<Order>().Statistics(out stats)
@@ -71,7 +71,7 @@ have enough time to fully update before the query.
 If you need to make sure that your results are up to date, then you can use the `Customize` method.
 
 ````csharp
-RavenQueryStatistics stats;
+QueryStatistics stats;
 
 var query = session.Query<Order>()
     .Customize(q => q.WaitForNonStaleResults(TimeSpan.FromSeconds(5)));

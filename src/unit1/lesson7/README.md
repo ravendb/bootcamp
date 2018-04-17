@@ -114,7 +114,7 @@ Then you will need to add the `using` namespace at the top of `Program.cs`:
 
 ````csharp
 using Raven.Client;
-using Raven.Client.Linq;
+using Raven.Client.Documents.Linq;
 ````
 
 ### Step 2: Initialize the `DocumentStore`
@@ -126,7 +126,7 @@ Note that if the database specified in the `Database` does not exist, ... we wil
 exception. So, please create the Database in RavenDB Management Studio before you continue. 
 
 ````csharp
-using Raven.Client.Document;
+using Raven.Client.Documents;
 
 namespace ContactsManager
 {
@@ -159,7 +159,7 @@ some application code.
 using System;
 using System.Linq;
 using Raven.Client;
-using Raven.Client.Document;
+using Raven.Client.Documents;
 
 namespace ContactsManager
 {
@@ -284,6 +284,7 @@ private void RetrieveContact()
 }
 ````
 
+
 ### Step 8: Updating a contact
 
 ````csharp
@@ -355,6 +356,8 @@ private void QueryAllContacts()
 }
 ````
 
+It is important to say that all contacts will be returned. 
+
 ## Transactions! Transactions!
 
 In RavenDB all actions performed on documents are fully ACID (Atomicity,
@@ -362,6 +365,8 @@ Consistency, Isolation, and Durability). All these constraints are ensured
 when you use a session and call the `SaveChanges` method. This is a
 great thing! Unlike many other NoSQL databases, RavenDB is an ACID
 database. We were the first to become ACID over 10 years ago. 
+
+More information is available on the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/faq/transaction-support)
 
 ## Great Job!
 

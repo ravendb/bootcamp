@@ -67,7 +67,7 @@ is needed.
 Start RavenDB console (if you didn't do it yet), and using the web browser, access the
 `RavenDB Management Studio` at the address `http://localhost:8080` (which is the
 default address. Change it if you need). Then open the ``Northwind` database which you
-created in the previous unit ([Lesson 1](../../Unit-1/lesson1/README.md)).
+created in the previous unit ([Lesson 1](../../unit1/lesson1/README.md)).
 
 ### Step 2: Delete all the existing indexes
 In the left panel, select the `Indexes` section. Then, select all documents and then click 
@@ -78,7 +78,7 @@ on the `delete` button.
 
 ### Step 3: Create and execute a program which will perform a query
 
-We could do the following query directly from RavenDB Managegment Studio. 
+We could do the following query directly from RavenDB Management Studio. 
 
 ```
 from Orders
@@ -146,11 +146,12 @@ namespace IndexingSample
     }
 }
 ````
-Note that the `Order model class` has just enough code here.
+Note that the `Order model class` has just enough code here. By default `Raven.Client` will preserve old properties even if they are not in the model. 
+This behavior can be changed via 'PreserveDocumentPropertiesNotFoundOnModel' convention
 
-### Step 5: Run the program
+### Step 4: Run the program
 
-### Step 4: Confirm that a new index was automatically created
+### Step 5: Confirm that a new index was automatically created
 
 Return to the `Management Studio` and go to the `Indexes/List of Indexes` section. Surprise! A new
 index named `Auto/Orders/ByCompanyAndOrderedAt` was created for you.
