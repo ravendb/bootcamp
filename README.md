@@ -52,7 +52,7 @@ Use this knowledge to build powerful solutions, obtain better performance, impro
 * [Lesson 2: Document Metadata](src/unit3/lesson2)
 * [Lesson 3: Getting Started with Operations and Commands!](src/unit3/lesson3)
 * [Lesson 4: Performing Batch Operations](src/unit3/lesson4)
-* [Lesson 5: I am Going Through Changes ...](src/unit/lesson5)
+* [Lesson 5: I am Going Through Changes ...](src/unit3/lesson5)
 * [Lesson 6: Data Subscriptions - I would Like to be Notified When it Happens Please](src/unit3/lesson6)
 
 [LET'S BEGIN](src/unit1/lesson1)

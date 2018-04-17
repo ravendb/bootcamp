@@ -24,9 +24,9 @@ Start Visual Studio and create a new `Console Application Project` named
 `GettingMetadata`. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client```
+```Install-Package RavenDB.Client -Version 4.0.3```
 
-This will install the latest RavenDB.Client binaries, which you will need in order
+This will install RavenDB.Client binaries, which you will need in order
 to compile your code.
 
 ### Step 2: Initialize the `DocumentStore`
@@ -72,7 +72,7 @@ static void Main()
 {
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
-        var product = session.Load<Product>("products/1-a");
+        var product = session.Load<Product>("products/1-A");
         var metadata = session.Advanced.GetMetadataFor(product);
 
         foreach (var info in metadata)
@@ -143,7 +143,7 @@ static void Main()
 {
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
-        var command = new GetDocumentsCommand("products/1-a", null, metadataOnly: true);
+        var command = new GetDocumentsCommand("products/1-A", null, metadataOnly: true);
         session.Advanced.RequestExecutor.Execute(command, session.Advanced.Context);
         var result = (BlittableJsonReaderObject)command.Result.Results[0];
         var metadata = (BlittableJsonReaderObject)result["@metadata"];

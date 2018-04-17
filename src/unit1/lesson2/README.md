@@ -63,7 +63,7 @@ Getting all documents from a collection is a nice thing but quite useless. Letâ€
   
 ```
 from Employees
-where FirstName=="Nancy"
+where FirstName == "Nancy"
 ```
 
 FirstName is the name of one of the properties present in the documents from the Employees collection.

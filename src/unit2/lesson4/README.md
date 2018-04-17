@@ -16,7 +16,7 @@ A Map-Reduce process is composed of a `Map` function that projects data from
 documents into a common output (expected) and a `Reduce` function that performs
 a summary operation.
 
-I strongly recommend you to read this [blog post](https://ayende.com/blog/4435/map-reduce-a-visual-explanation).
+I strongly recommend you to read this [blog post](https://ayende.com/blog/179938/ravendb-4-0-unsung-heroes-map-reduce).
 Go ahead! I will be waiting for you.
 
 Still confused? Let's write some code and make it clearer.
@@ -36,9 +36,9 @@ Start Visual Studio and create a new `Console Application Project` named
 `MapReduceIndexes`. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client -Version 4.0.2```
+```Install-Package RavenDB.Client -Version 4.0.3```
 
-This will install the latest RavenDB.Client binaries, which you will need in order
+This will install RavenDB.Client binaries, which you will need in order
 to compile your code.
 
 Then you will need to add the `using` name space at the top of `Program.cs`:

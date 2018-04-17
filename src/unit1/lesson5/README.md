@@ -102,7 +102,7 @@ But, don't worry.
 ````csharp
 var p = session
     .Include<Product>(x => x.Category)
-    .Load("products/1-a");
+    .Load("products/1-A");
 
 var c = session.Load<Category>(p.Category);
 ````
@@ -142,12 +142,12 @@ In this exercise we will create an "Orders Explorer" for the Northwind database.
 As you learned in lesson 2, start Visual Studio and create a new `Console Application Project` named
 Northwind. Then, in the `Package Manager Console`, issue the following command:
 
-```Install-Package RavenDB.Client```
+```Install-Package RavenDB.Client -Version 4.0.3```
 
 Then you will need to add the `using` namespace at the top of `Program.cs`:
 
 ````csharp
-using Raven.Client.Document;
+using Raven.Client.Documents;
 ````
 
 ### Step 2: Create the `DocumentStoreHolder`

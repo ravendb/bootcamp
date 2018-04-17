@@ -43,7 +43,7 @@ company Id.
 using System;
 using System.Linq;
 using static System.Console;
-using Raven.Client.Document;
+using Raven.Client.Documents;
 using NorthwindModels;
 
 namespace OrdersExplorer

@@ -20,15 +20,15 @@ Start Visual Studio and create a new `Console Application Project` named
 Northwind. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client```
+```Install-Package RavenDB.Client -Version 4.0.3```
 
-This will install the latest RavenDB.Client binaries, which you will need in order
+This will install RavenDB.Client binaries, which you will need in order
 to compile your code.
 
 You will need to add the `using` namespace at the top of `Program.cs`:
 
 ````csharp
-using Raven.Client.Document;
+using Raven.Client.Documents;
 ````
 
 ### Step 2: Initialize the `DocumentStore`
@@ -48,7 +48,7 @@ documentStore.Initialize();
 The document store is the starting point for all your interactions with RavenDB.
 
 > A document store is the main client API object, which establishes and manages the connection channel between an application and a database instance. It acts as the connection manager and also exposes methods to perform all operations that you can run against an associated server instance.
-The document store object has an array of URL addresses to the cluster nodes, however it can work against multiple databases that exists there.
+The document store object has an array of URL addresses to the cluster nodes, however it can work against multiple databases that exist there.
 
 > To learn more about the `DocumentStore`, access the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/what-is-a-document-store).
 
@@ -77,7 +77,7 @@ more casual.
 Here is the complete code of this exercise.
 
 ````csharp
-using Raven.Client.Document;
+using Raven.Client.Documents;
 
 namespace Northwind
 {
@@ -95,7 +95,7 @@ namespace Northwind
 
             using (var session = documentStore.OpenSession())
             {
-                var p = session.Load<dynamic>("products/1");
+                var p = session.Load<dynamic>("products/1-A");
                 System.Console.WriteLine(p.Name);
             }
         }
@@ -185,7 +185,7 @@ It just works!
 Here is the complete code for this exercise.
 
 ````csharp
-using Raven.Client.Document;
+using Raven.Client.Documents;
 
 namespace Northwind
 {

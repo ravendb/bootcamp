@@ -93,7 +93,7 @@ For learning purposes let’s load some sample data into our database.
 1.  Select `Databases` on the left panel
 2.  In the right panel, click on the name of the database you just created (that
    is empty for a while)
-3.  In the left panel, click on `settings`, and then `Create Sample Data`
+3.  In the left panel, click on `Settings`, and then `Create Sample Data`
 
 ![](media/26de5d4d9b2cf6a0f8867677aa776b45.png)
 
