@@ -93,13 +93,13 @@ Consider the document `orders/816-a` from the Northwind database.
 
 What if you want to add an order's line? Would we need to load the entire document? No!
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
 `UsingCommands`. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client```
+```Install-Package RavenDB.Client - Version 4.0.3```
 
 ### Step 2: Initialize the `DocumentStore`
 

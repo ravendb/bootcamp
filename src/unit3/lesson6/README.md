@@ -62,7 +62,7 @@ Start Visual Studio and create a new `Console Application Project` named
 `BatchOperationsWithRavenDB`. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client```
+```Install-Package RavenDB.Client -Version 4.0.3```
 
 ### Step 2: Initialize the `DocumentStore`
 

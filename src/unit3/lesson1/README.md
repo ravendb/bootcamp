@@ -26,7 +26,7 @@ The options you have are;
 *   **Limit # of revisions**: How much revisions to keep.
 *   **Limit # of revisions by age**: Configure a minimum retention time before the revisions can be expired.
 
-You can configure it programmatically following the recommendations from the [online documentation](https://ravendb.net/docs/article-page/4.0/Csharp/server/revisions).
+You can configure it programmatically following the recommendations from the [online documentation](https://ravendb.net/docs/article-page/4.0/csharp/server/extensions/revisions).
 
 ## Exercise: Enable revisions for the `Employees` collection
 
@@ -62,7 +62,7 @@ static void Main(string[] args)
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         var revisions = session.Advanced.Revisions
-            .GetFor<Employee>("employee/7-a");
+            .GetFor<Employee>("employees/7-A");
 
         foreach (var revision in revisions)
         {

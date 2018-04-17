@@ -13,7 +13,7 @@ An index is a data structure which RavenDB engine uses to perform all queries.
 Thanks to this data structure, RavenDB can quickly locate data without having
 to search every document in the database.
 
-Internally, RavenDB uses Lucene as the index store, [Lucene.net](https://lucenenet.apache.org/) to be more exact - a port of the Lucene Search engine library written in C#.
+Internally, RavenDB uses Lucene as the index store, [Lucene.Net](https://lucenenet.apache.org/) to be more exact - a port of the Lucene Search engine library written in C#.
 
 ## The `Map` function
 
@@ -87,7 +87,7 @@ that will feed the index with all the documents.
 
 That's it. You just created your first index.
 
-If you click on the `Copy C#` button you will see this codeÇ
+If you click on the `Copy C#` button you will see this code
 
 ```csharp
 
@@ -138,9 +138,9 @@ Start Visual Studio and create a new `Console Application Project` named
 `CreatingARavenIndexWithCSharp`. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client```
+```Install-Package RavenDB.Client -Version 4.0.3```
 
-This will install the latest RavenDB.Client binaries, which you will need in order
+This will install RavenDB.Client binaries, which you will need in order
 to compile your code.
 
 Then you will need to add the `using` name space at the top of `Program.cs`:

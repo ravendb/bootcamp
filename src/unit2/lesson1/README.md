@@ -10,7 +10,7 @@ to the following:
 ````csharp
 var orders = (
     from order in session.Query<Order>()
-    where order.Company == "companies/1-a"
+    where order.Company == "companies/1-A"
     orderby order.OrderedAt
     select order
     ).ToList();
@@ -20,7 +20,7 @@ Remembering RQL syntax:
 
 ````
 from Orders
-where Company="companies/1-a"
+where Company = "companies/1-A"
 order by OrderedAt
 ````
 
@@ -33,7 +33,7 @@ var results = new List<Order>();
 
 foreach (var o in GetDocumentsFor("Orders"))
 {
-    if (o.Company == "companies/1")
+    if (o.Company == "companies/1-A")
         results.Add(o);
 }
 
@@ -66,12 +66,12 @@ is needed.
 
 Start RavenDB console (if you didn't do it yet), and using the web browser, access the
 `RavenDB Management Studio` at the address `http://localhost:8080` (which is the
-default address. Change it if you need). Then open the ``Northwind` database which you
+default address. Change it if you need). Then open the `Northwind` database which you
 created in the previous unit ([Lesson 1](../../unit1/lesson1/README.md)).
 
 ### Step 2: Delete all the existing indexes
-In the left panel, select the `Indexes` section. Then, select all documents and then click 
-on the `delete` button.
+In the left panel, select the `Indexes` section. Then, select all indexes and then click 
+on the `Delete` button.
 
 
 ![delete all indexes](media/a5s6d678fdsfdfsf8768s7fsdf786876a.png)
@@ -82,7 +82,7 @@ We could do the following query directly from RavenDB Management Studio.
 
 ```
 from Orders
-where Company="companies/1-a"
+where Company = "companies/1-A"
 order by OrderedAt
 ```
 
@@ -107,7 +107,7 @@ namespace IndexingSample
             {
                 var ordersIds = (
                     from order in session.Query<Order>()
-                    where order.Company == "companies/1-a"
+                    where order.Company == "companies/1-A"
                     orderby order.OrderedAt
                     select order.Id
                     ).ToList();
@@ -147,7 +147,7 @@ namespace IndexingSample
 }
 ````
 Note that the `Order model class` has just enough code here. By default `Raven.Client` will preserve old properties even if they are not in the model. 
-This behavior can be changed via 'PreserveDocumentPropertiesNotFoundOnModel' convention
+This behavior can be changed via `PreserveDocumentPropertiesNotFoundOnModel` convention
 
 ### Step 4: Run the program
 
