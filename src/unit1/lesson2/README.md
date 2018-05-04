@@ -1,5 +1,4 @@
-Unit 1, Lesson 2 - Let's Query!
-======================================
+# Unit 1, Lesson 2 - Let's Query!
 
 In the previous lesson, you learned how to install RavenDB on your computer,
 create a database, and load sample data. You also learned some fundamental
@@ -7,8 +6,7 @@ concepts about document databases.
 
 In this lesson you will learn how to write your own queries using RQL.
 
-What is RQL?
-----------------
+## What is RQL?
 
 RQL is one of the most exciting features of RavenDB 4. It is a powerful and easy to
 learn language that we designed to make your job easier.
@@ -20,13 +18,11 @@ from the server when queries are being executed. It is designed to expose the Ra
 query pipeline in a way that is easy to understand, easy to use, and not 
 overwhelming to the user.
 
-The [RQL
-documentation](https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/what-is-rql)
+The [RQL documentation](https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/what-is-rql)
 is really good. Please consider reading it.
 
 
-Exercise: Getting Ready to Write Queries
-----------------------------------------
+## Exercise: Getting Ready to Write Queries
 
 It’s time to stop talking and to write some code. So, let’s do it!
 
@@ -39,8 +35,7 @@ It’s time to stop talking and to write some code. So, let’s do it!
 
 ![](media/23k4h1k2j4hk24kh12khj243.png)
 
-Exercise: You First Query
--------------------------
+## Exercise: You First Query
 
 Let’s start easy.
 
@@ -56,8 +51,7 @@ This query returns all the documents inside the `Employees` collection.
 
 Now, go ahead and try other queries like these. Get all the documents from the `Products` collection.
 
-Exercise: Filtering
--------------------
+## Exercise: Filtering
 
 Getting all documents from a collection is a nice thing but quite useless. Let’s make something more exciting.
   
@@ -104,8 +98,7 @@ FirstName is the name of one of the properties present in the documents from the
 }
 ```
 
-Exercise: Shaping the Query Result
-----------------------------------
+## Exercise: Shaping the Query Result
 
 Up to this point we are simply retrieving documents. Let’s say we want to shape what we get. Consider the following query.
 
@@ -143,8 +136,8 @@ One of the results will look like:
 
 We will talk about the `metadata` in the future.
 
-Exercise: Using JavaScript in the query projections
----------------------------------------------------
+## Exercise: Using JavaScript in the query projections
+
 Say you want to do more customization.
 
 ```
@@ -163,8 +156,7 @@ Company field of an Order document contains the ID of another document stored in
 the database. The load instruction is smart enough to get that document for you.
 You can use it to project data as well.
 
-Exercise: Map and Reduce
------------------------------------
+## Exercise: Map and Reduce
 
 Consider the following query:
 
@@ -184,8 +176,7 @@ group key.
 
 This query results in a list of top buyers companies.
 
-How it Works
-------------
+## How it Works
 
 For a while, you shouldn’t care about our implementation details. But, it’s
 important to say that we are concerned about performance and we use a bunch of
@@ -195,8 +186,7 @@ All queries in RavenDB are supported by a sophisticated and efficient indexing
 mechanism. In simple words, we use indexes for all the queries. But, I will
 explain it to greater detail in the future.
 
-Lesson 3
--------------------------
+## Lesson 3
 
 You have just completed the second lesson. Now you know the basics about Querying with RavenDB. 
 

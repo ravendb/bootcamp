@@ -1,5 +1,4 @@
-Unit 1, Lesson 1 - Getting Started
-==================================
+# Unit 1, Lesson 1 - Getting Started
 
 Working with databases does not have to be boring. RavenDB makes your life easier. 
 Gone are the days thinking about how to accommodate your data in rows and 
@@ -9,8 +8,7 @@ Do you already know RavenDB? Not a problem. Prepare to learn some nice surprises
 
 Let's start simple. In this lesson, you will learn how to install and start using RavenDB on your computer.
 
-Getting RavenDB up and Running
-------------------------------
+## Getting RavenDB up and Running
 
 First things first! 
 
@@ -32,9 +30,9 @@ public! There are no guarantees about availability.
 Now you can get RavenDB up and running with Docker. If you have Docker installed,  
 run the following command:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-docker run -e UNSECURED_ACCESS_ALLOWED=PublicNetwork -p 8080:8080 ravendb/ravendb
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+docker run -p 8080:8080 ravendb/ravendb
+```
 
 Docker will now get the latest RavenDB version and spin up a new container to
 host it. Note that we run it in developer mode without any authentication.
@@ -43,7 +41,6 @@ You can learn a lot about how RavenDB works on Docker following the [official do
 
 ### Exercise: Running on Windows, Linux or MacOS
 
-
 If you want to set up RavenDB on Windows, Linux, or MacOS, you will need to download 
 it from <http://ravendb.net/download>. Make sure you are selecting the right 
 distribution for your platform. You will get a compressed file that you can extract to 
@@ -51,7 +48,7 @@ a folder of your preference.
 
 Done? 
 
-Now, run the `./run.ps` (or `./run.sh` depending on your operational system) located in RavenDB folder. This will start 
+Now, run the `./run.ps1` (or `./run.sh` depending on your operational system) located in RavenDB folder. This will start 
 a console application in interactive mode, inside a console application. The script
  will open your browser and start the RavenDB Management Studio.
 
@@ -61,8 +58,7 @@ Running RavenDB for the first time, you will need to do a little setup. You just
 need to answer the questions to get it done. More information is available in the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/start/getting-started)
 
 
-Your First Database
--------------------
+## Your First Database
 
 RavenDB Management Studio was completely re-designed. We did a lot of work to make easier to use than ever.
 
@@ -108,8 +104,7 @@ lot of documents for you.
 
 ![](media/3f24692d124b788b08cb11e49d8fb66f.png)
 
-Exploring the Database
-----------------------
+## Exploring the Database
 
 We just launched RavenDB in interactive mode, created our first
 database and loaded some sample data. But, wait! It looks remarkably similar to
@@ -123,8 +118,7 @@ If you click on any "record", you will start to see the NoSQL magic!
 
 All RavenDB data is stored as JSON.
 
-Understanding the `Document` Concept
-------------------------------------
+## Understanding the `Document` Concept
 
 Using the `Go to document` feature (the text box in the Studio toolbar), go to
 the document `orders/101-A`.
@@ -184,8 +178,7 @@ as in the case of the `ShipTo` property which has all the shipping information.
 
 In a Document Database, documents are organized in collections.
 
-Understanding the `Collection` Concept
---------------------------------------
+## Understanding the `Collection` Concept
 
 Collections provide a good way to establish a level of organization. For
 example, documents holding customers data are very different from documents
@@ -196,8 +189,7 @@ its type (like "Customers" and "Products").
 Note that documents that are in the same collection can have a completely
 different structures, which is fine because RavenDB is schema-less.
 
-Exercise: Exploring the Northwind Collections
----------------------------------------------
+## Exercise: Exploring the Northwind Collections
 
 1.  Open the RavenDB Management Studio at <http://localhost:8080>
 2.  Open the Northwind Database
@@ -206,14 +198,11 @@ Exercise: Exploring the Northwind Collections
 The user interface is pretty simple. We strongly recommend you to try to create your documents, edit and so on.
 You can create another database and load the sample data if you want.
 
-On To Lesson 2   
--------------------------
+## Onto Lesson 2   
 
 Awesome! You have just completed your first lesson.
 
 If you are getting started with document databases and want to learn more about
-document modeling, we recommend you to watch this [Ayende’s
-talk](https://www.youtube.com/watch?v=FY0BiZaJwL4).
-
+document modeling, we recommend you to watch this [Ayende’s talk](https://www.youtube.com/watch?v=FY0BiZaJwL4).
 
 **Let's move onto** [Lesson 2](../lesson2/README.md) **and start querying.**
