@@ -70,9 +70,9 @@ using (var session = documentStore.OpenSession())
 RavenDB is schema-less. We don't need to create any class to load documents from the server.
 
 > When you want to store data in a relational database, you first define a schema -
-a defined structure for the database which says what tables and columns exist and
-which data types each columns can hold. With RavenDB, storing and loading data is much
-more casual.
+> a defined structure for the database which says what tables and columns exist and
+> which data types each columns can hold. With RavenDB, storing and loading data is much
+> more casual.
 
 Here is the complete code of this exercise.
 

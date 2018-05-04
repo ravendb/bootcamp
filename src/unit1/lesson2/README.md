@@ -33,7 +33,7 @@ It’s time to stop talking and to write some code. So, let’s do it!
 4.  In the left panel, select the `Documents` section.
 5.  Click on `Query`.
 
-![](media/23k4h1k2j4hk24kh12khj243.png)
+![Fig 1](media/23k4h1k2j4hk24kh12khj243.png)
 
 ## Exercise: You First Query
 
@@ -85,7 +85,9 @@ FirstName is the name of one of the properties present in the documents from the
     "Extension": "5467",
     "ReportsTo": "employees/2-A",
     "Notes": [
-        "Education includes a BA in psychology from Colorado State University in 1970.  She also completed \"The Art of the Cold Call.\"  Nancy is a member of Toastmasters International."
+        "Education includes a BA in psychology from Colorado State University in 1970.",
+        "She also completed \"The Art of the Cold Call\".",
+        "Nancy is a member of Toastmasters International."
     ],
     "Territories": [
         "06897",
@@ -112,7 +114,7 @@ Here, we are not interested in all data from the Orders documents. We are specif
 
 One of the results will look like:
 
-```
+```json
 {
     "ProductNames": [
         "Ikura",

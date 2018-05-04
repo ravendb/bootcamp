@@ -29,7 +29,7 @@ The document store holds all client-side configuration for RavenDB - how we are
 going to serialize entities, how to load balance reads, cache sizes, timeouts, 
 and much more.
 
-**In  typical applications, you will have a single document store per application.**
+**In typical applications, you will have a single document store per application.**
 
 ## Exercise: Moving the `DocumentStore` instance to a singleton class
 
@@ -40,7 +40,7 @@ a typical initialization pattern.
 
 ### Step 1: Making the document store instance singleton
 
-````csharp
+```csharp
 public static class DocumentStoreHolder
 {
     private static readonly Lazy<IDocumentStore> LazyStore =
@@ -58,7 +58,7 @@ public static class DocumentStoreHolder
     public static IDocumentStore Store =>
         LazyStore.Value;
 }
-````
+```
 
 The use of Lazy ensures that the document store is only created once, without
 having to worry about locking or other thread safety issues.
@@ -67,7 +67,7 @@ having to worry about locking or other thread safety issues.
 
 Now you can improve your code to use the `DocumentStoreHolder`.
 
-````csharp
+```csharp
 class Program
 {
     static void Main()
@@ -80,22 +80,21 @@ class Program
         }
     }
 }
-````
+```
 
 ## Introducing Conventions
 
 An important RavenDB concept is conventions.
 
 > Conventions are a series of policy decisions that have already been made for you.
-They range from deciding which property holds the document id, to how the entity
-should be serialized to a document.
+> They range from deciding which property holds the document id, to how the entity
+> should be serialized to a document.
 
 A lot of thought and effort was put into ensuring you won't have to touch
 the conventions. But you can do it every time you need to.
 
 We will not touch RavenDB conventions right now, simply because we don't need
-to do it. If you want to know more, you can access the [RavenDB conventions
-documentation](https://ravendb.net/docs/article-page/latest/csharp/client-api/configuration/conventions/what-are-conventions).
+to do it. If you want to know more, you can access the [RavenDB conventions documentation](https://ravendb.net/docs/article-page/latest/csharp/client-api/configuration/conventions/what-are-conventions).
 
 ## Great job! 
 

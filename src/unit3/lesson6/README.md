@@ -32,14 +32,14 @@ Done?!
 Now, to create a Data Subscription you need to open the `Settings` section of your database,
 click on the `Manage Ongoing Tasks` option, then click on the `Add Task` button.
 
-![](media/new_subscription_task.png)
+![Subscription task](media/new_subscription_task.png)
 
 Now, click on `Subscription`.
 
 RavenDB is asking you a Task Name (let's call it `Big Orders`) and let's provide the very
 same query we used before.
 
-![](media/big_orders.png)
+![Big orders](media/big_orders.png)
 
 The user interface allows me to do a test before save (I did it!). 
 
