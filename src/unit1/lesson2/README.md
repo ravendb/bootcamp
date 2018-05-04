@@ -1,4 +1,4 @@
-Unit 1, Lesson 2 – Lets Query!
+Unit 1, Lesson 2 - Let's Query!
 ======================================
 
 In the previous lesson, you learned how to install RavenDB on your computer,

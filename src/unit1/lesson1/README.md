@@ -1,4 +1,4 @@
-Unit 1, Lesson 1 – Getting Started
+Unit 1, Lesson 1 - Getting Started
 ==================================
 
 Working with databases does not have to be boring. RavenDB makes your life easier. 
