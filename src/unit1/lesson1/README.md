@@ -62,7 +62,7 @@ need to answer the questions to get it done. More information is available in th
 
 RavenDB Management Studio was completely re-designed. We did a lot of work to make easier to use than ever.
 
-![](media/d1ff71a639f63e04488b56706a91f423.png)
+![Fig 1](media/d1ff71a639f63e04488b56706a91f423.png)
 
 ### Exercise: Creating a Database
 
@@ -80,7 +80,7 @@ Congratulations! You just created your first RavenDB database.
 
 But, it is empty.
 
-![](media/3f7ec9fbf9d626ebbe905e7a589e81ed.png)
+![Fig 2](media/3f7ec9fbf9d626ebbe905e7a589e81ed.png)
 
 ### Exercise: Loading Sample Data
 
@@ -91,18 +91,18 @@ For learning purposes let’s load some sample data into our database.
    is empty for a while)
 3.  In the left panel, click on `Settings`, and then `Create Sample Data`
 
-![](media/26de5d4d9b2cf6a0f8867677aa776b45.png)
+![Fig 3](media/26de5d4d9b2cf6a0f8867677aa776b45.png)
 
 4.  Click on the big `Create` button
 
 > The Northwind database is the sample database that came with SQL Server;
-it has been used for decades as the sample database in the Microsoft
-community. We chose this database as our sample data because you will be familiar with its relational format.
+> it has been used for decades as the sample database in the Microsoft
+> community. We chose this database as our sample data because you will be familiar with its relational format.
 
 Going to the `Documents` section (left panel), you will see that we created a
 lot of documents for you.
 
-![](media/3f24692d124b788b08cb11e49d8fb66f.png)
+![Fig 4](media/3f24692d124b788b08cb11e49d8fb66f.png)
 
 ## Exploring the Database
 
@@ -112,9 +112,9 @@ what you see in a relational database.
 
 The data is shown in a grid format with the tables on the left.
 
-If you click on any "record", you will start to see the NoSQL magic!
+If you click on any *record*, you will start to see the NoSQL magic!
 
-![](media/4bcc55018cd05b354a0d98c3ce7bcfb7.png)
+![Fig 5](media/4bcc55018cd05b354a0d98c3ce7bcfb7.png)
 
 All RavenDB data is stored as JSON.
 
@@ -169,7 +169,7 @@ the document `orders/101-A`.
 
 It is very different from what we're used to in relational databases.
 
->   \> A document is a self-describing, hierarchical tree data structure which
+>   A document is a self-describing, hierarchical tree data structure which
 >   can consist of maps, collections, and scalar values.
 
 RavenDB database stores documents, which are plain JSON

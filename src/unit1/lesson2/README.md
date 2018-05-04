@@ -13,10 +13,10 @@ learn language that we designed to make your job easier.
 
 From the Documentation:
 
->RQL, the Raven Query Language, is a SQL-like language used to retrieve the data
-from the server when queries are being executed. It is designed to expose the RavenDB
-query pipeline in a way that is easy to understand, easy to use, and not 
-overwhelming to the user.
+> RQL, the Raven Query Language, is a SQL-like language used to retrieve the data
+> from the server when queries are being executed. It is designed to expose the RavenDB
+> query pipeline in a way that is easy to understand, easy to use, and not 
+> overwhelming to the user.
 
 The [RQL documentation](https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/what-is-rql)
 is really good. Please consider reading it.
