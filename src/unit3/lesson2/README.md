@@ -143,8 +143,10 @@ static void Main()
 {
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
-        var command = new GetDocumentsCommand("products/1-A", null, metadataOnly: true);
-        session.Advanced.RequestExecutor.Execute(command, session.Advanced.Context);
+        var command = new GetDocumentsCommand(
+            "products/1-A", null, metadataOnly: true);
+        session.Advanced.RequestExecutor.Execute(
+            command, session.Advanced.Context);
         var result = (BlittableJsonReaderObject)command.Result.Results[0];
         var metadata = (BlittableJsonReaderObject)result["@metadata"];
 
@@ -157,7 +159,7 @@ static void Main()
 }
 ````
 
-Don't be afraid of these new types. Take time to get confortable with it.
+Don't be afraid of these new types. Take time to get comfortable with it.
 
 ## Great job! Onto Lesson 3!
 

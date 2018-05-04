@@ -21,7 +21,7 @@ from documents. You can also transform the projected results.
 
 Let me share a short example:
 
-```
+```csharp
 // request Name, City and Country for all entities from 'Companies' collection
 var results = session
     .Query<Company>()

@@ -83,6 +83,7 @@ Consider the Northwind `products/1-A` document:
     "@metadata": {
         "@collection": "Products"
     }
+}
 ````
 
 As you can see, the `Supplier` and `Category` properties are clearly references to
