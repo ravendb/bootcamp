@@ -23,12 +23,11 @@ In Unit 1, you will learn the fundamentals of RavenDB.
 First, you will learn how to install and make it work on your machine. As you will see, RavenDB makes starting easy by providing an embedded sample database – if you think "Northwind", you are right! – which you can use for your learning process with minimal effort. Then, you will write some code to connect to the database and quickly store, load, modify and delete documents.
 
 * [Lesson 1: Getting Started](src/Unit-1/lesson1)
-* [Lesson 2: It is querying time!](src/Unit-1/lesson2)
-* [Lesson 3: Let's code](src/Unit-1/lesson3)
-* [Lesson 4: Basics of DocumentStore](src/Unit-1/lesson4)
-* [Lesson 5: Loading Documents](src/Unit-1/lesson5)
-* [Lesson 6: Querying fundamentals in the C# side] (src/Unit-1/lesson6)
-* [Lesson 7: Storing, modifying and deleting documents](src/Unit-1/lesson7)
+* [Lesson 3: Let's code](src/Unit-1/lesson2)
+* [Lesson 4: Basics of DocumentStore](src/Unit-1/lesson3)
+* [Lesson 5: Loading Documents](src/Unit-1/lesson4)
+* [Lesson 6: Querying fundamentals in the C# side](src/Unit-1/lesson5)
+* [Lesson 7: Storing, modifying and deleting documents](src/Unit-1/lesson6)
 
 ### Unit 2 - Beyond the basics
 
