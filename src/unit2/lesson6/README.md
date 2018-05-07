@@ -95,6 +95,6 @@ functions are pure JavaScript (You shouldn't have doubts about the JavaScript po
 ## Great job! Onto Lesson 7!
 
 Want to learn more about this functionality, I recommend you to read to read our article that covers 
-the projection functionality which can be found [here]( https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/projections).
+the projection functionality which can be found [here](https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/projections).
 
 **Let's move onto [Lesson 7](../lesson7/README.md).**
