@@ -22,7 +22,8 @@ from documents. You can also transform the projected results.
 Let me share a short example:
 
 ```csharp
-// request Name, City and Country for all entities from 'Companies' collection
+// request Name, City and Country 
+// for all entities from 'Companies' collection
 var results = session
     .Query<Company>()
     .Select(x => new
@@ -70,7 +71,9 @@ Let's do something more complex.
 
 ```csharp
 var results = (from e in session.Query<Employee>()
-               let format = (Func<Employee, string>)(p => p.FirstName + " " + p.LastName)
+               let format = 
+                   (Func<Employee, string>)(p => 
+                        p.FirstName + " " + p.LastName)
                select new
                {
                    FullName = format(e)
