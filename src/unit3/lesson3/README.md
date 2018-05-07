@@ -29,8 +29,10 @@ static void Main()
 {
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
-        var command = new GetDocumentsCommand("products/1-a", null, metadataOnly: true);
-        session.Advanced.RequestExecutor.Execute(command, session.Advanced.Context);
+        var command = new GetDocumentsCommand(
+            "products/1-a", null, metadataOnly: true);
+        session.Advanced.RequestExecutor.Execute(
+            command, session.Advanced.Context);
         var result = (BlittableJsonReaderObject)command.Result.Results[0];
         var metadata = (BlittableJsonReaderObject)result["@metadata"];
 
