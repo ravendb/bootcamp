@@ -85,7 +85,8 @@ FirstName is the name of one of the properties present in the documents from the
     "Extension": "5467",
     "ReportsTo": "employees/2-A",
     "Notes": [
-        "Education includes a BA in psychology from Colorado State University in 1970.",
+        "Education includes a BA in psychology", 
+        "from Colorado State University in 1970.",
         "She also completed \"The Art of the Cold Call\".",
         "Nancy is a member of Toastmasters International."
     ],
