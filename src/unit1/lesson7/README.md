@@ -63,7 +63,7 @@ entity instance.
 
 **All the changes are applied on the server side only after you call the `SaveChanges` method.**
 
-> The session implements the Unit of Work pattern. Learn more reading the [official documentation]( http://ravendb.net/docs/article-page/latest/csharp/client-api/session/what-is-a-session-and-how-does-it-work).
+> The session implements the Unit of Work pattern. Learn more reading the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/client-api/session/what-is-a-session-and-how-does-it-work).
 
 ## Modifying Documents with the `Store` Method
 
