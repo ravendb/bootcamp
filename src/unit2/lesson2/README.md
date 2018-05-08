@@ -110,12 +110,12 @@ public class Index_Employees_ByFirstAndLastName :AbstractIndexCreationTask
 		{
 			Maps =
 			{
-			@"from doc in docs.Employees
-              select new
-              {
-                  FirstName = doc.FirstName,
-                  LastName = doc.LastName
-              }"
+                @"from doc in docs.Employees
+                    select new
+                    {
+                        FirstName = doc.FirstName,
+                        LastName = doc.LastName
+                    }"
 			}
 		};
 	}
