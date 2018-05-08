@@ -143,7 +143,9 @@ In this exercise we will create an "Orders Explorer" for the Northwind database.
 As you learned in lesson 2, start Visual Studio and create a new `Console Application Project` named
 Northwind. Then, in the `Package Manager Console`, issue the following command:
 
-```Install-Package RavenDB.Client -Version 4.0.3```
+```powershell
+Install-Package RavenDB.Client -Version 4.0.3
+```
 
 Then you will need to add the `using` namespace at the top of `Program.cs`:
 

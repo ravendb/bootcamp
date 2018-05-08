@@ -14,9 +14,9 @@ answering a certain criteria.
 Using SQL it would be easy. You just need to use the `UPDATE` and `DELETE`
 statements.
 
-````SQL
+```sql
 UPDATE Products SET Price = Price * 1.1 WHERE Discontinued = false;
-````
+```
 
 Anyway, this is not the case when using NoSQL databases, where set
 based operations are not supported.
@@ -39,7 +39,9 @@ Start Visual Studio and create a new `Console Application Project` named
 `BatchOperationsWithRavenDB`. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client -Version 4.0.3```
+```powershell
+Install-Package RavenDB.Client -Version 4.0.3
+```
 
 ### Step 2: Initialize the `DocumentStore`
 

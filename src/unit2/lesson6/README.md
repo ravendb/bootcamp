@@ -39,7 +39,7 @@ This is amazing! Right?
 
 The related RQL is pretty simple as well:
 
-```
+```sql
 from Companies
 select Name, Address.City as City, Address.Country as Country
 ```
@@ -58,7 +58,7 @@ var results = (from e in session.Query<Employee>()
 
 And here it is the RQL:
 
-```
+```sql
 from Employees as e
 select {
     FullName : e.FirstName + " " + e.LastName
@@ -84,7 +84,7 @@ What are we doing? We just created a function that will run on the server-side.
 
 But, ... let's look the RQL.
 
-```
+```sql
 declare function output(e) {
 	var format = function(p){ return p.FirstName + " " + p.LastName; };
 	return { FullName : format(e) };

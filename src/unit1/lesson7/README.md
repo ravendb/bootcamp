@@ -105,7 +105,9 @@ Start Visual Studio and create a new `Console Application Project` named
 Contacts Manager. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client -Version 4.0.3```
+```powershell
+Install-Package RavenDB.Client -Version 4.0.3
+```
 
 This will install RavenDB.Client binaries, which you will need in order
 to compile your code.

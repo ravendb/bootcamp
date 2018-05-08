@@ -12,7 +12,7 @@ In this last lesson, you will learn how to work with Data Subscriptions.
 
 It's simpler to explain this concept with an example. Consider the following query:
 
-```
+```sql
 from Orders 
 where Lines.length > 5
 ```
@@ -62,7 +62,9 @@ Start Visual Studio and create a new `Console Application Project` named
 `BatchOperationsWithRavenDB`. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client -Version 4.0.3```
+```powershell
+Install-Package RavenDB.Client -Version 4.0.3
+```
 
 ### Step 2: Initialize the `DocumentStore`
 
