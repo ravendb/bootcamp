@@ -34,8 +34,8 @@ Just as an example, this is the Map function automatically created by RavenDB in
 ````csharp
 from doc in docs.Orders
 select new {
-	OrderedAt = doc.OrderedAt,
-	Company = doc.Company
+    OrderedAt = doc.OrderedAt,
+    Company = doc.Company
 }
 ````
 
@@ -102,23 +102,23 @@ using Raven.Client.Documents.Indexes;
 
 public class Index_Employees_ByFirstAndLastName :AbstractIndexCreationTask
 {
-	public override string IndexName => "Employees/ByFirstAndLastName";
+    public override string IndexName => "Employees/ByFirstAndLastName";
 
-	public override IndexDefinition CreateIndexDefinition()
-	{
-		return new IndexDefinition
-		{
-			Maps =
-			{
-			@"from doc in docs.Employees
-              select new
-              {
-                  FirstName = doc.FirstName,
-                  LastName = doc.LastName
-              }"
-			}
-		};
-	}
+    public override IndexDefinition CreateIndexDefinition()
+    {
+        return new IndexDefinition
+        {
+            Maps =
+            {
+                @"from doc in docs.Employees
+                    select new
+                    {
+                        FirstName = doc.FirstName,
+                        LastName = doc.LastName
+                    }"
+            }
+        };
+    }
 }
 ```
 This looks nice. 
