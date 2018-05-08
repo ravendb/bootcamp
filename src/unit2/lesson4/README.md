@@ -36,7 +36,9 @@ Start Visual Studio and create a new `Console Application Project` named
 `MapReduceIndexes`. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client -Version 4.0.3```
+```powershell
+Install-Package RavenDB.Client -Version 4.0.3
+```
 
 This will install RavenDB.Client binaries, which you will need in order
 to compile your code.
@@ -187,7 +189,7 @@ ensures that all data is returned from the server in a single response.
 By the way, if you are trying to figure out how to do this query using RQL, 
 here it is:
 
-```
+```sql
 from index 'Products/ByCategory'
 include Category
 ```

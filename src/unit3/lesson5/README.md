@@ -21,7 +21,7 @@ Start Visual Studio and create a new `Console Application Project` named
 `BasicsOfChangesAPI`. Then, in the `Package Manager Console`, issue the following
 commands:
 
-```
+```powershell
 Install-Package RavenDB.Client -Version 4.0.3
 Install-Package System.Reactive.Core
 Install-Package System.Reactive.Linq

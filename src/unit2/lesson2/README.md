@@ -111,11 +111,11 @@ public class Index_Employees_ByFirstAndLastName :AbstractIndexCreationTask
 			Maps =
 			{
 			@"from doc in docs.Employees
-select new
-{
-    FirstName = doc.FirstName,
-    LastName = doc.LastName
-}"
+              select new
+              {
+                  FirstName = doc.FirstName,
+                  LastName = doc.LastName
+              }"
 			}
 		};
 	}
@@ -138,7 +138,9 @@ Start Visual Studio and create a new `Console Application Project` named
 `CreatingARavenIndexWithCSharp`. Then, in the `Package Manager Console`, issue the following
 command:
 
-```Install-Package RavenDB.Client -Version 4.0.3```
+```powershell
+Install-Package RavenDB.Client -Version 4.0.3
+```
 
 This will install RavenDB.Client binaries, which you will need in order
 to compile your code.

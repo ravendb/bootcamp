@@ -18,11 +18,11 @@ var orders = (
 
 Remembering RQL syntax:
 
-````
+```sql
 from Orders
 where Company = "companies/1-A"
 order by OrderedAt
-````
+```
 
 
 You might assume that the following pseudo code is run in the server side. Am I right?
@@ -80,7 +80,7 @@ on the `Delete` button.
 
 We could do the following query directly from RavenDB Management Studio. 
 
-```
+```sql
 from Orders
 where Company = "companies/1-A"
 order by OrderedAt

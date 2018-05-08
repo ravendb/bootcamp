@@ -42,7 +42,7 @@ Let’s start easy.
 1.  Assuming you are already in the Query editor (inside the RavenDB Management
     Studio), type the following query.
 
-```
+```sql
 from Employees
 ```
 2.  Click on the `Run` button.
@@ -55,7 +55,7 @@ Now, go ahead and try other queries like these. Get all the documents from the `
 
 Getting all documents from a collection is a nice thing but quite useless. Let’s make something more exciting.
   
-```
+```sql
 from Employees
 where FirstName == "Nancy"
 ```
@@ -105,7 +105,7 @@ FirstName is the name of one of the properties present in the documents from the
 
 Up to this point we are simply retrieving documents. Let’s say we want to shape what we get. Consider the following query.
 
-```
+```sql
 from Orders
 where Lines.Count > 4
 select Lines[].ProductName as ProductNames, OrderedAt, ShipTo.City as City
@@ -143,7 +143,7 @@ We will talk about the `metadata` in the future.
 
 Say you want to do more customization.
 
-```
+```sql
 from Orders as o
 load o.Company as c
 select {
@@ -163,7 +163,7 @@ You can use it to project data as well.
 
 Consider the following query:
 
-```
+```sql
 from Orders
 group by Company
 where count() > 5
