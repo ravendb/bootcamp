@@ -35,9 +35,7 @@ this is amazing.
 As you probably deduced, RavenDB uses HTTP as the communication protocol. The client API uses POST method to issue the query request.
 However GET requests are still handled by the server. Here is the URL to execute the query of the code above:
 
-````
-http://localhost:8080/databases/Northwind/queries?query=from%20index%20%27Products/ByCategory%27%20include%20Category
-````
+<div style="font-family: monospace; word-wrap: break-word; word-break: break-all;">http://localhost:8080/databases/Northwind/queries?query=from%20index%20%27Products/ByCategory%27%20include%20Category</div>
 
 Go ahead! Click [here](http://localhost:8080/databases/Northwind/queries?query=from%20index%20%27Products/ByCategory%27%20include%20Category) and
 check out this query result.
@@ -116,9 +114,8 @@ static void Main(string[] args)
 
 We will still have only one request...
 
-````
-http://localhost:8080/databases/Northwind/queries?query=from%20index%20%27Products/ByCategory%27
-````
+<div style="font-family: monospace; word-wrap: break-word; word-break: break-all;">http://localhost:8080/databases/Northwind/queries?query=from%20index%20%27Products/ByCategory%27</div>
+
 
 ... but now we will have a smaller response.
 
