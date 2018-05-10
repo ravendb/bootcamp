@@ -1,6 +1,6 @@
-# Unit 3, Lesson 3 - Getting started with Operations and Commands!
+# Unit 3, Lesson 3 - Getting started with Operations and Commands
 
-This has been a long journey, right? You already know the basics of RavenDB. But
+You already know the basics of RavenDB. But
 there are a lot of specifics that can help you to create amazing solutions.
 
 In this lesson you will learn about RavenDB Operations and Commands. For the most part, that is
@@ -10,7 +10,7 @@ in case.
 ## What are RavenDB Operations and Commands?
 
 Using Operations and Commands you can manipulate data and change
-configuration on a server. But, wait a minute! Isn't exactly what you do using
+configuration on a server. But isn't this exactly what you do using
 the `session` object?
 
 The `session` is a high level interface to RavenDB which provides the identity map
@@ -19,7 +19,7 @@ start using the Operations. Also, there are operations for Database Maintenance,
 
 There is an exhaustive list of RavenDB operations available in the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/operations/what-are-operations).
 
-## First-time using RavenDB Operations and Commands
+## First-Time Using RavenDB Operations and Commands
 
 You already used a command in the [previous lesson](../lesson1/README.md) to get
 the metadata information from the server. Let's remember it.
@@ -45,9 +45,10 @@ static void Main()
 }
 ````
 
-The `GetDocumentsCommand` method expose a low-level way to get the metadata of a potentially large document, without loading it.
+The `GetDocumentsCommand` method exposes a low-level way to get the metadata from a potentially large document without loading it.
 
 ## Exercise: Adding an order's line into an order document without loading the entire document
+
 Consider the document `orders/816-a` from the Northwind database.
 
 ````csharp
@@ -107,7 +108,7 @@ Install-Package RavenDB.Client -Version 4.0.3
 
 ### Step 2: Initialize the `DocumentStore`
 
-Here we go again. Let's manage the `DocumentStore` using our great friend `DocumentStoreHolder` pattern.  
+Let's manage the `DocumentStore` using our great friend `DocumentStoreHolder` pattern.  
 
 ````csharp
 using System;
@@ -208,8 +209,7 @@ This version is a lot easier. Right?
 
 ## Great job! Onto Lesson 4!
 
-Awesome! You just learned about the basics about operations. In the next lesson you will learn
-how to change multiple documents with a single request.
+Awesome! 
 
 If you want to know more about Patching we recomend you to use the [documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/operations/patching/single-document)
 

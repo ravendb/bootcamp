@@ -1,14 +1,11 @@
-# Unit 3, Lesson 6 - Data Subscriptions - I would like to be notified when <IMPORTANT EVENT> happens, pls
+# Unit 3, Lesson 6 - Data Subscriptions - I Would Like to be Notified when an <IMPORTANT EVENT> Happens
 
-That was a long journey. Am I right? We are in the last lesson of this bootcamp.
-
-You already know the basics about how to use RavenDB and you are ready to move on. Please,
-note that there is an [extensive documentation](http://ravendb.net/docs) available online. Probably
-you want to know about clustering, for example. Thare is much more to learn than we covered here.
+You already know the basics about how to use RavenDB and you are ready to move on. Please
+note that there is an [extensive documentation](http://ravendb.net/docs) available online. You can learn more about other features like clustering, for example. Thare is much more to learn than we covered.
 
 In this last lesson, you will learn how to work with Data Subscriptions.
 
-## Data Subscriptions?
+## Data Subscriptions
 
 It's simpler to explain this concept with an example. Consider the following query:
 
@@ -17,31 +14,27 @@ from Orders
 where Lines.length > 5
 ```
 
-This would retrieve all the big orders from your database. But, what if a new big order 
+This would retrieve all the big orders from your database. But what if a new big order 
 is added after you run this query. What if you want to be notified whenever a big order
-occurs? YEAH! THIS IS WHAT I WAS TALKING ABOUT.
+occurs? 
 
 ## Exercise: Creating a Data Subscription
 
-I assume that, at this point, you know how to open the Studio and the Northwind database.
+Open the Studio and the Northwind database.
 
-Go do that! I will wait...
-
-Done?!
-
-Now, to create a Data Subscription you need to open the `Settings` section of your database,
-click on the `Manage Ongoing Tasks` option, then click on the `Add Task` button.
+To create a Data Subscription you need to open the `Settings` section of your database.
+Click on the `Manage Ongoing Tasks` option, then click on the `Add Task` button.
 
 ![Subscription task](media/new_subscription_task.png)
 
 Now, click on `Subscription`.
 
-RavenDB is asking you a Task Name (let's call it `Big Orders`) and let's provide the very
+RavenDB is asking you for a Task Name (let's call it `Big Orders`) and let's provide the very
 same query we used before.
 
 ![Big orders](media/big_orders.png)
 
-The user interface allows me to do a test before save (I did it!). 
+The user interface allows you to do a test before saving. 
 
 Save it!
 
@@ -68,7 +61,7 @@ Install-Package RavenDB.Client -Version 4.0.3
 
 ### Step 2: Initialize the `DocumentStore`
 
-Here we go again. let's manage the `DocumentStore` using our great friend `DocumentStoreHolder` pattern.  
+Let's manage the `DocumentStore` using our great friend the `DocumentStoreHolder` pattern.  
 
 ````csharp
 using System;
@@ -100,7 +93,7 @@ namespace BatchOperationsWithRavenDB
 ### Step 3: Subscribing...
 
 Subscriptions are consumed by processing batches of documents received from the server. 
-To do this, we need to get an instance of `SubscriptionWorker`.
+We need to get an instance of `SubscriptionWorker`.
 
 ```csharp
 static void Main(string[] args)
@@ -123,7 +116,7 @@ static void Main(string[] args)
 }
 ```
 
-## How Data Subscriptions work?
+## How Data Subscriptions Work
 
 There are some important facts that you need to know to use this feature correctly.
 
@@ -131,5 +124,6 @@ There are some important facts that you need to know to use this feature correct
 * The client sends an acknowledgment to the server once it is done with processing the batch.
 * The server keeps track of the latest document that was acknowledged by the client, so that processing can be continued from the latest acknowledged position if it was paused or interrupted.
 
-## Great job! Next stop: clusters!
+## Great job! Next stop: Clusters!
+
 Congratulations! Now you know some advanced features of RavenDB. In the next Unit we will start to work with clusters.
