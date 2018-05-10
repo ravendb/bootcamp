@@ -1,6 +1,6 @@
 # Unit 3, Lesson 1 - Revisions
 
-Hello and welcome to Unit 3\. You already know the basics of using RavenDB. It is time to get started using some more advanced features.
+Hello and welcome to Unit 3. You already know the basics of using RavenDB. It is time to get started using some more advanced features.
 
 In this lesson, you will learn how to enable document revisions on your databases.
 

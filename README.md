@@ -55,6 +55,17 @@ Use this knowledge to build powerful solutions, obtain better performance, impro
 * [Lesson 5: I am Going Through Changes ...](src/unit3/lesson5)
 * [Lesson 6: Data Subscriptions - I would Like to be Notified When it Happens Please](src/unit3/lesson6)
 
+### Unit 4 - Cluster!
+
+In Unit 4, you will learn the basics about how to set up, manage and use clusters using RavenDB.
+
+Use this knowledge to build available and resilient databases solutions.
+
+* [Lesson 1: Setting up your first cluster](src/unit4/lesson1)
+* [Lesson 2: Database and Database Group](src/unit4/lesson2)
+* [Lesson 3: Considerations on the client side.](src/unit4/lesson4)
+
+
 [LET'S BEGIN](src/unit1/lesson1)
 
 Enjoy your RavenDB Bootcamp and feel free to share your feedback with us.
