@@ -38,7 +38,7 @@ In this excercise you will learn how to add a second node to the cluster.
 
 ### Step 1: Starting a second server instance
 
-Now that the “nodes problem” is solved. Let’s simple start a second instance of the RvenDB server. Typically, you would do that on a separate machine, but to make this exercise easier, we’ll run it on the same computer. Open a new terminal session and run the following command:
+Now that the “nodes problem” is solved. Let’s simple start a second instance of the RavenDB server. Typically, you would do that on a separate machine, but to make this exercise easier, we’ll run it on the same computer. Open a new terminal session and run the following command:
 
 <div style="font-family: monospace; word-wrap: break-word; word-break: break-all;">.\Server\Raven.Server.exe --ServerUrl=http://127.0.0.2:8080 --ServerUrl.Tcp=tcp://127.0.0.2:38888 --Logs.Path=Logs/B --DataDir=Data/B</div>
 
