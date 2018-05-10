@@ -1,4 +1,4 @@
-# Unit 3, Lesson 1 - Setting up your first cluster
+# Unit 4, Lesson 1 - Setting up your first cluster
 
 Hello and welcome to Unit 4. You know a lot of advanced features of RavenDB. Now it is time to start learning about how to use clusters.
 
