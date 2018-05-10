@@ -11,8 +11,8 @@ var store = new DocumentStore
 {
     Urls =
     {
-        "http ://127.0.0.1:8080" ," http ://127.0.0.2:8080" ,
-        "http ://128.0.0.3:8080" 
+        "http://127.0.0.1:8080" ,"http://127.0.0.2:8080" ,
+        "http://128.0.0.3:8080" 
     },
     Database = "Northwind"
 };
