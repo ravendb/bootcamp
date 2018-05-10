@@ -124,10 +124,6 @@ There are some important facts that you need to know to use this feature correct
 * The client sends an acknowledgment to the server once it is done with processing the batch.
 * The server keeps track of the latest document that was acknowledged by the client, so that processing can be continued from the latest acknowledged position if it was paused or interrupted.
 
-## Great job! 
+## Great job! Next stop: Clusters!
 
-You made it! At this point you already know the basics of RavenDB. 
-
-You can learn more using the [documentation](http://ravendb.net/docs) available online.
-
-Thanks for using this bootcamp to learn RavenDB.
+Congratulations! Now you know some advanced features of RavenDB. In the next Unit we will start to work with clusters.
