@@ -16,7 +16,7 @@ var store = new DocumentStore
     },
     Database = "Northwind"
 };
-store.Initialize ();
+store.Initialize();
 ```
 
 Please note that the fact the database you are trying to access does not have instances on all cluster nodes is not important.
@@ -62,7 +62,7 @@ Whenever a write is made to any of the database instances, it will disseminate t
 Sometimes, it is not enough to ensure that you wrote that value to a single node (and made sure it hit the disk). You need to be sure that this value resides in more than one machine. You can do that using write assurance, which is available using the `WaitForReplicationAfterSaveChanges` method. 
 
 ```csharp
-using (var session = store.OpenSession ())
+using (var session = store.OpenSession())
 {
     var newprospect = new Prospect
     {
@@ -72,7 +72,7 @@ using (var session = store.OpenSession ())
     };
     session.Store(newprospect);
     session.Advanced.WaitForReplicationAfterSaveChanges(replicas: 1);
-    session.SaveChanges ();
+    session.SaveChanges();
 }
 ```
 
