@@ -8,7 +8,7 @@ To be honest, it is not a difficult task.  In fact, you do not need to be an exp
 
 A RavenDB cluster is a set of machines that have been joined together. Each machine in the cluster is a node.
 
-When you create a database, it can live on a single node (one machine in the cluster), some number of the nodes or even all the nodes. Each node will then hold a complete copy of the database and will be able to serve all queries, operations and writes (RavenDB cluster implements ![multi-master replication](https://en.wikipedia.org/wiki/Multi-master_replication).
+When you create a database, it can live on a single node (one machine in the cluster), some number of the nodes or even all the nodes. Each node will then hold a complete copy of the database and will be able to serve all queries, operations and writes (RavenDB cluster implements [multi-master replication](https://en.wikipedia.org/wiki/Multi-master_replication).
 
 The primary reason for this duplicating data is to allow high availability. If a  ode goes down, the cluster will still have a copies of the data, and the cluster can shuffle things around so clients can talk to another node without really noticing that anything happened.
 
@@ -40,9 +40,7 @@ In this excercise you will learn how to add a second node to the cluster.
 
 Now that the “nodes problem” is solved. Let’s simple start a second instance of the RvenDB server. Typically, you would do that on a separate machine, but to make this exercise easier, we’ll run it on the same computer. Open a new terminal session and run the following command:
 
-```
- .\Server\Raven.Server.exe --ServerUrl=http://127.0.0.2:8080 --ServerUrl.Tcp=tcp://127.0.0.2:38888 --Logs.Path=Logs/B --DataDir=Data/B
-```
+<div style="font-family: monospace; word-wrap: break-word; word-break: break-all;">.\Server\Raven.Server.exe --ServerUrl=http://127.0.0.2:8080 --ServerUrl.Tcp=tcp://127.0.0.2:38888 --Logs.Path=Logs/B --DataDir=Data/B</div>
 
 ![starting a second server](media/max_cores.png)
 
@@ -64,7 +62,7 @@ In a future lesson, you will learn that makes little sense to setup a cluster wi
 
 Done?! This is our result:
 
-![cluster is ready](media/cluster-ready.png)
+![cluster is ready](media/cluster_ready.png)
 
 ## Some new important concepts
 
