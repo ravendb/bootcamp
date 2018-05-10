@@ -1,6 +1,6 @@
 # Unit 3, Lesson 2 - Document Metadata
 
-Here we go! Welcome to second lesson of Unit 3. It's time to learn about
+It's time to learn about
 an important RavenDB concept: Metadata.
 
 ## What is the Document Metadata?
@@ -10,11 +10,9 @@ The Metadata is a place that RavenDB uses to store additional information about 
 Every document in RavenDB has metadata attached to it. The metadata, like the
 document data, is also stored in JSON format.
 
-You can use it as well if you want or need.
+You can use it if you want or need.
 
 ## Exercise: Loading metadata using a document
-
-Again, let's learn by doing.
 
 In this exercise you will learn how to get access to a document metadata.
 
@@ -33,7 +31,7 @@ to compile your code.
 
 ### Step 2: Initialize the `DocumentStore`
 
-Here we go again. Let's manage the `DocumentStore` using the `DocumentStoreHolder` pattern.  
+Let's manage the `DocumentStore` using the `DocumentStoreHolder` pattern.  
 
 ````csharp
 using System;
@@ -87,7 +85,7 @@ static void Main()
 class Product { }
 ````
 
-What are we doing here? First we are asking for an instance of the document. Then, using this instance
+What are we doing here? First we are asking for an instance of the document. Then, using this instance,
 we get the metadata.
 
 This is the output on my machine:
@@ -124,9 +122,10 @@ class Program
 class Product { }
 ````
 
-## Some words about `@collection` property
+## Some Words About the `@collection` Property
+
 `@collection` specifies the name of the document collection. As you will learn soon,
-you can change the value of a metadata property. But, you should not try to do this with
+you can change the value of a metadata property. But you should not try to do this with
 `@collection`.
 
 RavenDB engine does a lot of optimizations based on the collection name, and no support
@@ -136,7 +135,7 @@ You can read more about collection concept [here](https://ravendb.net/docs/artic
 
 ## Exercise: Loading only document metadata
 
-Sometimes you would like to get only the metadata information. It's easy to get with RavenDB.
+Sometimes you would like to get only the metadata information. It's easy with RavenDB.
 
 This exercise picks up right where previous one left off. You will just need to change the `Main` method.
 
@@ -161,10 +160,8 @@ static void Main()
 }
 ````
 
-Don't be afraid of these new types. Take time to get comfortable with it.
+Don't be afraid of these new types. Take your time to get comfortable with it.
 
-## Great job! Onto Lesson 3!
-
-Awesome! You just learned about the metadata concept. You are almost an expert!
+## Great Job! 
 
 **Let's move onto [Lesson 3](../lesson3/README.md).**

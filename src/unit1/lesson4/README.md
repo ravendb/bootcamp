@@ -38,7 +38,7 @@ This exercise picks up right where previous one in the last lesson left off.
 What you will do to ensure a single document store in your application is to adopt
 a typical initialization pattern.
 
-### Step 1: Making the document store instance singleton
+### Step 1: Making the Document Store Instance Singleton
 
 ```csharp
 public static class DocumentStoreHolder
@@ -59,11 +59,10 @@ public static class DocumentStoreHolder
         LazyStore.Value;
 }
 ```
-
 The use of Lazy ensures that the document store is only created once, without
 having to worry about locking or other thread safety issues.
 
-### Step 2: Using the singleton `DocumentStore` instance
+### Step 2: Using the Singleton `DocumentStore` Instance
 
 Now you can improve your code to use the `DocumentStoreHolder`.
 
@@ -87,16 +86,16 @@ class Program
 An important RavenDB concept is conventions.
 
 > Conventions are a series of policy decisions that have already been made for you.
-> They range from deciding which property holds the document id, to how the entity
+> They range from deciding which property holds the document ID, to how the entity
 > should be serialized to a document.
 
 A lot of thought and effort was put into ensuring you won't have to touch
 the conventions. But you can do it every time you need to.
 
-We will not touch RavenDB conventions right now, simply because we don't need
+We will not touch RavenDB conventions right now simply because we don't need
 to do it. If you want to know more, you can access the [RavenDB conventions documentation](https://ravendb.net/docs/article-page/latest/csharp/client-api/configuration/conventions/what-are-conventions).
 
-## Great job! 
+## Great Job! 
 
 The fourth lesson is done and you know a lot about the `DocumentStore`.
 

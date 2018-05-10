@@ -1,15 +1,13 @@
-# Unit 2, Lesson 4 - Mapping(, filtering) and reducing
-
-Hello again!
+# Unit 2, Lesson 4 - Mapping, Filtering, and Reducing
 
 In the [previous lesson](../lesson3/README.md), you learned how to create
-multi-map indexes and that was amazing. Right?
+multi-map indexes. That was amazing, right?
 
 In this lesson you will learn how to create `Map-Reduce indexes`.
 
 ## What is Map-Reduce?
 
-In essence, it is just a way to take a big task and divide it into discrete
+In essence, it is a way to take a big task and divide it into discrete
 tasks that can be done in parallel.
 
 A Map-Reduce process is composed of a `Map` function that projects data from
@@ -17,18 +15,17 @@ documents into a common output (expected) and a `Reduce` function that performs
 a summary operation.
 
 I strongly recommend you to read this [blog post](https://ayende.com/blog/179938/ravendb-4-0-unsung-heroes-map-reduce).
-Go ahead! I will be waiting for you.
 
 Still confused? Let's write some code and make it clearer.
 
-## Exercise: Your first map-reduce index
+## Exercise: Your First Map-Reduce Index
 
-I think the best way to learn about Map-Reduce indexes is to write some code.
+The best way to learn about Map-Reduce indexes is to write some code.
 
-In this first exercise let's perform a very simple task. Let's just
+In this first exercise, let's perform a very simple task. Let's just
 count the number of products for each category.
 
-Again, let's do it using the C# API.
+Let's do it using the C# API.
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
 
@@ -40,7 +37,7 @@ command:
 Install-Package RavenDB.Client -Version 4.0.3
 ```
 
-This will install RavenDB.Client binaries, which you will need in order
+This will install the RavenDB.Client binaries, which you will need in order
 to compile your code.
 
 Then you will need to add the `using` name space at the top of `Program.cs`:
@@ -51,7 +48,7 @@ using Raven.Client.Documents;
 
 ### Step 2: Write the model classes
 
-Again and it will never be enough,  you don't need to write "complete" model classes when you are only reading
+You don't need to write "complete" model classes when you are only reading
 from the database.
 
 ````csharp
@@ -66,12 +63,12 @@ class Product
 }
 ````
 
-Yes! Everything we need is here. In the `Product` documents, the category
+Everything we need is here. In the `Product` documents, the category
 is specified by the Id in the `Category` property.
 
 ### Step 3: Write the `Map-Reduce index definition`
 
-One way to create a Map-Reduce index  definition is inheriting from `AbstractIndexCreationTask`.
+One way to create a Map-Reduce index definition is inheriting from `AbstractIndexCreationTask`.
 
 In the [previous lesson](../lesson3/README.md), you learned how to create multi-map indexes.
 It's important you know that you can combine the power of multi-map with map-reduce by
@@ -109,17 +106,15 @@ public class Products_ByCategory :
 }
 ````  
 
-There are some points to note here. In 4.0 we do run map and reduce  sequentially in the same transaction. 
-It works as follows: map phase produces the map entries which are stored into reduce trees (b+trees), 
-next they are processed by the reduce worker under the same transaction.
+There are some points to note here. In 4.0 we do run map and reduce sequentially in the same transaction. 
+It works as follows: the map phase produces the map entries which are stored into reduce trees (b+trees). Next, they are processed by the reduce worker under the same transaction.
 
 The output from the `Map` and `Reduce` steps needs to be the same. This
 allows the engine to perform multiple reduce stages.
 
 ### Step 4: Initialize the `DocumentStore` and register the index on the server
 
-Again, let's do it using our good friend pattern `DocumentStoreHolder`. At
-this point, you probably know that this is the pattern to follow. Right?   
+Let's do it using our good friend pattern `DocumentStoreHolder`. 
 
 ````csharp
 using System;
@@ -154,8 +149,8 @@ namespace MapReduceIndexes
 }
 ````
 
-Again, we are asking the client API to find all indexes classes automatically and send them altogether to the server.
-You can do that, using the `IndexCreation.CreateIndexes` method.
+We are asking the client API to find all indexes classes automatically and send them altogether to the server.
+You can do that using the `IndexCreation.CreateIndexes` method.
 
 ### Step 5: Consuming the index
 
@@ -186,7 +181,7 @@ class Program
 This will list all the categories of the products. Remember that the `Include` function
 ensures that all data is returned from the server in a single response.
 
-By the way, if you are trying to figure out how to do this query using RQL, 
+If you are trying to figure out how to do this query using RQL, 
 here it is:
 
 ```sql
@@ -204,7 +199,7 @@ This exercise picks up right where the previous one left off.
 
 ### Step 1: Write the model classes
 
-Let's add two more model classes in your application.
+Let's add two more model classes to your application.
 
 ````csharp
 public class Order {
@@ -260,7 +255,7 @@ public class Employees_SalesPerMonth :
     }
 }
 ````
-The difference here is that you are grouping by two fields. Nothing really special.
+The difference here is that you are grouping by two fields. 
 
 ### Step 3: Consuming the index
 
@@ -296,8 +291,6 @@ class Program
 }
 ````
 
-Nice!
-
 Before you go, I recommend you to check
 
 ## The Map-Reduce Visualizer
@@ -307,9 +300,6 @@ can use the `Map-Reduce Visualizer` tool. It is available in the `Indexes` secti
 
 ![creating new index](media/a92uh2jlj43rj3ndj3ndj2jd2.png)
 
-
-## Great job! Onto Lesson 5!
-
-Awesome! You just learned the basics of Map-Reduce and how to use it with RavenDB.
+## Great Job! 
 
 **Let's move onto [Lesson 5](../lesson5/README.md).**

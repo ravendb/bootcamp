@@ -1,8 +1,5 @@
 # Unit 2, Lesson 7 - Statistics and some words about stale indexes!
 
-At this point, you know a lot about storing, loading and querying documents using
-RavenDB, and that is awesome. Right?
-
 In this lesson you will learn how to get details of a just executed query.  
 
 ## Introducing `QueryStatistics`
@@ -31,7 +28,7 @@ Among the details you can get from the query statistics, you have:
 * The last document etag indexed by the index.
 * The timestamp of the last document indexed by the index.
 
-## Stale index?
+## Stale Index?
 
 This is a very important fact: **RavenDB queries are BASE. Reads and writes by document ID are always ACID**.
 
@@ -41,7 +38,7 @@ amounts of data have been changed. However, in that case you may query stale ind
 of that, some query results may not be fully up to date. Usually, the time between a document being
 updated and the relevant indexes being updated is measured in milliseconds.
 
-### How to know if an index is stale?
+### How to Know if an Index is Stale
 
 RavenDB is honest and clear about stale indexes. It is really easy to know if a query used a
 stale index just checking the statistics.
@@ -63,10 +60,10 @@ if (stats.IsStale)
 ````
 
 The `IsStale` property will be `true` whenever the index used to perform the query is not
-up to date. In this sample, probably an Order was added or changed, and the indexes didn't
+up to date. In this sample, probably an Order was added or changed and the indexes didn't
 have enough time to fully update before the query.
 
-### Forcing non-stale results
+### Forcing Non-Stale Results
 
 If you need to make sure that your results are up to date, then you can use the `Customize` method.
 
@@ -85,21 +82,19 @@ var orders = (
     .ToList();
 ````
 
-Here RavenDB is instructed to use a 5 seconds time-out.
+Here RavenDB is instructed to use a 5 second time-out.
 
-There are different strategies you could use here. To learn more about how to deal with stale indexes
+There are different strategies you could use. To learn more about how to deal with stale indexes,
 I strongly recommend you to read the [official documentation](https://ravendb.net/docs/article-page/latest/csharp/indexes/stale-indexes).
 
-### Is staleness a real problem?
-At first sight, the idea of a query that may not be fully up to date sounds scary. Right?
-But in practice, this is how we almost always work in the real world.
+### Is Staleness a Real Problem?
+At first sight, the idea of a query that may not be fully up to date sounds scary. 
+In practice, this is how we almost always work in the real world.
 
-Try this, call your bank and ask them how much money you have in your account (financial systems should be
+Try this: call your bank and ask them how much money you have in your account (financial systems should be
 consistent, right?). The answer you’ll get is going to be some variant of: “As of last business day, you had…”.
 
-Much of management occurs with the previous day's data. Strategic decisions usually use even older data.
-In practice, few queries need to reflect real-time data. So, why sacrifice computation power and
-responsiveness generating data which nobody cares about?
+Much of management occurs with the previous day's data. 
 
 ## Great Job!
 

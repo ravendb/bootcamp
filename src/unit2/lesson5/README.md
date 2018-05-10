@@ -1,6 +1,4 @@
-# Unit 2, Lesson 5 - The powerful `LoadDocument` server-side function
-
-Hello and welcome to lesson 5.
+# Unit 2, Lesson 5 - The Powerful `LoadDocument` Server-Side Function
 
 It's time to learn about one of the most tricky features of RavenDB: The
 server-side `LoadDocument` function.
@@ -32,25 +30,25 @@ As you learned in [unit 1, lesson 4](../../Unit-1/lesson4/README.md) the `Includ
 ensures that all related documents will be returned in a single response from the server, and
 this is amazing.
 
-As you probably deduced, RavenDB uses HTTP as the communication protocol. The client API uses POST method to issue the query request.
-However GET requests are still handled by the server. Here is the URL to execute the query of the code above:
+As you probably deduced, RavenDB uses HTTP as the communication protocol. The client API uses the POST method to issue the query request.
+However, GET requests are still handled by the server. Here is the URL to execute the query of the code above:
 
 <div style="font-family: monospace; word-wrap: break-word; word-break: break-all;">http://localhost:8080/databases/Northwind/queries?query=from%20index%20%27Products/ByCategory%27%20include%20Category</div>
 
-Go ahead! Click [here](http://localhost:8080/databases/Northwind/queries?query=from%20index%20%27Products/ByCategory%27%20include%20Category) and
+Click [here](http://localhost:8080/databases/Northwind/queries?query=from%20index%20%27Products/ByCategory%27%20include%20Category) and
 check out this query result.
 
-Yes, what you get when you execute this query is a big JSON object, right? The nice thing is that you get all data you need with a single request. The bad thing is you receive a lot more than you need.
-In the example all related category documents will be present in the response, but you will use just one property (please, keep in mind that
+What you get when you execute this query is a big JSON object. The nice thing is that you get all the data you need with a single request. The bad thing is you receive a lot more than you need.
+In the example, all related category documents will be present in the response, but you will use just one property (please, keep in mind that
 Category is a small document ...).
 
 What if you could load the documents in the server-side to produce only the information you need?
 
 ## Welcome `LoadDocument`
 
-When writing your index definitions you can use the `LoadDocument` function to get information from related documents.
+When writing your index definitions, you can use the `LoadDocument` function to get information from related documents.
 
-Let's rewrite the `Products_ByCategory` index using the `LoadDocument` function.
+Let's rewrite the `Products_ByCategory` index using the `LoadDocument` function:
 
 ````csharp
 public class Products_ByCategory :
@@ -85,7 +83,7 @@ public class Products_ByCategory :
 }
 ````
 
-What does it mean? Now we are no longer storing the category `Id`, but the `Name`. So, now we
+Now we are no longer storing the category `Id`, but the `Name`. Now we
 can rewrite our program with no includes.
 
 ````csharp
@@ -116,7 +114,6 @@ We will still have only one request...
 
 <div style="font-family: monospace; word-wrap: break-word; word-break: break-all;">http://localhost:8080/databases/Northwind/queries?query=from%20index%20%27Products/ByCategory%27</div>
 
-
 ... but now we will have a smaller response.
 
 ## It's really good, but...
@@ -124,21 +121,18 @@ We will still have only one request...
 The `LoadDocument` feature is a really awesome one, but it is also something that should
 be used carefully.
 
-As you know, `LoadDocument` allows you to load another document during indexing, and use its data in your index and that is great!
+As you know, `LoadDocument` allows you to load another document during indexing, and to use its data in your index and that is great!
 The problem with `LoadDocument` is that it allows users to keep a relational
 model when they work with RavenDB, and use `LoadDocument` to get away with
 it when they need to do something that is hard to do with RavenDB natively.
-That wouldn’t be so bad, if `LoadDocument` didn’t have several important costs
+That wouldn’t be so bad if `LoadDocument` didn’t have several important costs
 associated with it. 
 
-`LoadDocument` is an important feature and you could and should use it eventually. But,
+`LoadDocument` is an important feature and you could and should use it. But
 I strongly recommend you to treat `LoadDocument` with caution.   
 
-## Great job! Onto Lesson 6!
+## Great job!
 
-Awesome! You just learned one of the most powerful and controversial features of RavenDB.
-
-Before moving on, I would recommend you to read about how works 
-the [indexing process for related documents](https://ravendb.net/docs/article-page/4.0/csharp/indexes/indexing-related-documents).
+Before moving on, I would recommend you to read about the [indexing process for related documents](https://ravendb.net/docs/article-page/4.0/csharp/indexes/indexing-related-documents).
 
 **Let's move onto [Lesson 6](../lesson6/README.md).**
