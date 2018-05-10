@@ -61,7 +61,7 @@ In Unit 4 you will learn the basics about how to set up, manage and use clusters
 
 * [Lesson 1: Setting up your first cluster](src/unit4/lesson1)
 * [Lesson 2: Database and Database Group](src/unit4/lesson2)
-* [Lesson 3: Considerations on the client side.](src/unit4/lesson4)
+* [Lesson 3: Considerations on the client side.](src/unit4/lesson3)
 
 
 [LET'S BEGIN](src/unit1/lesson1)
