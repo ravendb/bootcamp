@@ -1,24 +1,24 @@
 # Unit 3, Lesson 1 - Revisions
 
-Hello and welcome to Unit 3\. You already know the basics of using RavenDB. It is time to get started using some more advanced features.
+Hello and welcome to Unit 3. You already know the basics of using RavenDB. It is time to get started using some more advanced features.
 
-In this lesson, you will learn how to enable document revisions on your databases.
+In this lesson you will learn how to enable document revisions on your databases.
 
 ## What are Revisions?
 
-It is a lovely feature! Every time you update, or even delete, a document, RavenDB 4 creates a snapshot (revision) of the previous state. Isn't this cool? More than that, it is useful when you need to track the history of the documents or when you need a full audit trail. 
+Every time you update, or even delete, a document, RavenDB 4 creates a snapshot (revision) of the previous state. More than that, it's useful when you need to track the history of the documents or when you need a full audit trail. 
 
-You can choose to keep track of the last N revisions. Also,  if necessary, you could "track everything".
+You can choose to keep track of the last N revisions. If necessary, you could "track everything".
 
-## How to enable Revisions?
+## How to Enable Revisions
 
 You can configure the revisions feature using the Studio: 
 
 ![Enabling revisions](media/enabling_revisions.png)
 
-When activated, by default, RavenDB will track history for all documents. Also, by default, RavenDB will never purge old revisions. 
+When activated, by default, RavenDB will track the history for all documents. Also, by default, RavenDB will never purge old revisions. 
 
-As the administrator, you could configure this for all collections.  But you could specify a different setup for a specific collection. By default, RavenDB will track history for all documents.
+As the administrator, you can configure this for all collections.  But you could specify a different setup for a specific collection. By default, RavenDB will track history for all documents.
 
 The options you have are;
 
@@ -33,7 +33,7 @@ You can configure it programmatically following the recommendations from the [on
 Let's start enabling revisions to the `Employees` Collection.
 
 ### Step 1: Open the Northwind database 
-Open the `RavenDB Management Studio`, then open the Northwind database (Yes! The same we have been using since the first lesson).
+Open the `RavenDB Management Studio`, then open the Northwind database.
 
 ### Step 2: Opening the `Document Revisions` form
 On the left panel, select the Settings section and then Document Revisions.
@@ -52,7 +52,7 @@ You can test revisions editing a document directly on the Studio. Edit any docum
 
 ![Revisions list](media/revisions.png)
 
-## Retrieving revisions from a document
+## Retrieving Revisions from a Document
 
 Retrieving revisions for a document is pretty simple.
 
@@ -72,10 +72,6 @@ static void Main(string[] args)
 }
 ```
 
-Nice!
-
-## Great job! Onto Lesson 2!
-
-You now know how to save revisions of your documents using RavenDB. Isn't that fun?
+## Great Job!
 
 **Let's move onto [Lesson 2](../lesson2/README.md).**

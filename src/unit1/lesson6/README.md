@@ -4,7 +4,7 @@ Querying is a large part of what a database does, and RavenDB doesn't disappoint
 
 As you learned in the lesson 2, querying with RavenDB is really easy. In this lesson, you will learn the fundamentals of querying using RavenDB in C#.
 
-## LINQ Support via `Query` Session Method
+## LINQ Support via the `Query` Session Method
 
 RavenDB takes full advantage of LINQ support in C#. This allows you to
 express very natural queries on top of RavenDB in a strongly typed and safe
@@ -18,15 +18,15 @@ Like documents loaded via the `Load` call, documents that were loaded via
 `Query` are managed by the session (unless you are doing a projection).
 
 Queries in RavenDB don't behave like queries in relational databases. RavenDB
-does not allow computation during queries, and it doesn't have problems with
-table scans because all queries are indexed (even if you didn't create any indexes).
+does not allow computation during queries and it doesn't have problems with
+table scans because all queries are indexed -- even if you didn't create any indexes!
 
-## Exercise: Querying orders of a company
+## Exercise: Querying Orders of a Company
 
-This time, you will write an application which requests a company Id. Then
+This time, you will write an application which requests a company ID. Then
 you will list the orders made by this company.
 
-I think you got the basics from the previous exercises. So I will not repeat details that you already know.
+I think you got the basics from the previous exercises so I will not repeat details that you already know.
 
 ### Step 1: Create a new project and install the latest `RavenDB.Client` package
 
@@ -34,10 +34,10 @@ I think you got the basics from the previous exercises. So I will not repeat det
 
 ### Step 3: Add Northwind model classes to your project
 
-### Step 4: Request a company Id
+### Step 4: Request a company ID
 
 Back to `Program.cs`, let's create a minimal user interface which requests a
-company Id.
+company ID.
 
 ````csharp
 using System;
@@ -79,7 +79,7 @@ namespace OrdersExplorer
 
 ### Step 5: Query the orders for the specified company
 
-With an id, you can now query the orders.
+With an ID, you can now query the orders.
 
 ````csharp
 private static void QueryCompanyOrders(int companyId)
@@ -113,7 +113,7 @@ private static void QueryCompanyOrders(int companyId)
 
 ## Why Not Use RQL?
 
-Using LINQ is natural for C# developers. But what if you want to discover the power of RQL from C#? 
+Using LINQ is natural for C# developers, but what if you want to discover the power of RQL? 
 
 ```csharp
 private static void QueryCompanyOrders(int companyId)
@@ -144,10 +144,6 @@ private static void QueryCompanyOrders(int companyId)
 }
 ``` 
 
-Did I say that I love RQL?!
-
-## Great job! 
-
-We will discuss a lot about querying when we start to talk about RavenDB indexes.
+## Great Job! 
 
 **Let's move on to [Lesson 7](../lesson7/README.md) and learn how to create, change and delete documents.**

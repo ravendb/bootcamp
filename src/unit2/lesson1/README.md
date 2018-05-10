@@ -1,11 +1,8 @@
 # Unit 2, Lesson 1 - Getting started with indexes
 
-Here we go! Welcome to your first lesson of Unit 2.
+## RavenDB Does No Table Scans!
 
-## RavenDB does no table scans!
-
-Yes, you read that right. But what does it mean? In Unit-1 you wrote a query similar
-to the following:
+What does it mean? In Unit-1 you wrote a query similar to the following:
 
 ````csharp
 var orders = (
@@ -23,7 +20,6 @@ from Orders
 where Company = "companies/1-A"
 order by OrderedAt
 ```
-
 
 You might assume that the following pseudo code is run in the server side. Am I right?
 
@@ -46,7 +42,7 @@ and those that meet the predicate are selected. This is quite efficient, as long
 number of items you have in the database is small. But it fails pretty horribly
 the moment your data size reaches any significant size.
 
-## RavenDB uses indexes to speed up the queries
+## RavenDB Uses Indexes to Speed Up the Queries
 
 Even when you do not create an index, RavenDB will use one to execute queries.
 In fact there are no *O(N)* operations in general in RavenDB queries. Using indexes,
@@ -73,7 +69,6 @@ created in the previous unit ([Lesson 1](../../unit1/lesson1/README.md)).
 In the left panel, select the `Indexes` section. Then, select all indexes and then click 
 on the `Delete` button.
 
-
 ![delete all indexes](media/a5s6d678fdsfdfsf8768s7fsdf786876a.png)
 
 ### Step 3: Create and execute a program which will perform a query
@@ -86,11 +81,9 @@ where Company = "companies/1-A"
 order by OrderedAt
 ```
 
-But, let's make it more interesting.
+Let's make it more interesting.
 
-Create a new Console Application, add the proper NuGet RavenDB reference (`RavenDB.Client`).
-
-Then, change the `Program.cs` content to the following:
+Create a new Console Application, add the proper NuGet RavenDB reference (`RavenDB.Client`), then change the `Program.cs` content to the following:
 
 ````csharp
 using System;
@@ -146,8 +139,8 @@ namespace IndexingSample
     }
 }
 ````
-Note that the `Order model class` has just enough code here. By default `Raven.Client` will preserve old properties even if they are not in the model. 
-This behavior can be changed via `PreserveDocumentPropertiesNotFoundOnModel` convention
+Note that the `Order model class` has just enough code here. By default, `Raven.Client` will preserve old properties even if they are not in the model. 
+This behavior can be changed via the `PreserveDocumentPropertiesNotFoundOnModel` convention
 
 ### Step 4: Run the program
 
@@ -158,8 +151,6 @@ index named `Auto/Orders/ByCompanyAndOrderedAt` was created for you.
 
 RavenDB chooses good names for "auto created indexes".
 
-## Great job! Onto Lesson 2!
+## Great Job!
 
-Awesome! You just learned a little bit about how RavenDB performs queries.
-
-**Let's move onto [Lesson 2](../lesson2/README.md) and learn how to create and index by your own.**
+**Let's move onto [Lesson 2](../lesson2/README.md) and learn how to create and index on your own.**

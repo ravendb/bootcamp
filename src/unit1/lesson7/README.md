@@ -1,7 +1,5 @@
 # Unit 1, Lesson 7 - Storing, Modifying, and Deleting Documents
 
-Welcome to the last lesson of this unit.
-
 In this lesson, you will learn how to store, modify, and delete documents.
 
 ## Quick Start
@@ -58,7 +56,7 @@ entities you have loaded (with `Load` or `Query` methods), and when you call `Sa
 all changes to those entities are sent to the database in a *single remote call*.
 
 The `Delete` method, which we have used in the last part of the code will delete the
-matching document on the server side. You can provide the document Id or an
+matching document on the server side. You can provide the document ID or an
 entity instance.
 
 **All the changes are applied on the server side only after you call the `SaveChanges` method.**
@@ -73,7 +71,7 @@ have one endpoint that sends the entity to the user, which modifies that entity 
 then sends it back to your web application. You have a live entity instance, but
 it is not loaded by the session or tracked by it. At that point, you have to
 call the `Store` method on that entity, and because it doesn't have a null document
-Id, it will be treated as an existing document and overwrite the previous version
+ID, it will be treated as an existing document and overwrite the previous version
 on the database side.
 
 ````csharp
@@ -94,7 +92,7 @@ public class CategoryRepository
 
 `SaveChanges` should be called only once per session.
 
-## Exercise: Creating a basic contacts CRUD
+## Exercise: Creating a Basic Contacts CRUD
 
 In this exercise we will create a `Console Application` to manage a basic
 list of contacts.
@@ -125,7 +123,7 @@ Let's do it using our good friend pattern `DocumentStoreHolder`. You learned abo
 [Lesson 4](../lesson4/README.md).
 
 Note that if the database specified in the `Database` does not exist, ... we will get an
-exception. So, please create the Database in RavenDB Management Studio before you continue. 
+exception. So, please create the Database in the RavenDB Management Studio before you continue. 
 
 ````csharp
 using Raven.Client.Documents;
@@ -364,8 +362,11 @@ It is important to say that all contacts will be returned.
 
 In RavenDB all actions performed on documents are fully ACID (Atomicity,
 Consistency, Isolation, and Durability). All these constraints are ensured
-when you use a session and call the `SaveChanges` method. This is a
-great thing! Unlike many other NoSQL databases, RavenDB is an ACID
+when you use a session and call the `SaveChanges` method. 
+
+This is a great thing! 
+
+Unlike many other NoSQL databases, RavenDB is an ACID
 database. We were the first to become ACID over 10 years ago. 
 
 More information is available on the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/faq/transaction-support)

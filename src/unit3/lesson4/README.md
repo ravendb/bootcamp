@@ -1,12 +1,12 @@
-# Unit 3, Lesson 4 - Performing batch operations!
+# Unit 3, Lesson 4 - Performing Batch Operations
 
 As you learned in the [previous lesson](../lesson3/README.md), RavenDB
 provides a low-level API that you can use to execute not trivial tasks.
 
-In this lesson, you will learn how to use operations to update 
+In this lesson you will learn how to use operations to update 
 a large amount of documents answering a certain criteria.
 
-## The need to batch operations
+## The Need to Batch Operations
 
 Sometimes you will need to update or delete a large amount of documents
 answering a certain criteria.
@@ -21,7 +21,7 @@ UPDATE Products SET Price = Price * 1.1 WHERE Discontinued = false;
 Anyway, this is not the case when using NoSQL databases, where set
 based operations are not supported.
 
-## RavenDB approach for batch operations
+## RavenDB Approach for Batch Operations
 
 Using RavenDB, the same queries and indexes that are used for data retrieval 
 are used for the set based operations. The syntax defining which documents to
@@ -93,21 +93,17 @@ static void Main()
 }
 ```
 
-RQL for the win!
-
 There is a very good list of examples available on the [RavenDB documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/operations/patching/set-based). 
 
 
-Run it! And check the results. Amazing!
+Run it and check the results!
 
 ## Before you go ...
 
 You just learned how to update documents in the server without having to load
-it in the client side. This is an extremely powerful concept. But, remember
+it in the client side. This is an extremely powerful concept. But remember
 *"With great powers comes great responsibility"*.
 
-## Great job! Onto Lesson 5!
-
-Awesome! Now you know how to easily update a large amount of documents!
+## Great job! 
 
 **Let's move onto [Lesson 5](../lesson5/README.md).**

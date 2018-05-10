@@ -1,15 +1,13 @@
 # Unit 1, Lesson 2 - Let's Query!
 
 In the previous lesson, you learned how to install RavenDB on your computer,
-create a database, and load sample data. You also learned some fundamental
-concepts about document databases.
+create a database, and load sample data. 
 
 In this lesson you will learn how to write your own queries using RQL.
 
 ## What is RQL?
 
-RQL is one of the most exciting features of RavenDB 4. It is a powerful and easy to
-learn language that we designed to make your job easier.
+RQL is a powerful and easy to learn language that we designed to make your job easier.
 
 From the Documentation:
 
@@ -18,18 +16,14 @@ From the Documentation:
 > query pipeline in a way that is easy to understand, easy to use, and not 
 > overwhelming to the user.
 
-The [RQL documentation](https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/what-is-rql)
-is really good. Please consider reading it.
-
+Please consider reading the [RQL documentation](https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/what-is-rql).
 
 ## Exercise: Getting Ready to Write Queries
 
-It’s time to stop talking and to write some code. So, let’s do it!
-
-1.  Open the `RavenDB Management Studio` (<http://localhost:8080> by default.)
-2.  In the left panel, click on `Databases`
+1.  Open the `RavenDB Management Studio` (<http://localhost:8080> by default.).
+2.  In the left panel, click on `Databases`.
 3.  Open the database we created in the previous lesson (Northwind, if you
-    followed our recommendation)
+    followed our recommendation).
 4.  In the left panel, select the `Documents` section.
 5.  Click on `Query`.
 
@@ -37,7 +31,7 @@ It’s time to stop talking and to write some code. So, let’s do it!
 
 ## Exercise: You First Query
 
-Let’s start easy.
+Let’s start with an easy query.
 
 1.  Assuming you are already in the Query editor (inside the RavenDB Management
     Studio), type the following query.
@@ -49,11 +43,11 @@ from Employees
 
 This query returns all the documents inside the `Employees` collection. 
 
-Now, go ahead and try other queries like these. Get all the documents from the `Products` collection.
+Try other queries like these. Get all the documents from the `Products` collection.
 
 ## Exercise: Filtering
 
-Getting all documents from a collection is a nice thing but quite useless. Let’s make something more exciting.
+Getting all documents from a collection is nice, but quite useless. Let’s make something more exciting.
   
 ```sql
 from Employees
@@ -103,7 +97,7 @@ FirstName is the name of one of the properties present in the documents from the
 
 ## Exercise: Shaping the Query Result
 
-Up to this point we are simply retrieving documents. Let’s say we want to shape what we get. Consider the following query.
+Up to this point we are simply retrieving documents. Let’s say we want to shape what we get. Consider the following query:
 
 ```sql
 from Orders
@@ -139,7 +133,7 @@ One of the results will look like:
 
 We will talk about the `metadata` in the future.
 
-## Exercise: Using JavaScript in the query projections
+## Exercise: Using JavaScript in the Query Projections
 
 Say you want to do more customization.
 
@@ -154,7 +148,7 @@ select {
 ```
 RavenDB allows you to use JavaScript when defining projections for the query results.
 
-There is another interesting thing in this query, as you probably noted. The
+There is another interesting thing in this query. The
 Company field of an Order document contains the ID of another document stored in
 the database. The load instruction is smart enough to get that document for you.
 You can use it to project data as well.
@@ -171,9 +165,9 @@ order by count() desc
 select count() as Count, key() as Company
 ```
 
-Here, we are grouping the Orders using the Company field as
+Here, we are grouping the Orders using the Company field as a 
 grouping key. We are adding a filter to get only groups with five documents
-at least, then, ordering these groups by the number of elements in descending
+at least, then ordering these groups by the number of elements in descending
 order. Finally, we are projecting the number of documents per group and the
 group key.
 
@@ -186,10 +180,10 @@ important to say that we are concerned about performance and we use a bunch of
 techniques to deliver results as fast as possible (even more!).
 
 All queries in RavenDB are supported by a sophisticated and efficient indexing
-mechanism. In simple words, we use indexes for all the queries. But, I will
-explain it to greater detail in the future.
+mechanism. In simple words: We use indexes for all the queries. I will
+explain this in greater detail in future lessons.
 
-## Lesson 3
+## Lesson Complete!
 
 You have just completed the second lesson. Now you know the basics about Querying with RavenDB. 
 

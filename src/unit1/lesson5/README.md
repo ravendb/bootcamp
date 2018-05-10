@@ -21,11 +21,11 @@ using (var session = DocumentStoreHolder.Store.OpenSession())
 ## The Basics of the `Load` Method
 
 As the name implies, the `Load` method gives you the option of loading a document
-or a set of documents, passing the document(s) id(s) as parameters. The result will
+or a set of documents, passing the document(s) ID(s) as parameters. The result will
 be an object representing the document or `null` if the document does not exist.
 
 A document is loaded only once in a session. Even though we call the `Load` method
-twice passing the same document id, only a single remote call to the server will
+twice passing the same document ID, only a single remote call to the server will
 be made. Whenever a document is loaded, it is added to an internal dictionary managed
 by the session.
 
@@ -65,7 +65,7 @@ remote call from the server**.
 ## Loading Related Documents in a Single Remote Call
 
 The easiest way to kill your application performance is to make a lot of remote calls. RavenDB provides a lot of features to help you
-mitigate that problem.
+significantly reduce calls and boost performance.
 
 Consider the Northwind `products/1-A` document:
 
@@ -98,7 +98,6 @@ var c = session.Load<Category>(p.Category);
 ````
 
 This approach will make two remote calls -- not good.
-But, don't worry.
 
 ````csharp
 var p = session
@@ -112,9 +111,9 @@ The `Include` session method changes the way RavenDB will process the request.
 
 It will:
 
-* Find a document with the id: `products/1-A`
+* Find a document with the ID: `products/1-A`
 * Read its `Category` property value
-* Find a document with that id
+* Find a document with that ID
 * Send both documents back to the client
 
 When the `session.Load<Category>(p.Category);` is executed, the document is in the
@@ -233,7 +232,7 @@ namespace OrdersExplorer
 
 ### Step 5: Print order number, company, employee, and line products
 
-Now, it's time to load order data, but only if there is an order with the specified order number.
+Now it's time to load order data, but only if there is an order with the specified order number.
 
 ````csharp
 private static void PrintOrder(int orderNumber)
@@ -270,8 +269,6 @@ private static void PrintOrder(int orderNumber)
 }
 ````
 
-## Great job! 
-
-This *long* lesson is done and now you know a lot about how to load documents from a RavenDB database.
+## Great Job! 
 
 **Let's move on to [Lesson 6](../lesson6/README.md) and learn about querying, now in C#.**
