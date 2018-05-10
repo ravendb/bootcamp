@@ -30,7 +30,7 @@ You will write some code to connect to the database and store, load, modify, and
 
 ### Unit 2 - Beyond the Basics
 
-In Unit 2, you will learn intermediate RavenDB features. You will see how fast RavenDB is and understand why.
+In Unit 2 you will learn intermediate RavenDB features. You will see how fast RavenDB is and understand why.
 
 You will easily perform very complex queries without using additional tools. You will learn what Map-Reduce is and when to use it to extract more value from your data.
 
@@ -44,7 +44,7 @@ You will easily perform very complex queries without using additional tools. You
 
 ### Unit 3 - Advanced Features
 
-In Unit 3, you will learn some advanced RavenDB features.
+In Unit 3 you will learn some advanced RavenDB features.
 
 Use this knowledge to build powerful solutions, obtain better performance, improve safety, and create truly reactive user interfaces.
 
@@ -55,11 +55,9 @@ Use this knowledge to build powerful solutions, obtain better performance, impro
 * [Lesson 5: I am Going Through Changes ...](src/unit3/lesson5)
 * [Lesson 6: Data Subscriptions - I would Like to be Notified When it Happens Please](src/unit3/lesson6)
 
-### Unit 4 - Cluster!
+### Unit 4 - Database Clusters
 
-In Unit 4, you will learn the basics about how to set up, manage and use clusters using RavenDB.
-
-Use this knowledge to build available and resilient databases solutions.
+In Unit 4 you will learn the basics about how to set up, manage and use clusters using RavenDB.
 
 * [Lesson 1: Setting up your first cluster](src/unit4/lesson1)
 * [Lesson 2: Database and Database Group](src/unit4/lesson2)
