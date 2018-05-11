@@ -1,4 +1,4 @@
-# Unit 2, Lesson 5 - The Powerful `LoadDocument` Server-Side Function
+# Unit 2, Lesson 5 - The Powerful LoadDocument Server-Side Function
 
 It's time to learn about one of the most tricky features of RavenDB: The
 server-side `LoadDocument` function.

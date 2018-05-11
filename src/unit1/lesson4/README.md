@@ -1,4 +1,4 @@
-# Unit 1, Lesson 4 - The Basics of the `DocumentStore`
+# Unit 1, Lesson 4 - The Basics of the DocumentStore
 
 In the previous lessons you have set up RavenDB, explored the Studio, written
 some code to connect to RavenDB, pulled data out, and defined typed classes
