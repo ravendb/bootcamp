@@ -59,9 +59,9 @@ Use this knowledge to build powerful solutions, obtain better performance, impro
 
 In Unit 4 you will learn the basics about how to set up, manage and use clusters using RavenDB.
 
-* [Lesson 1: Setting up your first cluster](src/unit4/lesson1)
+* [Lesson 1: Setting up Your First Cluster](src/unit4/lesson1)
 * [Lesson 2: Database and Database Group](src/unit4/lesson2)
-* [Lesson 3: Considerations on the client side.](src/unit4/lesson3)
+* [Lesson 3: Considerations on the Client Side](src/unit4/lesson3)
 
 
 [LET'S BEGIN](src/unit1/lesson1)
