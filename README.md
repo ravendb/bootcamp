@@ -2,7 +2,7 @@
 
 The [RavenDB](http://ravendb.net/ "RavenDB is the premier NoSQL database for .NET") Bootcamp is a free, self-directed learning course that is up-to-date for RavenDB 4.0.
 
-In just three units you will learn how to use RavenDB to create fully-functional, real-world programs with NoSQL Databases. If you are unfamiliar with NoSQL, don't worry, we will provide you with all the information you need.
+In just four units you will learn how to use RavenDB to create fully-functional, real-world programs with NoSQL Databases. If you are unfamiliar with NoSQL, don't worry, we will provide you with all the information you need.
 
 We suggest you go through at least one lesson per day, but you can learn at your own pace.
 
