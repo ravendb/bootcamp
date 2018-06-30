@@ -126,7 +126,7 @@ var order = session
     .Include<Order>(x => x.Company)
     .Include(x => x.Employee)
     .Include(x => x.Lines.Select(l => l.Product))
-    .Load("orders/1");
+    .Load("orders/1-A");
 ````
 
 This code will, in a single remote call, load the order, include the company
