@@ -58,7 +58,7 @@ namespace OrdersExplorer
 
                 if (!int.TryParse(ReadLine(), out var companyId))
                 {
-                    WriteLine("Order # is invalid.");
+                    WriteLine("Company # is invalid.");
                     continue;
                 }
 
