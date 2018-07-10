@@ -166,7 +166,7 @@ select count() as Count, key() as Company
 ```
 
 Here, we are grouping the Orders using the Company field as a 
-grouping key. We are adding a filter to get only groups with five documents
+grouping key. We are adding a filter to get only groups with six documents
 at least, then ordering these groups by the number of elements in descending
 order. Finally, we are projecting the number of documents per group and the
 group key.
