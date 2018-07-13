@@ -82,14 +82,14 @@ namespace OrdersExplorer
 With an ID, you can now query the orders.
 
 ````csharp
-private static void QueryCompanyOrders(int companyId)
+private static void QueryCompanyOrders(string companyId)
 {
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         var orders = (
             from order in session.Query<Order>()
                                     .Include(o => o.Company)
-            where order.Company == $"companies/{companyId}-A"
+            where order.Company == companyId
             select order
             ).ToList();
 
@@ -116,17 +116,17 @@ private static void QueryCompanyOrders(int companyId)
 Using LINQ is natural for C# developers, but what if you want to discover the power of RQL? 
 
 ```csharp
-private static void QueryCompanyOrders(int companyId)
+private static void QueryCompanyOrders(string companyId)
 {
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         var orders = session.Advanced.RawQuery<Order>(
             "from Orders " +
-            $"where Company=='companies/{companyId}-A'" +
+            $"where Company== $companyId" +
             "include Company"
-        );
+        ).AddParameter("companyId", companyId);
 
-        var company = session.Load<Company>($"companies/{companyId}-A");
+        var company = session.Load<Company>(companyId);
 
         if (company == null)
         {
