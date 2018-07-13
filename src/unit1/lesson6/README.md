@@ -122,7 +122,7 @@ private static void QueryCompanyOrders(string companyId)
     {
         var orders = session.Advanced.RawQuery<Order>(
             "from Orders " +
-            $"where Company== $companyId" +
+            "where Company== $companyId" +
             "include Company"
         ).AddParameter("companyId", companyId);
 
