@@ -122,7 +122,7 @@ using Raven.Client.Documents.Linq;
 Let's do it using our good friend pattern `DocumentStoreHolder`. You learned about it in
 [Lesson 4](../lesson4/README.md).
 
-Note that, if the database specified in the `Database` property does not exist, the code below will create automatically one for you. 
+Note that, if the database specified in the `Database` property does not exist, the code below will create automatically one for you. In another time that you run your application again, the `ContactsManager` database won't created anymore and your application will able to resuse this one.
 
 ````csharp
 using Raven.Client.Documents;
@@ -207,6 +207,12 @@ public class Contact
 ### Step 5: Creating a class extension to replace `System.Console.WriteLine`
 
 Here we will need to create a `String` class extension, it will avoid you repeat `System.Console.WriteLine` command throughout the code.
+
+First of all, it needs to declare the `using` below:
+
+````csharp
+using static System.Console;
+````
 
 ````csharp
 public static class StringExtensions
