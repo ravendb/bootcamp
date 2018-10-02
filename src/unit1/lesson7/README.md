@@ -142,11 +142,10 @@ namespace ContactsManager
 
                 store.Initialize();
 
-                // Gets all database names existing in RavenDB Server
-                var databaseNames =
-                    store.Maintenance.Server.Send(new GetDatabaseNamesOperation(0, 500));
+                // Try to retrieve a record of this database
+                var databaseRecord = store.Maintenance.Server.Send(new GetDatabaseRecordOperation(store.Database));
 
-                if (databaseNames.Any(databaseName => databaseName == store.Database))
+                if (databaseRecord != null)
                     return store;
 
                 var createDatabaseOperation =
@@ -204,27 +203,7 @@ public class Contact
     public string Email { get; set; }
 }
 ````
-### Step 5: Creating a class extension to replace `System.Console.WriteLine`
-
-Here we will need to create a `String` class extension, it will avoid you repeat `System.Console.WriteLine` command throughout the code.
-
-First of all, it needs to declare the `using` below:
-
-````csharp
-using static System.Console;
-````
-
-````csharp
-public static class StringExtensions
-{
-    public static void Display(this string value)
-    {
-        WriteLine(value);
-    }
-}
-````
-
-### Step 6: Implementing a basic options menu
+### Step 5: Implementing a basic options menu
 
 Let's implement a basic console menu that permits the user to select
 which operation should be executed.
@@ -234,16 +213,16 @@ private void Run()
 {
     while (true)
     {
-        "Please, press:".Display();
-        "C - Create".Display();
-        "R - Retrieve".Display();
-        "U - Update".Display();
-        "D - Delete".Display();
-        "Q - Query all contacts (limit to 128 items)".Display();
+        Console.WriteLine("Please, press:");
+        Console.WriteLine("C - Create");
+        Console.WriteLine("R - Retrieve");
+        Console.WriteLine("U - Update");
+        Console.WriteLine("D - Delete");
+        Console.WriteLine("Q - Query all contacts (limit to 128 items)");
 
-        var input = ReadKey();
+        var input = Console.ReadKey();
 
-        "\n------------".Display();
+        Console.WriteLine("\n------------");
 
         switch (input.Key)
         {
@@ -266,22 +245,22 @@ private void Run()
                 return;
         }
 
-        "------------".Display();
+        Console.WriteLine("------------");
     }
 }
 ````
-### Step 7: Implementing the logic to create a new contact
+### Step 6: Implementing the logic to create a new contact
 
 ````csharp
 private void CreateContact()
 {
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
-        "Name: ".Display();
-        var name = ReadLine();
+        Console.WriteLine("Name: ");
+        var name = Console.ReadLine();
 
-        "Email: ".Display();
-        var email = ReadLine();
+        Console.WriteLine("Email: ");
+        var email = Console.ReadLine();
 
         var contact = new Contact
         {
@@ -291,7 +270,7 @@ private void CreateContact()
 
         session.Store(contact);
 
-        $"New Contact ID {contact.Id}".Display();
+        Console.WriteLine($"New Contact ID {contact.Id}");
 
         session.SaveChanges();
     }
@@ -303,8 +282,8 @@ private void CreateContact()
 ````csharp
 private void RetrieveContact()
 {
-    "Enter the contact id: ".Display();
-    var id = ReadLine();
+    Console.WriteLine("Enter the contact id: ");
+    var id = Console.ReadLine();
 
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
@@ -312,12 +291,12 @@ private void RetrieveContact()
 
         if (contact == null)
         {
-            "Contact not found.".Display();
+            Console.WriteLine("Contact not found.");
             return;
         }
 
-        $"Name: {contact.Name}".Display();
-        $"Email: {contact.Email}".Display();
+        Console.WriteLine($"Name: {contact.Name}");
+        Console.WriteLine($"Email: {contact.Email}");
     }
 }
 ````
@@ -328,8 +307,8 @@ private void RetrieveContact()
 ````csharp
 private void UpdateContact()
 {
-    "Enter the contact id: ".Display();
-    var id = ReadLine();
+    Console.WriteLine("Enter the contact id: ");
+    var id = Console.ReadLine();
 
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
@@ -337,17 +316,17 @@ private void UpdateContact()
 
         if (contact == null)
         {
-            "Contact not found.".Display();
+            Console.WriteLine("Contact not found.");
             return;
         }
 
-        $"Actual name: {contact.Name}".Display();
-        "New name: ".Display();
-        contact.Name = ReadLine();
+        Console.WriteLine($"Actual name: {contact.Name}");
+        Console.WriteLine("New name: ");
+        contact.Name = Console.ReadLine();
 
-        $"Actual email: {contact.Email}".Display();
-        "New email address: ".Display();
-        contact.Email = ReadLine();
+        Console.WriteLine($"Actual email: {contact.Email}");
+        Console.WriteLine("New email address: ");
+        contact.Email = Console.ReadLine();
 
         session.SaveChanges();
     }
@@ -359,8 +338,8 @@ private void UpdateContact()
 ````csharp
 private void DeleteContact()
 {
-    "Enter the contact id: ".Display();
-    var id = ReadLine();
+    Console.WriteLine("Enter the contact id: ");
+    var id = Console.ReadLine();
 
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
@@ -368,7 +347,7 @@ private void DeleteContact()
 
         if (contact == null)
         {
-            "Contact not found.".Display();
+            Console.WriteLine("Contact not found.");
             return;
         }
 
@@ -389,10 +368,10 @@ private void QueryAllContacts()
 
         foreach (var contact in contacts)
         {
-            $"{contact.Id} - {contact.Name} - {contact.Email}".Display();
+            Console.WriteLine($"{contact.Id} - {contact.Name} - {contact.Email}");
         }
 
-        $"{contacts.Count} contacts found.".Display();
+        Console.WriteLine($"{contacts.Count} contacts found.");
     }
 }
 ````
