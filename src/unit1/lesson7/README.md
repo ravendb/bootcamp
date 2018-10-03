@@ -122,7 +122,7 @@ using Raven.Client.Documents.Linq;
 Let's do it using our good friend pattern `DocumentStoreHolder`. You learned about it in
 [Lesson 4](../lesson4/README.md).
 
-Note that, if the database specified in the `Database` property does not exist, the code below will create automatically one for you. In another time that you run your application again, the `ContactsManager` database won't created anymore and your application will able to resuse this one.
+Note that, if the database specified in the `Database` property does not exist, the code below will create automatically one for you. The next time that you'll run your application again, the `ContactsManager` database won't re-created anymore and your application will able to resuse this one.
 
 ````csharp
 using Raven.Client.Documents;
