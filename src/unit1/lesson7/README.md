@@ -122,8 +122,7 @@ using Raven.Client.Documents.Linq;
 Let's do it using our good friend pattern `DocumentStoreHolder`. You learned about it in
 [Lesson 4](../lesson4/README.md).
 
-Note that if the database specified in the `Database` does not exist, ... we will get an
-exception. So, please create the Database in the RavenDB Management Studio before you continue. 
+Note that, if the database specified in the `Database` property does not exist, the code below will create automatically one for you. The next time that you'll run your application again, the `ContactsManager` database won't re-created anymore and your application will able to resuse this one.
 
 ````csharp
 using Raven.Client.Documents;
@@ -137,11 +136,24 @@ namespace ContactsManager
             {
                 var store = new DocumentStore
                 {
-                    Urls = new [] {"http://localhost:8080"},
+                    Urls = new[] { "http://localhost:8080" },
                     Database = "ContactsManager"
                 };
 
-                return store.Initialize();
+                store.Initialize();
+
+                // Try to retrieve a record of this database
+                var databaseRecord = store.Maintenance.Server.Send(new GetDatabaseRecordOperation(store.Database));
+
+                if (databaseRecord != null)
+                    return store;
+
+                var createDatabaseOperation =
+                    new CreateDatabaseOperation(new DatabaseRecord(store.Database));
+
+                store.Maintenance.Server.Send(createDatabaseOperation);
+
+                return store;
             });
 
         public static IDocumentStore Store =>
@@ -207,10 +219,11 @@ private void Run()
         Console.WriteLine("U - Update");
         Console.WriteLine("D - Delete");
         Console.WriteLine("Q - Query all contacts (limit to 128 items)");
-        Console.WriteLine("Other - Exit");
 
         var input = Console.ReadKey();
+
         Console.WriteLine("\n------------");
+
         switch (input.Key)
         {
             case ConsoleKey.C:
@@ -231,6 +244,7 @@ private void Run()
             default:
                 return;
         }
+
         Console.WriteLine("------------");
     }
 }
@@ -248,14 +262,16 @@ private void CreateContact()
         Console.WriteLine("Email: ");
         var email = Console.ReadLine();
 
-        var c = new Contact
+        var contact = new Contact
         {
             Name = name,
             Email = email
         };
 
-        session.Store(c);
-        Console.WriteLine($"New Contact ID = {c.Id}");
+        session.Store(contact);
+
+        Console.WriteLine($"New Contact ID {contact.Id}");
+
         session.SaveChanges();
     }
 }
@@ -266,8 +282,9 @@ private void CreateContact()
 ````csharp
 private void RetrieveContact()
 {
-    Console.WriteLine("Enter the contact id");
+    Console.WriteLine("Enter the contact id: ");
     var id = Console.ReadLine();
+
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         var contact = session.Load<Contact>(id);
@@ -278,7 +295,7 @@ private void RetrieveContact()
             return;
         }
 
-        Console.WriteLine($"Name : {contact.Name}");
+        Console.WriteLine($"Name: {contact.Name}");
         Console.WriteLine($"Email: {contact.Email}");
     }
 }
@@ -290,8 +307,9 @@ private void RetrieveContact()
 ````csharp
 private void UpdateContact()
 {
-    Console.WriteLine("Enter the contact id");
+    Console.WriteLine("Enter the contact id: ");
     var id = Console.ReadLine();
+
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         var contact = session.Load<Contact>(id);
@@ -302,12 +320,14 @@ private void UpdateContact()
             return;
         }
 
-        Console.WriteLine($"Actual Name : {contact.Name}");
+        Console.WriteLine($"Actual name: {contact.Name}");
         Console.WriteLine("New name: ");
         contact.Name = Console.ReadLine();
-        Console.WriteLine($"Actual Email: {contact.Email}");
+
+        Console.WriteLine($"Actual email: {contact.Email}");
         Console.WriteLine("New email address: ");
         contact.Email = Console.ReadLine();
+
         session.SaveChanges();
     }
 }
@@ -318,8 +338,9 @@ private void UpdateContact()
 ````csharp
 private void DeleteContact()
 {
-    Console.WriteLine("Enter the contact id");
+    Console.WriteLine("Enter the contact id: ");
     var id = Console.ReadLine();
+
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
         var contact = session.Load<Contact>(id);
@@ -343,12 +364,11 @@ private void QueryAllContacts()
 {
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
-        var contacts = session.Query<Contact>()
-            .ToList();
+        var contacts = session.Query<Contact>().ToList();
 
         foreach (var contact in contacts)
         {
-            Console.WriteLine($"{contact.Id} - {contact.Name}, {contact.Email}");
+            Console.WriteLine($"{contact.Id} - {contact.Name} - {contact.Email}");
         }
 
         Console.WriteLine($"{contacts.Count} contacts found.");
