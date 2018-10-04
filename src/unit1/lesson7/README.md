@@ -125,7 +125,10 @@ Let's do it using our good friend pattern `DocumentStoreHolder`. You learned abo
 Note that, if the database specified in the `Database` property does not exist, the code below will create automatically one for you. The next time that you'll run your application again, the `ContactsManager` database won't re-created anymore and your application will able to resuse this one.
 
 ````csharp
+using System;
 using Raven.Client.Documents;
+using Raven.Client.ServerWide;
+using Raven.Client.ServerWide.Operations;
 
 namespace ContactsManager
 {
