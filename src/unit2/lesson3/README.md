@@ -138,10 +138,10 @@ You can define as many `map functions` as you need. Each map function is defined
 the `AddMap` method and has to produce the same output type. The "source" collection is specified
 by the generic parameter type you specify in the `AddMap` function.   
 
-The `Index` method here was used to mark the `Name` class as `Search`
+The `Index` method here was used to mark the `Name` property as `Search`
 which enables full text search with this field.
 
-The `Store` method was used to enable projections. 
+The `Store` method was used to enable projections and to store that defined properties along with the Index, reducing the response time of the query. Thereby, the return of searched data comes from the Index, instead of storage.
 
 ### Step 4: Initialize the `DocumentStore` and register the index on the server
 
