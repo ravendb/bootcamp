@@ -141,7 +141,7 @@ by the generic parameter type you specify in the `AddMap` function.
 The `Index` method here was used to mark the `Name` property as `Search`
 which enables full text search with this field.
 
-The `Store` method was used to enable projections and to store that defined properties along with the Index, reducing the response time of the query. Thereby, the return of searched data comes from the Index, instead of storage.
+The `Store` method was used to enable projections and to store that defined properties along with the Index. Thereby, the return of searched data comes from the Index, instead of having to load the document and get the fields from it. In most cases, this isn't an interesting optimization. RavenDB is already heavily optimized toward loading documents. Use this when you are creating new values in the indexing function and want to project them, not merely skip the (pretty cheap) loading of the document.
 
 ### Step 4: Initialize the `DocumentStore` and register the index on the server
 
