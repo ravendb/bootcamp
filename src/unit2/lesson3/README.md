@@ -138,10 +138,10 @@ You can define as many `map functions` as you need. Each map function is defined
 the `AddMap` method and has to produce the same output type. The "source" collection is specified
 by the generic parameter type you specify in the `AddMap` function.   
 
-The `Index` method here was used to mark the `Name` class as `Search`
+The `Index` method here was used to mark the `Name` property as `Search`
 which enables full text search with this field.
 
-The `Store` method was used to enable projections. 
+The `Store` method was used to enable projections and to store that defined properties along with the Index. Thereby, the return of searched data comes from the Index, instead of having to load the document and get the fields from it. In most cases, this isn't an interesting optimization. RavenDB is already heavily optimized toward loading documents. Use this when you are creating new values in the indexing function and want to project them, not merely skip the (pretty cheap) loading of the document.
 
 ### Step 4: Initialize the `DocumentStore` and register the index on the server
 
@@ -159,7 +159,7 @@ namespace MultimapIndexes
         private static readonly Lazy<IDocumentStore> LazyStore =
             new Lazy<IDocumentStore>(() =>
             {
-                var store = new DocumentStore
+               var store = new DocumentStore
                 {
                     Urls = new[] { "http://localhost:8080" },
                     Database = "Northwind"
@@ -169,6 +169,17 @@ namespace MultimapIndexes
 
                 var asm = Assembly.GetExecutingAssembly();
                 IndexCreation.CreateIndexes(asm, store);
+
+                // Try to retrieve a record of this database
+                var databaseRecord = store.Maintenance.Server.Send(new GetDatabaseRecordOperation(store.Database));
+
+                if (databaseRecord != null)
+                    return store;
+
+                var createDatabaseOperation =
+                    new CreateDatabaseOperation(new DatabaseRecord(store.Database));
+
+                store.Maintenance.Server.Send(createDatabaseOperation);
 
                 return store;
             });
