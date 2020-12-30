@@ -52,12 +52,12 @@ You don't need to write "complete" model classes when you are only reading
 from the database.
 
 ````csharp
-class Category
+public class Category
 {
     public string Name { get; set; }
 }
 
-class Product
+public class Product
 {
     public string Category { get; set; }
 }
