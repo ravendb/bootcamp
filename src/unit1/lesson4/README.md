@@ -93,7 +93,7 @@ A lot of thought and effort was put into ensuring you won't have to touch
 the conventions. But you can do it every time you need to.
 
 We will not touch RavenDB conventions right now simply because we don't need
-to do it. If you want to know more, you can access the [RavenDB conventions documentation](https://ravendb.net/docs/article-page/4.2/csharp/client-api/configuration/conventions).
+to do it. If you want to know more, you can access the [RavenDB conventions documentation](https://ravendb.net/docs/article-page/latest/csharp/client-api/configuration/conventions).
 
 ## Great Job! 
 
