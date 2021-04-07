@@ -50,6 +50,13 @@ Now run the `./run.ps1` (or `./run.sh` depending on your operational system) loc
 a console application in interactive mode inside a console application. The script
  will open your browser and start the RavenDB Management Studio.
 
+Pay attention to an error that might occur on a Windows 10 versions - `script execution is disabled on this system` while running - `./run.ps1` command 
+To address this issue  open `PowerShell` with an administrator privilege and simply execute the given command.
+
+```
+Set-ExecutionPolicy -ExecutionPolicy Restricted
+```
+
 The RavenDB wizard will determine the right address for you. Let's assume in this tutorial it is `http://localhost:8080`.
 
 Running RavenDB for the first time, you will need to do a little setup. Just
