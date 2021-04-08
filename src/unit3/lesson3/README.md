@@ -204,6 +204,23 @@ static void Main()
     }
 }
 ```
+As usual, you don't need the complete model classes.
+```csharp
+public class Order
+{
+    public List<OrderLine> Lines { get; set; }
+}
+
+public class OrderLine
+{
+    public string Product { get; set; }
+    public string ProductName { get; set; }
+    public decimal PricePerUnit { get; set; }
+    public int Quantity { get; set; }
+    public decimal Discount { get; set; }
+}
+```
+
 
 This version is a lot easier. Right?
 
