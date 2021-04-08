@@ -95,12 +95,13 @@ namespace Northwind
             };
 
             documentStore.Initialize();
-
             using (var session = documentStore.OpenSession())
             {
                 var p = session.Load<dynamic>("products/1-A");
                 System.Console.WriteLine(p.Name);
             }
+            System.Console.WriteLine("Press <ENTER> to continue...");
+            System.Console.ReadLine();
         }
     }
 }
