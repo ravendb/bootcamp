@@ -128,7 +128,8 @@ private static void QueryCompanyOrders(int companyId)
             "from Orders " +
             "where Company== $companyId " +
             "include Company"
-        ).AddParameter("companyId", companyReference);
+        ).AddParameter("companyId", companyReference)
+        .ToList();
 
         var company = session.Load<Company>(companyReference);
 
