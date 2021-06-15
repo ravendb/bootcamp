@@ -54,7 +54,7 @@ Pay attention to an error that might occur on a Windows 10 versions - `script ex
 To address this issue  open `PowerShell` with an administrator privilege and simply execute the given command.
 
 ```
-Set-ExecutionPolicy -ExecutionPolicy Restricted
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 ```
 
 The RavenDB wizard will determine the right address for you. Let's assume in this tutorial it is `http://localhost:8080`.
@@ -93,7 +93,7 @@ Let’s load some sample data into our database.
 1.  Select `Databases` on the left panel
 2.  In the right panel, click on the name of the database you just created (that
    is empty for a while)
-3.  In the left panel, click on `Settings`, and then `Create Sample Data`
+3.  In the left panel, click on `Tasks`, and then `Create Sample Data`
 
 ![Fig 3](media/26de5d4d9b2cf6a0f8867677aa776b45.png)
 
