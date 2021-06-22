@@ -21,7 +21,7 @@ Northwind. Then, in the `Package Manager Console`, issue the following
 command:
 
 ```powershell
-Install-Package RavenDB.Client -Version 5.1.8
+Install-Package RavenDB.Client -Version 5.2.0
 ```
 
 This will install RavenDB.Client binaries which you will need in order

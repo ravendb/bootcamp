@@ -22,7 +22,7 @@ Start Visual Studio and create a new `Console Application Project` named
 commands:
 
 ```powershell
-Install-Package RavenDB.Client -Version 5.1.8
+Install-Package RavenDB.Client -Version 5.2.0
 Install-Package System.Reactive.Core
 Install-Package System.Reactive.Linq
 ```

@@ -40,7 +40,7 @@ Start Visual Studio and create a new `Console Application Project` named
 command:
 
 ```powershell
-Install-Package RavenDB.Client -Version 5.1.8
+Install-Package RavenDB.Client -Version 5.2.0
 ```
 
 ### Step 2: Initialize the `DocumentStore`
