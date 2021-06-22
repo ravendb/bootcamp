@@ -21,7 +21,7 @@ Northwind. Then, in the `Package Manager Console`, issue the following
 command:
 
 ```powershell
-Install-Package RavenDB.Client -Version 4.0.3
+Install-Package RavenDB.Client -Version 5.2.0
 ```
 
 This will install RavenDB.Client binaries which you will need in order
@@ -200,8 +200,8 @@ namespace Northwind
         {
             var documentStore = new DocumentStore
             {
-                Url = "http://localhost:8080",
-                DefaultDatabase = "Northwind"
+                Urls = new { "http://localhost:8080" },
+                Database = "Northwind"
             };
 
             documentStore.Initialize();
