@@ -78,7 +78,7 @@ Every time you create a multi-map index, the index definition class inherits fro
 
 ````csharp
 using System.Linq;
-using Raven.Client.Indexes;
+using Raven.Client.Documents.Indexes;
 
 namespace MultimapIndexes
 {
