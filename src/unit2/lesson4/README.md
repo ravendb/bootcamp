@@ -34,7 +34,7 @@ Start Visual Studio and create a new `Console Application Project` named
 command:
 
 ```powershell
-Install-Package RavenDB.Client -Version 5.2.0
+Install-Package RavenDB.Client -Version 5.4.5
 ```
 
 This will install the RavenDB.Client binaries, which you will need in order
