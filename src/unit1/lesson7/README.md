@@ -104,7 +104,7 @@ Contacts Manager. Then, in the `Package Manager Console`, issue the following
 command:
 
 ```powershell
-Install-Package RavenDB.Client -Version 5.2.0
+Install-Package RavenDB.Client -Version 5.4.5
 ```
 
 This will install RavenDB.Client binaries, which you will need in order

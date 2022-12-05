@@ -143,7 +143,7 @@ As you learned in lesson 2, start Visual Studio and create a new `Console Applic
 Northwind. Then, in the `Package Manager Console`, issue the following command:
 
 ```powershell
-Install-Package RavenDB.Client -Version 5.2.0
+Install-Package RavenDB.Client -Version 5.4.5
 ```
 
 Then you will need to add the `using` namespace at the top of `Program.cs`:
