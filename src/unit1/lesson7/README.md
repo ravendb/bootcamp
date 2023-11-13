@@ -287,10 +287,11 @@ private void RetrieveContact()
 {
     Console.WriteLine("Enter the contact id: ");
     var id = Console.ReadLine();
-
+    var contactsReference = $"contacts/{id}-A";
+	
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
-        var contact = session.Load<Contact>(id);
+        var contact = session.Load<Contact>(contactsReference);
 
         if (contact == null)
         {
@@ -312,10 +313,11 @@ private void UpdateContact()
 {
     Console.WriteLine("Enter the contact id: ");
     var id = Console.ReadLine();
+    var contactsReference = $"contacts/{id}-A";
 
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
-        var contact = session.Load<Contact>(id);
+        var contact = session.Load<Contact>(contactsReference);
 
         if (contact == null)
         {
@@ -343,10 +345,11 @@ private void DeleteContact()
 {
     Console.WriteLine("Enter the contact id: ");
     var id = Console.ReadLine();
+    var contactsReference = $"contacts/{id}-A";
 
     using (var session = DocumentStoreHolder.Store.OpenSession())
     {
-        var contact = session.Load<Contact>(id);
+        var contact = session.Load<Contact>(contactsReference);
 
         if (contact == null)
         {
