@@ -40,7 +40,7 @@ You will easily perform very complex queries without using additional tools. You
 * [Lesson 4: Mapping, Filtering, and Reducing](src/unit2/lesson4)
 * [Lesson 5: The Powerful LoadDocument Server-Side Function](src/unit2/lesson5)
 * [Lesson 6: Goodbye Transformers, Welcome Server-Side Projections](src/unit2/lesson6)
-* [Lesson 7: Statistics and Some Words About Stale Indexes!](src/Unit-2/lesson7)
+* [Lesson 7: Statistics and Some Words About Stale Indexes!](src/unit2/lesson7)
 
 ### Unit 3 - Advanced Features
 
