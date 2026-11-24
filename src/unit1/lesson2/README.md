@@ -16,7 +16,7 @@ From the Documentation:
 > query pipeline in a way that is easy to understand, easy to use, and not 
 > overwhelming to the user.
 
-Please consider reading the [RQL documentation](https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/what-is-rql).
+Please consider reading the [RQL documentation](https://docs.ravendb.net/5.4/client-api/session/querying/what-is-rql).
 
 ## Exercise: Getting Ready to Write Queries
 

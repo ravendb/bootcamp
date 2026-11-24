@@ -130,7 +130,7 @@ using code.
 
 In this exercise you will learn how to create a basic index using the C# API and the `Northwind` database.
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install the `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
 `CreatingARavenIndexWithCSharp`. Then, in the `Package Manager Console`, issue the following
@@ -262,7 +262,7 @@ If you create or modify an index, when you execute it RavenDB will create/modify
 the index on the server. If the server side index definition matches the index
 definition in the client, the operation has no effect.
 
-> If you want to learn other ways to deploy indexes, you can read more about this topic in the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/indexes/creating-and-deploying).
+> If you want to learn other ways to deploy indexes, you can read more about this topic in the [official documentation](https://docs.ravendb.net/5.4/indexes/creating-and-deploying).
 
 In one of next lessons you will learn how to send the indexes definitions
 during the `Document Store` initialization.

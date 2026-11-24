@@ -10,7 +10,7 @@ some additional info using the `Statistics` method.
 ````csharp
 var orders = (
     from order in session.Query<Order>().Statistics(out var stats)
-    where order.Company == "companies/1-a"
+    where order.Company == "companies/1-A"
     orderby order.OrderedAt
     select order
     ).ToList();
@@ -48,7 +48,7 @@ QueryStatistics stats;
 
 var orders = (
     from order in session.Query<Order>().Statistics(out stats)
-    where order.Company == "companies/1"
+    where order.Company == "companies/1-A"
     orderby order.OrderedAt
     select order
     ).ToList();
@@ -68,14 +68,12 @@ have enough time to fully update before the query.
 If you need to make sure that your results are up to date, then you can use the `Customize` method.
 
 ````csharp
-QueryStatistics stats;
-
 var query = session.Query<Order>()
     .Customize(q => q.WaitForNonStaleResults(TimeSpan.FromSeconds(5)));
 
 var orders = (
     from order in query
-    where order.Company == "companies/1"
+    where order.Company == "companies/1-A"
     orderby order.OrderedAt
     select order
     )
@@ -85,16 +83,17 @@ var orders = (
 Here RavenDB is instructed to use a 5 second time-out.
 
 There are different strategies you could use. To learn more about how to deal with stale indexes,
-I strongly recommend you to read the [official documentation](https://ravendb.net/docs/article-page/latest/csharp/indexes/stale-indexes).
+I strongly recommend you to read the [official documentation](https://docs.ravendb.net/5.4/indexes/stale-indexes).
 
 ### Is Staleness a Real Problem?
-At first sight, the idea of a query that may not be fully up to date sounds scary. 
-In practice, this is how we almost always work in the real world.
+At first sight, the idea of a query that may not be fully up to date sounds scary.
+In practice, it rarely matters. Indexes usually catch up within milliseconds, and most
+reads (a product list, a search page, a dashboard) are fine with data that is a moment old.
 
-Try this: call your bank and ask them how much money you have in your account (financial systems should be
-consistent, right?). The answer you’ll get is going to be some variant of: “As of last business day, you had…”.
+When a specific read must see the latest write, you have two options:
 
-Much of management occurs with the previous day's data. 
+* Load the document by ID. Loads don't use indexes and always return the latest version.
+* Use `WaitForNonStaleResults`, as shown above, for that one query.
 
 ## Great Job!
 

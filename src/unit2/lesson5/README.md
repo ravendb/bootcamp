@@ -133,6 +133,6 @@ I strongly recommend you to treat `LoadDocument` with caution.
 
 ## Great job!
 
-Before moving on, I would recommend you to read about the [indexing process for related documents](https://ravendb.net/docs/article-page/4.0/csharp/indexes/indexing-related-documents).
+Before moving on, I would recommend you to read about the [indexing process for related documents](https://docs.ravendb.net/5.4/indexes/indexing-related-documents).
 
 **Let's move onto [Lesson 6](../lesson6/README.md).**

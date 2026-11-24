@@ -33,7 +33,7 @@ from the store.
 In this exercise, you will learn how to increase prices of all
 non-discontinued products.
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install the `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
 `BatchOperationsWithRavenDB`. Then, in the `Package Manager Console`, issue the following
@@ -93,7 +93,7 @@ static void Main()
 }
 ```
 
-There is a very good list of examples available on the [RavenDB documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/operations/patching/set-based). 
+There is a very good list of examples available on the [RavenDB documentation](https://docs.ravendb.net/5.4/client-api/operations/patching/set-based). 
 
 
 Run it and check the results!

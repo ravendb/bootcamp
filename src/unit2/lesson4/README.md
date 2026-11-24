@@ -27,7 +27,7 @@ count the number of products for each category.
 
 Let's do it using the C# API.
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install the `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
 `MapReduceIndexes`. Then, in the `Package Manager Console`, issue the following

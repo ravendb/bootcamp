@@ -6,7 +6,7 @@ In this lesson you will learn how to enable document revisions on your databases
 
 ## What are Revisions?
 
-Every time you update, or even delete, a document, RavenDB 4 creates a snapshot (revision) of the previous state. More than that, it's useful when you need to track the history of the documents or when you need a full audit trail. 
+When revisions are enabled, every time you create, update, or even delete a document, RavenDB stores a snapshot (revision) of it. This is useful when you need to track the history of your documents or keep a full audit trail.
 
 You can choose to keep track of the last N revisions. If necessary, you could "track everything".
 
@@ -26,7 +26,7 @@ The options you have are;
 *   **Limit # of revisions**: How much revisions to keep.
 *   **Limit # of revisions by age**: Configure a minimum retention time before the revisions can be expired.
 
-You can configure it programmatically following the recommendations from the [online documentation](https://ravendb.net/docs/article-page/4.0/csharp/server/extensions/revisions).
+You can configure it programmatically following the recommendations from the [online documentation](https://docs.ravendb.net/7.2/document-extensions/revisions/overview).
 
 ## Exercise: Enable revisions for the `Employees` collection
 

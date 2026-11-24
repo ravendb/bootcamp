@@ -37,7 +37,7 @@ docker run -p 8080:8080 ravendb/ravendb
 Docker will now get the latest RavenDB version and spin up a new container to
 host it. Note that we run it in developer mode without any authentication.
 
-You can learn a lot about how RavenDB works on Docker following the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/start/installation/running-in-docker-container).
+You can learn a lot about how RavenDB works on Docker following the [official documentation](https://docs.ravendb.net/7.2/start/containers/general-guide).
 
 ### Exercise: Running on Windows, Linux or MacOS
 
@@ -60,7 +60,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 The RavenDB wizard will determine the right address for you. Let's assume in this tutorial it is `http://localhost:8080`.
 
 Running RavenDB for the first time, you will need to do a little setup. Just
-need to answer the questions. More information is available in the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/start/getting-started)
+need to answer the questions. More information is available in the [official documentation](https://docs.ravendb.net/7.2/start/getting-started)
 
 ## Your First Database
 

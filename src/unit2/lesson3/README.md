@@ -22,7 +22,7 @@ In this exercise you will learn how to create a multi-map index using the C# API
 will use the `Northwind` database. You will write a program that allows the user to
 search people from multiple collections (employees, companies and suppliers).
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install the `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
 `MultimapIndexes`. Then, in the `Package Manager Console`, issue the following
@@ -253,9 +253,9 @@ static void Main(string[] args)
 This code asks the user to provide some search terms. Then it displays the
 search results.
 
-Not that even if we query against aggregated data the map-reduce index has
-done the pre-calculations in advance so we are not doing any full table scans,
-just a *O(logN)* operation
+Note that the index did its work in advance, at indexing time. The query doesn't
+scan the documents in the three collections. It only looks up the search terms
+in the index -*O(logN)* operation.
 
 ![creating new index](media/unit2-multi-map-output.png)
 

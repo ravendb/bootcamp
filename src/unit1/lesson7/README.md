@@ -61,7 +61,7 @@ entity instance.
 
 **All the changes are applied on the server side only after you call the `SaveChanges` method.**
 
-> The session implements the Unit of Work pattern. Learn more reading the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/client-api/session/what-is-a-session-and-how-does-it-work).
+> The session implements the Unit of Work pattern. Learn more reading the [official documentation](https://docs.ravendb.net/5.4/client-api/session/what-is-a-session-and-how-does-it-work).
 
 ## Modifying Documents with the `Store` Method
 
@@ -97,7 +97,7 @@ public class CategoryRepository
 In this exercise we will create a `Console Application` to manage a basic
 list of contacts.
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install the `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
 Contacts Manager. Then, in the `Package Manager Console`, issue the following
@@ -395,7 +395,7 @@ This is a great thing!
 Unlike many other NoSQL databases, RavenDB is an ACID
 database. We were the first to become ACID over 10 years ago. 
 
-More information is available on the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/faq/transaction-support)
+More information is available on the [official documentation](https://docs.ravendb.net/5.4/client-api/faq/transaction-support)
 
 ## Great Job!
 

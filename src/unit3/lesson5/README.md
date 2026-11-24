@@ -2,7 +2,7 @@
 
 At this point you already know how to perform low-level operations with RavenDB. 
 
-In this lesson you will learn how to use the [Changes API](https://ravendb.net/docs/article-page/4.0/csharp/client-api/changes/what-is-changes-api)
+In this lesson you will learn how to use the [Changes API](https://docs.ravendb.net/5.4/client-api/changes/what-is-changes-api)
 
 ## What is the `Changes API`
 
@@ -15,7 +15,7 @@ question and expecting to get the same answer.
 
 In this exercise, you will learn how to get notifications whenever any document is changed.
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` and `System.Reactive.Core` packages
+### Step 1: Create a new project and install the `RavenDB.Client` and `System.Reactive` packages
 
 Start Visual Studio and create a new `Console Application Project` named
 `BasicsOfChangesAPI`. Then, in the `Package Manager Console`, issue the following
@@ -23,8 +23,7 @@ commands:
 
 ```powershell
 Install-Package RavenDB.Client -Version 5.4.5
-Install-Package System.Reactive.Core
-Install-Package System.Reactive.Linq
+Install-Package System.Reactive
 ```
 
 Yeap! RavenDB is reactive!
@@ -51,12 +50,7 @@ namespace BasicsOfChangesAPI
                     Database = "Northwind"
                 };
 
-                store.Initialize();
-
-                var asm = Assembly.GetExecutingAssembly();
-                IndexCreation.CreateIndexes(asm, store);
-
-                return store;
+                return store.Initialize();
             });
 
         public static IDocumentStore Store =>

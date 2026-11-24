@@ -17,9 +17,10 @@ You get access to LINQ support via the `Query` method from the session object.
 Like documents loaded via the `Load` call, documents that were loaded via
 `Query` are managed by the session (unless you are doing a projection).
 
-Queries in RavenDB don't behave like queries in relational databases. RavenDB
-does not allow computation during queries and it doesn't have problems with
-table scans because all queries are indexed -- even if you didn't create any indexes!
+Queries in RavenDB don't behave like queries in relational databases. Every
+query is answered from an index, so RavenDB never has to scan all the documents
+in a collection. If you didn't create a suitable index, RavenDB creates one for
+you. You will learn more about this in Unit 2.
 
 ## Exercise: Querying Orders of a Company
 
@@ -28,7 +29,7 @@ you will list the orders made by this company.
 
 I think you got the basics from the previous exercises so I will not repeat details that you already know.
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install the `RavenDB.Client` package
 
 ### Step 2: Create the `DocumentStoreHolder`
 

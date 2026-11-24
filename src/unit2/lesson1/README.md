@@ -1,6 +1,6 @@
 # Unit 2, Lesson 1 - Getting started with indexes
 
-## RavenDB Does No Table Scans!
+## Every Query Uses an Index
 
 What does it mean? In Unit-1 you wrote a query similar to the following:
 
@@ -37,22 +37,19 @@ var orderedResults = results.Sort((a,b) => a.OrderedAt.CompareTo(b.OrderedAt));
 // ..
 ````
 
-The previous code is known as *table scan* (tables?!). That is, all documents are analyzed
-and those that meet the predicate are selected. This is quite efficient, as long as the
-number of items you have in the database is small. But it fails pretty horribly
-the moment your data size reaches any significant size.
+This approach is called a *full scan* (or a *table scan* in relational databases): every
+document is checked against the predicate. That works fine for a small number of documents,
+but it gets slower and slower as your data grows.
 
 ## RavenDB Uses Indexes to Speed Up the Queries
 
-Even when you do not create an index, RavenDB will use one to execute queries.
-In fact there are no *O(N)* operations in general in RavenDB queries. Using indexes,
-queries in RavenDB are *O(logN)* operations. For those who don't care about
-algorithms complexity analysis, the difference is between waiting 30 minutes for a result
-and getting it right away.
+RavenDB doesn't do this. Even when you don't create an index, RavenDB uses one to run the query.
+Looking up a value in an index takes roughly *O(log N)* time, instead of the *O(N)* time
+needed to check every document, so queries stay fast as the collection grows.
 
-RavenDB is safe by default and whenever you make a query, the query optimizer will try
-to select an appropriate index to use. **If there is no such appropriate index, then
-the query optimizer will create an index for you.**
+Whenever you run a query, the query optimizer looks for a suitable index.
+**If there isn't one, the query optimizer creates an index for you** (an *auto index*)
+and uses it for this query and for similar queries later.
 
 ## Exercise 1: Confirming that index can be automatically created
 In this lesson you will confirm that RavenDB creates indexes automatically when it
@@ -139,8 +136,10 @@ namespace IndexingSample
     }
 }
 ````
-Note that the `Order model class` has just enough code here. By default, `Raven.Client` will preserve old properties even if they are not in the model. 
-This behavior can be changed via the `PreserveDocumentPropertiesNotFoundOnModel` convention
+Note that the `Order` class only has the properties this example needs. That's safe: when you
+load a document, change it and call `SaveChanges`, `Raven.Client` keeps the properties that are
+not in your class instead of removing them from the stored document. You can change this
+behavior with the `PreserveDocumentPropertiesNotFoundOnModel` convention.
 
 ### Step 4: Run the program
 
