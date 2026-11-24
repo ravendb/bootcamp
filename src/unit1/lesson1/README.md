@@ -81,7 +81,7 @@ need to answer the questions. More information is available in the [official doc
 
 ## Your First Database
 
-The RavenDB Management Studio was completely re-designed. We did a lot of work to make easier to use than ever.
+When you open the RavenDB Management Studio, you see the server dashboard.
 
 ![Fig 1](media/d1ff71a639f63e04488b56706a91f423.png)
 
@@ -89,13 +89,13 @@ The RavenDB Management Studio was completely re-designed. We did a lot of work t
 
 To create your first database:
 
-1.  Select the `Database` option in the left panel.
+1.  Select the `Databases` option in the left panel (in the `Server` section).
 
-2.  Click on the `New Database` button.
+2.  Click on the `New database` button.
 
 3.  Type a name for the new database (we recommend Northwind for this lesson)
 
-4.  Click on the `Create` button
+4.  Click on the `Quick Create` button (you can keep the default settings for everything else)
 
 Congratulations! You just created your first RavenDB database.
 
@@ -114,7 +114,7 @@ Let’s load some sample data into our database.
 
 ![Fig 3](media/26de5d4d9b2cf6a0f8867677aa776b45.png)
 
-4.  Click on the big `Create` button
+4.  Click on the `Create sample data` button
 
 > The Northwind database is the sample database that came with SQL Server;
 > it has been used for decades as the sample database in the Microsoft
@@ -131,7 +131,7 @@ We just launched RavenDB in interactive mode, created our first
 database, and loaded some sample data. But it looks remarkably similar to
 what you see in a relational database. 
 
-The data is shown in a grid format with the tables on the left.
+The data is shown in a grid, with the collections (think tables) on the left.
 
 If you click on any *record*, you will begin to see the NoSQL magic!
 
@@ -141,7 +141,7 @@ All RavenDB data is stored as JSON.
 
 ## Understanding the `Document` Concept
 
-Using the `Go to document` feature (the text box in the Studio toolbar), go to
+Using the search box at the top of the Studio (or press `Ctrl + K`), find and open
 the document `orders/101-A`.
 
 ```json

@@ -24,12 +24,12 @@ Please consider reading the [RQL documentation](https://docs.ravendb.net/5.4/cli
 2.  In the left panel, click on `Databases`.
 3.  Open the database we created in the previous lesson (Northwind, if you
     followed our recommendation).
-4.  In the left panel, select the `Documents` section.
+4.  In the left panel, select the `Indexes` section.
 5.  Click on `Query`.
 
 ![Fig 1](media/23k4h1k2j4hk24kh12khj243.png)
 
-## Exercise: You First Query
+## Exercise: Your First Query
 
 Let’s start with an easy query.
 
@@ -39,7 +39,7 @@ Let’s start with an easy query.
 ```sql
 from Employees
 ```
-2.  Click on the `Run` button.
+2.  Click on the run button (▶), or press `Ctrl + Enter`.
 
 This query returns all the documents inside the `Employees` collection. 
 
