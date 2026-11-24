@@ -91,11 +91,17 @@ we get the metadata.
 This is the output on my machine:
 
 ````
+@change-vector: A:8498-Q56UXGarTkGYEqeXrb0fmA
 @collection: Products
-@change-vector: A:96-ZzT6GeIVUkewYXBKQ6vJ9g
+@counters: System.Object[]
+@flags: HasCounters, HasTimeSeries
 @id: products/1-A
-@last-modified: 2018-02-28T11:21:24.1425879Z
+@last-modified: 2026-11-24T12:08:30.9435937Z
+@timeseries: System.Object[]
 ````
+
+`@counters` and `@timeseries` hold lists of names, which is why `Console.WriteLine` prints
+them as `System.Object[]`. Your change vector and dates will be different.
 
 ### Step 4 (bonus): adding a property to the metadata
 

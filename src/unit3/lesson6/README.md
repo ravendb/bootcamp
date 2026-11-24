@@ -20,21 +20,24 @@ occurs?
 
 ## Exercise: Creating a Data Subscription
 
+> Data subscriptions are not available without a license (AGPL). To follow this lesson, request a
+> free [Developer license](https://ravendb.net/license/request/dev) and register it in the Studio.
+
 Open the Studio and the Northwind database.
 
-To create a Data Subscription you need to open the `Settings` section of your database.
-Click on the `Manage Ongoing Tasks` option, then click on the `Add Task` button.
+To create a Data Subscription, select `Tasks` in the left panel, then `Ongoing Tasks`.
+Click on the `Add a Database Task` button. Then click on the `Subscription` card. You can find it
+by scrolling down, or by checking `Subscriptions` under `Filter by category`.
 
 ![Subscription task](media/new_subscription_task.png)
 
-Now, click on `Subscription`.
-
-RavenDB is asking you for a Task Name (let's call it `Big Orders`) and let's provide the very
-same query we used before.
+RavenDB asks you for a Task Name (let's call it `Big Orders`) and a query. Let's use the very
+same query as before.
 
 ![Big orders](media/big_orders.png)
 
-The user interface allows you to do a test before saving. 
+You can try the subscription before saving it: open the test area and click `Run Test` to see
+which documents match.
 
 Save it!
 

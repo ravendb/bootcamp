@@ -12,43 +12,53 @@ You can choose to keep track of the last N revisions. If necessary, you could "t
 
 ## How to Enable Revisions
 
-You can configure the revisions feature using the Studio: 
+You can configure revisions in the Studio, under `Settings` → `Document Revisions`:
 
 ![Enabling revisions](media/enabling_revisions.png)
 
-When activated, by default, RavenDB will track the history for all documents. Also, by default, RavenDB will never purge old revisions. 
+There are two kinds of configurations:
 
-As the administrator, you can configure this for all collections.  But you could specify a different setup for a specific collection. By default, RavenDB will track history for all documents.
+* **Defaults** apply to every collection that doesn't have its own configuration.
+* **Collections** configurations apply to one collection and override the defaults.
 
-The options you have are;
+RavenDB only creates revisions for documents covered by an enabled configuration. If you loaded
+the sample data, you will already see a configuration for the `Orders` collection, and the
+`Conflicting Document Defaults`, which only apply to documents in conflict.
 
-*   **Purge on Delete**: delete the revisions upon the document delete.
-*   **Limit # of revisions**: How much revisions to keep.
-*   **Limit # of revisions by age**: Configure a minimum retention time before the revisions can be expired.
+Each configuration has these options:
 
-You can configure it programmatically following the recommendations from the [online documentation](https://docs.ravendb.net/7.2/document-extensions/revisions/overview).
+*   **Purge revisions on document delete**: delete a document's revisions when the document is deleted.
+*   **Set the number of revisions to keep**: keep only the latest N revisions.
+*   **Set the number of revisions to keep by age**: keep revisions for a minimum time before they can be removed.
+*   **Set the number of revisions to delete upon document update**: limit how many old revisions are removed at once when a document is updated.
+
+You can also configure revisions programmatically, following the [online documentation](https://docs.ravendb.net/7.2/document-extensions/revisions/overview).
 
 ## Exercise: Enable revisions for the `Employees` collection
 
-Let's start enabling revisions to the `Employees` Collection.
+Let's start by enabling revisions for the `Employees` collection.
 
-### Step 1: Open the Northwind database 
+### Step 1: Open the Northwind database
 Open the `RavenDB Management Studio`, then open the Northwind database.
 
-### Step 2: Opening the `Document Revisions` form
-On the left panel, select the Settings section and then Document Revisions.
+### Step 2: Open the `Document Revisions` view
+In the left panel, select `Settings`, then `Document Revisions`.
 
 ### Step 3: Set up revisions for the Employees collection
 
-* On the top right, click on the `Add a collection specific configuration` option. 
-* Select the Employees collection.
-* Enable `Limit # of revisions` and inform that you want to save 10 revisions.
-* Click on `OK`.
-* Click on `Save`
+* In the `Collections` section, click `Add new`. (The `Defaults` section has its own `Add new`
+  button, which would create a configuration for all collections.)
+* Select the `Employees` collection.
+* Enable `Set the number of revisions to keep` and enter 2. (Without a license, RavenDB runs
+  under AGPL and allows at most 2 revisions here. With a free
+  [Developer license](https://ravendb.net/license/request/dev) you can keep more.)
+* Click `New config`.
+* Click `Save` at the top of the page.
 
-![Limit of revisions](media/j3j2jdk3ksdk2kfdk2kk23v23.PNG)
+![Limit of revisions](media/j3j2jdk3ksdk2kfdk2kk23v23.png)
 
-You can test revisions editing a document directly on the Studio. Edit any document and see the list of revisions.
+You can test revisions by editing a document directly in the Studio. Edit any Employee document,
+save it, and open the `Revisions` tab on the right to see the list of revisions.
 
 ![Revisions list](media/revisions.png)
 
