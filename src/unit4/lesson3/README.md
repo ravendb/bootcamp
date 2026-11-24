@@ -9,10 +9,11 @@ When creating an instance of the DocumentStore you should specify the list of no
 ```csharp
 var store = new DocumentStore
 {
-    Urls =
+    // Docker (Unit 4, Lesson 1). On Windows, use
+    // http://127.0.0.1:8080, http://127.0.0.2:8080 and http://127.0.0.3:8080 instead.
+    Urls = new[]
     {
-        "http://127.0.0.1:8080" ,"http://127.0.0.2:8080" ,
-        "http://128.0.0.3:8080" 
+        "http://localhost:8080", "http://localhost:8081", "http://localhost:8082"
     },
     Database = "Northwind"
 };

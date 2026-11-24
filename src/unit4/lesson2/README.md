@@ -20,11 +20,11 @@ Cluster Consensus provides firm consistency. Unfortunately, we also need to ensu
 
 ## Exploratory Challenge: What Happens when a Node Goes Down?
 
-Assuming you are running a cluster with three nodes, this is the result you get when accessing the `Manage Server` screen on the `Management Studio`.
+Assuming you are running a cluster with three nodes, this is what you see in the `Management Studio` under `Manage Server` → `Cluster`.
 
 ![cluster status](./media/status_cluster.png)
 
-I recommend you stop some nodes now and see what happens in the diagram on the right side.
+I recommend you stop some nodes now and see what happens in the `Cluster Topology` diagram on the right side.
 
 ## Focus on Robustness
 
@@ -36,13 +36,15 @@ Even if the majority of the cluster is down, as long as a single node containing
 
 Whenever you create a new database you can specify a replication factor. That is the number of the cluster nodes that will contain an instance of the database.
 
+In the `New database` dialog, enter the name and click on `Next` (not `Quick Create`) to get to the `Replication & Sharding` step, where you can set the `Replication Factor`.
+
 ![new database](media/new_database.png)
 
 It is important to remember that creating a database is a cluster-wide operation and requires a majority to work.
 
 ## Exploratory Challenge: Creating a Distributed Database
 
-To practice, I would recommend you to create a new database setting the replication factor to two. I would recommend you to call it `MyDatabase`. (I am assuming that you are running the cluster we set up in the last lesson)
+To practice, create a new database with the replication factor set to two. Let's call it `MyDatabase`. (I am assuming that you are running the cluster we set up in the last lesson)
 
 ## Managing the Database Group
 
@@ -52,11 +54,9 @@ You can manage the database group of a specified database accessing the `Databas
 
 ![new database](media/manage_group.png)
 
-The image displays that the database we just created has instances on two nodes, Node C and Node A, but it can be different on your computer!
+The image shows that the database we just created has instances on two nodes, Node B and Node C, but it can be different on your computer!
 
-There is a status `Online` indicating that my database is active (meaning that I have an instance of this database running on this cluster node).  Accessing the same screen on the server that has no instance of my new database (in my example, Node B, which is running on `http://127.0.0.2:8080`), the status changes to `Remote`.
-
-![new database](media/manage_group.png)
+The screenshot was taken on Node A, which has no instance of `MyDatabase`. The database is still shown as `Online`, because it is running in the cluster. The filters at the top tell you where the instances are: `Local (Node A)` counts the databases that have an instance on the node you are connected to, and `Remote` counts the ones that only exist on other nodes.
 
 Clicking on the `Manage Group` button of the database that you want to manage allows you to change the nodes where there are instances of the selected database.
 
