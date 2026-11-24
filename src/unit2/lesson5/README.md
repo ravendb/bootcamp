@@ -26,7 +26,7 @@ static void Main(string[] args)
 }
 ````
 
-As you learned in [unit 1, lesson 4](../../Unit-1/lesson4/README.md) the `Include` method
+As you learned in [unit 1, lesson 4](../../unit1/lesson4/README.md) the `Include` method
 ensures that all related documents will be returned in a single response from the server, and
 this is amazing.
 

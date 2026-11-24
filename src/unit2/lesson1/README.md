@@ -63,8 +63,8 @@ default address. Change it if you need). Then open the `Northwind` database whic
 created in the previous unit ([Lesson 1](../../unit1/lesson1/README.md)).
 
 ### Step 2: Delete all the existing indexes
-In the left panel, select the `Indexes` section. Then, select all indexes and then click 
-on the `Delete` button.
+In the left panel, select `Indexes`, then `List of Indexes`. Check `Select all` and click
+the `Delete` button.
 
 ![delete all indexes](media/a5s6d678fdsfdfsf8768s7fsdf786876a.png)
 
