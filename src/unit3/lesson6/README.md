@@ -1,7 +1,7 @@
-# Unit 3, Lesson 6 - Data Subscriptions - I Would Like to be Notified when an <IMPORTANT EVENT> Happens
+# Unit 3, Lesson 6 - Data Subscriptions - I Would Like to be Notified when an Important Event Happens
 
 You already know the basics about how to use RavenDB and you are ready to move on. Please
-note that there is an [extensive documentation](http://ravendb.net/docs) available online. You can learn more about other features like clustering, for example. Thare is much more to learn than we covered.
+note that there is an [extensive documentation](http://ravendb.net/docs) available online. You can learn more about other features like clustering, for example. There is much more to learn than we covered.
 
 In this last lesson, you will learn how to work with Data Subscriptions.
 
@@ -20,21 +20,24 @@ occurs?
 
 ## Exercise: Creating a Data Subscription
 
+> Data subscriptions are not available without a license (AGPL). To follow this lesson, you need
+> the free Developer license. See [Unit 1, Lesson 1](../../unit1/lesson1/README.md#getting-a-free-developer-license) for how to get and register it.
+
 Open the Studio and the Northwind database.
 
-To create a Data Subscription you need to open the `Settings` section of your database.
-Click on the `Manage Ongoing Tasks` option, then click on the `Add Task` button.
+To create a Data Subscription, select `Tasks` in the left panel, then `Ongoing Tasks`.
+Click on the `Add a Database Task` button. Then click on the `Subscription` card. You can find it
+by scrolling down, or by checking `Subscriptions` under `Filter by category`.
 
 ![Subscription task](media/new_subscription_task.png)
 
-Now, click on `Subscription`.
-
-RavenDB is asking you for a Task Name (let's call it `Big Orders`) and let's provide the very
-same query we used before.
+RavenDB asks you for a Task Name (let's call it `Big Orders`) and a query. Let's use the very
+same query as before.
 
 ![Big orders](media/big_orders.png)
 
-The user interface allows you to do a test before saving. 
+You can try the subscription before saving it: open the test area and click `Run Test` to see
+which documents match.
 
 Save it!
 
@@ -49,7 +52,7 @@ A worker connected to a data subscription receives a batch of documents and gets
 When it's done (depends on the code that the client gave the worker, can take from seconds to hours), 
 it informs the server about the progress and the server is ready to send the next batch.
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install the `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
 `BatchOperationsWithRavenDB`. Then, in the `Package Manager Console`, issue the following
@@ -95,6 +98,8 @@ namespace BatchOperationsWithRavenDB
 Subscriptions are consumed by processing batches of documents received from the server. 
 We need to get an instance of `SubscriptionWorker`.
 
+Add `using System.Threading.Tasks;` and `using static System.Console;` at the top of `Program.cs`, then write the `Main` method:
+
 ```csharp
 static void Main(string[] args)
 {
@@ -102,17 +107,30 @@ static void Main(string[] args)
         .Subscriptions
         .GetSubscriptionWorker<Order>("Big Orders");
 
+    // Called when the worker loses its connection and is about to reconnect.
+    subscriptionWorker.OnSubscriptionConnectionRetry += exception =>
+        WriteLine($"Connection lost, retrying: {exception.Message}");
+
     var subscriptionRuntimeTask = subscriptionWorker.Run(batch =>
     {
         foreach (var order in batch.Items)
         {
             // business logic here.
-            Console.WriteLine(order.Id);
+            WriteLine(order.Id);
         }
     });
 
+    // Run() returns a Task. If the subscription stops with an error
+    // (e.g. it was deleted, or the server can't be reached), the error is
+    // stored in that Task, so report it instead of losing it silently.
+    subscriptionRuntimeTask.ContinueWith(
+        task => WriteLine($"Subscription stopped: {task.Exception.GetBaseException().Message}"),
+        TaskContinuationOptions.OnlyOnFaulted);
+
     WriteLine("Press any key to exit...");
     ReadKey();
+
+    subscriptionWorker.Dispose();
 }
 ```
 

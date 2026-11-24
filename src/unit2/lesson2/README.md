@@ -50,10 +50,10 @@ In this exercise you will learn how to create a basic index using the `RavenDB M
 Start RavenDB console (if you haven't do so yet), and using the web browser, access the
 `RavenDB Management Studio` at the address `http://localhost:8080` (which is the
 default address. Change it if you need to). Then, open the `Northwind database` which you
-created in the previous unit ([Lesson 1](../../Unit-1/lesson1/README.md)).
+created in the previous unit ([Lesson 1](../../unit1/lesson1/README.md)).
 
 ### Step 2: Start the creation of a new Index
-Go to the `Indexes` section, then `List of Indexes`, click on the `New Index`.
+Go to the `Indexes` section, then `List of Indexes`, and click on the `New index` button.
 
 ### Step 3: Specify the index name
 There is no fixed naming rules with RavenDB. But, I strongly recommend
@@ -89,8 +89,6 @@ That's it. You just created your first index.
 If you click on the `Copy C#` button you will see this code
 
 ```csharp
-
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -99,7 +97,7 @@ using System.Globalization;
 using System.Linq;
 using Raven.Client.Documents.Indexes;
 
-public class Index_Employees_ByFirstAndLastName :AbstractIndexCreationTask
+public class Index_Employees_ByFirstAndLastName : AbstractIndexCreationTask
 {
     public override string IndexName => "Employees/ByFirstAndLastName";
 
@@ -109,12 +107,12 @@ public class Index_Employees_ByFirstAndLastName :AbstractIndexCreationTask
         {
             Maps =
             {
-                @"from doc in docs.Employees
-                    select new
-                    {
-                        FirstName = doc.FirstName,
-                        LastName = doc.LastName
-                    }"
+            @"from doc in docs.Employees
+            select new
+            {
+                FirstName = doc.FirstName,
+                LastName = doc.LastName
+            }"
             }
         };
     }
@@ -130,7 +128,7 @@ using code.
 
 In this exercise you will learn how to create a basic index using the C# API and the `Northwind` database.
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install the `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
 `CreatingARavenIndexWithCSharp`. Then, in the `Package Manager Console`, issue the following
@@ -176,8 +174,9 @@ public static class DocumentStoreHolder
 
 ### Step 3: Write the model classes
 
-Let's define some very basic class models. Edit any Employee document in the RavenDB Studio and
-use the `Copy C#`.
+Let's define some very basic class models. Open any Employee document in the RavenDB Studio, click the
+arrow next to `Copy to Clipboard` and choose `View the C# Class`. In the window that opens, click
+`Copy to Clipboard`.
 
 ![generating model](media/g82uh2jlj43rj3ndj3ndj2jd2.png)
 
@@ -262,7 +261,7 @@ If you create or modify an index, when you execute it RavenDB will create/modify
 the index on the server. If the server side index definition matches the index
 definition in the client, the operation has no effect.
 
-> If you want to learn other ways to deploy indexes, you can read more about this topic in the [official documentation](http://ravendb.net/docs/article-page/latest/csharp/indexes/creating-and-deploying).
+> If you want to learn other ways to deploy indexes, you can read more about this topic in the [official documentation](https://docs.ravendb.net/5.4/indexes/creating-and-deploying).
 
 In one of next lessons you will learn how to send the indexes definitions
 during the `Document Store` initialization.

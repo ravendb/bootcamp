@@ -31,13 +31,30 @@ public! There are no guarantees about availability.
 If you have Docker installed, run the following command:
 
 ```
-docker run -p 8080:8080 ravendb/ravendb
+docker run -d --name ravendb -p 8080:8080 -e RAVEN_Setup_Mode=None -e RAVEN_License_Eula_Accepted=true -v ravendb-data:/var/lib/ravendb/data -v ravendb-config:/etc/ravendb ravendb/ravendb
 ```
 
 Docker will now get the latest RavenDB version and spin up a new container to
-host it. Note that we run it in developer mode without any authentication.
+host it. Then open the Studio at <http://localhost:8080>.
 
-You can learn a lot about how RavenDB works on Docker following the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/start/installation/running-in-docker-container).
+What the options do:
+
+* `RAVEN_Setup_Mode=None` skips the setup wizard and runs the server unsecured,
+  without any authentication. That's fine for learning on your own machine, but never
+  do it in production.
+* `RAVEN_License_Eula_Accepted=true` accepts the license agreement, so you are not
+  asked about it in the Studio.
+* The two `-v` options store your databases and server settings in named Docker
+  volumes, so they survive when you remove and recreate the container.
+
+Use `docker stop ravendb` and `docker start ravendb` to stop and start the server later.
+
+> If you run the container without `RAVEN_Setup_Mode=None`, the Studio opens the setup
+> wizard. In that case, choose the unsecured setup and change the IP address to `0.0.0.0`.
+> The default, `127.0.0.1`, only listens inside the container, so after the wizard
+> restarts the server, the Studio is no longer reachable from your browser.
+
+You can learn a lot about how RavenDB works on Docker following the [official documentation](https://docs.ravendb.net/7.2/start/containers/general-guide).
 
 ### Exercise: Running on Windows, Linux or MacOS
 
@@ -60,11 +77,29 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 The RavenDB wizard will determine the right address for you. Let's assume in this tutorial it is `http://localhost:8080`.
 
 Running RavenDB for the first time, you will need to do a little setup. Just
-need to answer the questions. More information is available in the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/start/getting-started)
+need to answer the questions. More information is available in the [official documentation](https://docs.ravendb.net/7.2/start/getting-started)
+
+## Getting a Free Developer License
+
+Without a license, RavenDB runs under the AGPLv3 license with some restrictions. Among others,
+the server uses at most 3 CPU cores and 6 GB of RAM, you can't build a cluster or use data
+subscriptions, you can keep at most 2 revisions of a document, and the Studio is only available
+for a limited time.
+
+The free Developer license removes these restrictions on your development machine (it's not for
+production use). You will need it for Unit 3, Lesson 6 (data subscriptions) and for Unit 4
+(clusters), so it's a good idea to get it now:
+
+1.  Request a license at <https://ravendb.net/license/request/dev>. You will receive a license key.
+2.  In the Studio, click the notifications (bell) icon in the top right and find the
+    `Your server is running without a license` notification. Click `Register`.
+3.  Paste your license key and click `Submit`.
+
+If you set up RavenDB with the setup wizard, you can also enter the license there.
 
 ## Your First Database
 
-The RavenDB Management Studio was completely re-designed. We did a lot of work to make easier to use than ever.
+When you open the RavenDB Management Studio, you see the server dashboard.
 
 ![Fig 1](media/d1ff71a639f63e04488b56706a91f423.png)
 
@@ -72,13 +107,13 @@ The RavenDB Management Studio was completely re-designed. We did a lot of work t
 
 To create your first database:
 
-1.  Select the `Database` option in the left panel.
+1.  Select the `Databases` option in the left panel (in the `Server` section).
 
-2.  Click on the `New Database` button.
+2.  Click on the `New database` button.
 
 3.  Type a name for the new database (we recommend Northwind for this lesson)
 
-4.  Click on the `Create` button
+4.  Click on the `Quick Create` button (you can keep the default settings for everything else)
 
 Congratulations! You just created your first RavenDB database.
 
@@ -97,7 +132,7 @@ Let’s load some sample data into our database.
 
 ![Fig 3](media/26de5d4d9b2cf6a0f8867677aa776b45.png)
 
-4.  Click on the big `Create` button
+4.  Click on the `Create sample data` button
 
 > The Northwind database is the sample database that came with SQL Server;
 > it has been used for decades as the sample database in the Microsoft
@@ -114,7 +149,7 @@ We just launched RavenDB in interactive mode, created our first
 database, and loaded some sample data. But it looks remarkably similar to
 what you see in a relational database. 
 
-The data is shown in a grid format with the tables on the left.
+The data is shown in a grid, with the collections (think tables) on the left.
 
 If you click on any *record*, you will begin to see the NoSQL magic!
 
@@ -124,7 +159,7 @@ All RavenDB data is stored as JSON.
 
 ## Understanding the `Document` Concept
 
-Using the `Go to document` feature (the text box in the Studio toolbar), go to
+Using the search box at the top of the Studio (or press `Ctrl + K`), find and open
 the document `orders/101-A`.
 
 ```json

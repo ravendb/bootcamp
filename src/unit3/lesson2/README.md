@@ -16,7 +16,7 @@ You can use it if you want or need.
 
 In this exercise you will learn how to get access to a document metadata.
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install the `RavenDB.Client` package
 
 Start Visual Studio and create a new `Console Application Project` named
 `GettingMetadata`. Then, in the `Package Manager Console`, issue the following
@@ -91,11 +91,17 @@ we get the metadata.
 This is the output on my machine:
 
 ````
+@change-vector: A:8498-Q56UXGarTkGYEqeXrb0fmA
 @collection: Products
-@change-vector: A:96-ZzT6GeIVUkewYXBKQ6vJ9g
+@counters: System.Object[]
+@flags: HasCounters, HasTimeSeries
 @id: products/1-A
-@last-modified: 2018-02-28T11:21:24.1425879Z
+@last-modified: 2026-11-24T12:08:30.9435937Z
+@timeseries: System.Object[]
 ````
+
+`@counters` and `@timeseries` hold lists of names, which is why `Console.WriteLine` prints
+them as `System.Object[]`. Your change vector and dates will be different.
 
 ### Step 4 (bonus): adding a property to the metadata
 
@@ -131,7 +137,7 @@ you can change the value of a metadata property. But you should not try to do th
 RavenDB engine does a lot of optimizations based on the collection name, and no support
 whatsoever for changing it.
 
-You can read more about collection concept [here](https://ravendb.net/docs/article-page/4.0/csharp/client-api/faq/what-is-a-collection)
+You can read more about collection concept [here](https://docs.ravendb.net/5.4/client-api/faq/what-is-a-collection)
 
 ## Exercise: Loading only document metadata
 

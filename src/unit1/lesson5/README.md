@@ -137,7 +137,7 @@ in the order.
 
 In this exercise we will create an "Orders Explorer" for the Northwind database.
 
-### Step 1: Create a new project and install the latest `RavenDB.Client` package
+### Step 1: Create a new project and install the `RavenDB.Client` package
 
 As you learned in lesson 2, start Visual Studio and create a new `Console Application Project` named
 Northwind. Then, in the `Package Manager Console`, issue the following command:
@@ -185,7 +185,7 @@ namespace OrdersExplorer
 ````
 
 ### Step 3: Add Northwind model classes to your project
-As you learned in lesson 2, you can work only with dynamic objects. It is a good idea to have compiler/IDE support in your projects.
+So far you have only looked at documents as raw JSON. In C# code, it is a good idea to map them to typed classes, so the compiler and your IDE can help you.
 
 Add a new class in your project named NorthwindModels. Then replace the file content with [this](NorthwindModels.cs).
 

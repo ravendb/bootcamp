@@ -14,7 +14,7 @@ This lesson picks up right where [Lesson 2](../lesson2/README.md) left off.
 In this exercise we will write a very basic RavenDB client application. You 
 can use .NET core or .NET full.
 
-### Step 1: Create a New Project and Install the Latest `RavenDB.Client` Package
+### Step 1: Create a New Project and Install the `RavenDB.Client` Package
 
 Start Visual Studio and create a new `Console Application Project` named
 Northwind. Then, in the `Package Manager Console`, issue the following
@@ -53,7 +53,7 @@ The document store is the starting point for all your interactions with RavenDB.
 It acts as the connection manager and also exposes methods to perform all operations that you can run against an associated server instance.
 The document store object has an array of URL addresses to the cluster nodes. However, it can work against multiple databases that exist there.
 
-> To learn more about the `DocumentStore`, access the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/what-is-a-document-store).
+> To learn more about the `DocumentStore`, access the [official documentation](https://docs.ravendb.net/5.4/client-api/what-is-a-document-store).
 
 ### Step 3: Load a Document from the Server
 
@@ -122,7 +122,7 @@ a primary key which is unique per table, the document ID is unique per database.
 This also means that whenever you store a new document using a key that is already used
 by a document, that document will get overwritten with the new document data.
 
-> You can learn more about how to work with document IDs reading the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/document-identifiers/working-with-document-identifiers)
+> You can learn more about how to work with document IDs reading the [official documentation](https://docs.ravendb.net/5.4/client-api/document-identifiers/working-with-document-identifiers)
 
 ## Exercise 2: Improving the Code with Some Types
 

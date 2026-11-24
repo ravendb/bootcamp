@@ -1,22 +1,24 @@
 # Unit 2, Lesson 6 - Goodbye Transformers, Welcome Server-Side Projections
 
-In the previous lesson, you learned how to create shorter results from the server
-using the `LoadDocument` server-side projections.
+In the previous lesson, you learned how to use `LoadDocument` to bring data from related
+documents into an index.
 
-In this lesson, I will show you how to get shape results using server-side projections.
+In this lesson, I will show you how to shape query results on the server using projections.
 
 ## What Happened with Transformers?
 
-If you know RavenDB 3.5, you are probably looking for how to implement Transformers. 
-Bad news: They are gone! Good news: You will not miss them.
-
-Transformers were removed and substituted by a server-side projection support. Methods 
-like `TransformWith` are no longer available and simple `Select` should be used instead. 
+If you used RavenDB 3.5, you may be looking for Transformers. They were removed
+in RavenDB 4.0 and replaced by much better server-side projections. Methods like `TransformWith`
+are no longer available. Use a plain `Select` instead.
 
 ## Easy Start with Server-Side Projections
 
-Instead of pulling full documents in query results, you can just grab some pieces of data 
-from documents. You can also transform the projected results. 
+Instead of returning full documents, a query can return only the pieces of data
+you need. You can also compute new values from them.
+
+A projection is applied to the results after the query has filtered, sorted and paged
+them. This means you can't filter or sort on a projected field. `where` and `order by`
+must use fields of the document (or of the index).
 
 Let me share a short example:
 
@@ -50,7 +52,7 @@ var results = (from e in session.Query<Employee>()
                }).ToList();
 ```
 
-And here it is the RQL:
+And here is the RQL:
 
 ```sql
 from Employees as e
@@ -74,7 +76,7 @@ var results = (from e in session.Query<Employee>()
                }).ToList();
 ```
 
-We just created a function that will run on the server-side. 
+We just created a function that will run on the server side.
 
 Let's look at the RQL.
 
@@ -91,7 +93,6 @@ functions are pure JavaScript.
 
 ## Great job! 
 
-To learn more about this functionality, I recommend you to read to read our article that covers 
-the projection functionality which can be found [here](https://ravendb.net/docs/article-page/4.0/csharp/indexes/querying/projections).
+To learn more, read the [projections article](https://docs.ravendb.net/5.4/indexes/querying/projections).
 
 **Let's move onto [Lesson 7](../lesson7/README.md).**

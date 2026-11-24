@@ -26,7 +26,7 @@ static void Main(string[] args)
 }
 ````
 
-As you learned in [unit 1, lesson 4](../../Unit-1/lesson4/README.md) the `Include` method
+As you learned in [unit 1, lesson 4](../../unit1/lesson4/README.md) the `Include` method
 ensures that all related documents will be returned in a single response from the server, and
 this is amazing.
 
@@ -133,6 +133,6 @@ I strongly recommend you to treat `LoadDocument` with caution.
 
 ## Great job!
 
-Before moving on, I would recommend you to read about the [indexing process for related documents](https://ravendb.net/docs/article-page/4.0/csharp/indexes/indexing-related-documents).
+Before moving on, I would recommend you to read about the [indexing process for related documents](https://docs.ravendb.net/5.4/indexes/indexing-related-documents).
 
 **Let's move onto [Lesson 6](../lesson6/README.md).**

@@ -17,12 +17,12 @@ The `session` is a high level interface to RavenDB which provides the identity m
 and LINQ queries. But if you want do something in the low-level, then you should
 start using the Operations. Also, there are operations for Database Maintenance, Server Maintenance and Patching
 
-There is an exhaustive list of RavenDB operations available in the [official documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/operations/what-are-operations).
+There is an exhaustive list of RavenDB operations available in the [official documentation](https://docs.ravendb.net/5.4/client-api/operations/what-are-operations).
 
 ## First-Time Using RavenDB Operations and Commands
 
-You already used a command in the [previous lesson](../lesson1/README.md) to get
-the metadata information from the server. Let's remember it.
+You already used a command in the [previous lesson](../lesson2/README.md) to get
+the metadata information from the server. Let's recall it.
 
 ````csharp
 static void Main()
@@ -228,6 +228,6 @@ This version is a lot easier. Right?
 
 Awesome! 
 
-If you want to know more about Patching we recomend you to use the [documentation](https://ravendb.net/docs/article-page/4.0/csharp/client-api/operations/patching/single-document)
+If you want to know more about Patching we recomend you to use the [documentation](https://docs.ravendb.net/5.4/client-api/operations/patching/single-document)
 
 **Let's move onto [Lesson 4](../lesson4/README.md).**
