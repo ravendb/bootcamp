@@ -31,11 +31,28 @@ public! There are no guarantees about availability.
 If you have Docker installed, run the following command:
 
 ```
-docker run -p 8080:8080 ravendb/ravendb
+docker run -d --name ravendb -p 8080:8080 -e RAVEN_Setup_Mode=None -e RAVEN_License_Eula_Accepted=true -v ravendb-data:/var/lib/ravendb/data -v ravendb-config:/etc/ravendb ravendb/ravendb
 ```
 
 Docker will now get the latest RavenDB version and spin up a new container to
-host it. Note that we run it in developer mode without any authentication.
+host it. Then open the Studio at <http://localhost:8080>.
+
+What the options do:
+
+* `RAVEN_Setup_Mode=None` skips the setup wizard and runs the server unsecured,
+  without any authentication. That's fine for learning on your own machine, but never
+  do it in production.
+* `RAVEN_License_Eula_Accepted=true` accepts the license agreement, so you are not
+  asked about it in the Studio.
+* The two `-v` options store your databases and server settings in named Docker
+  volumes, so they survive when you remove and recreate the container.
+
+Use `docker stop ravendb` and `docker start ravendb` to stop and start the server later.
+
+> If you run the container without `RAVEN_Setup_Mode=None`, the Studio opens the setup
+> wizard. In that case, choose the unsecured setup and change the IP address to `0.0.0.0`.
+> The default, `127.0.0.1`, only listens inside the container, so after the wizard
+> restarts the server, the Studio is no longer reachable from your browser.
 
 You can learn a lot about how RavenDB works on Docker following the [official documentation](https://docs.ravendb.net/7.2/start/containers/general-guide).
 
