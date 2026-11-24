@@ -20,8 +20,8 @@ occurs?
 
 ## Exercise: Creating a Data Subscription
 
-> Data subscriptions are not available without a license (AGPL). To follow this lesson, request a
-> free [Developer license](https://ravendb.net/license/request/dev) and register it in the Studio.
+> Data subscriptions are not available without a license (AGPL). To follow this lesson, you need
+> the free Developer license. See [Unit 1, Lesson 1](../../unit1/lesson1/README.md#getting-a-free-developer-license) for how to get and register it.
 
 Open the Studio and the Northwind database.
 

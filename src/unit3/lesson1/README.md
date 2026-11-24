@@ -50,8 +50,8 @@ In the left panel, select `Settings`, then `Document Revisions`.
   button, which would create a configuration for all collections.)
 * Select the `Employees` collection.
 * Enable `Set the number of revisions to keep` and enter 2. (Without a license, RavenDB runs
-  under AGPL and allows at most 2 revisions here. With a free
-  [Developer license](https://ravendb.net/license/request/dev) you can keep more.)
+  under AGPL and allows at most 2 revisions here. With the free Developer license
+  you can keep more. See [Unit 1, Lesson 1](../../unit1/lesson1/README.md#getting-a-free-developer-license).)
 * Click `New config`.
 * Click `Save` at the top of the page.
 

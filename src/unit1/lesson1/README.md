@@ -79,6 +79,24 @@ The RavenDB wizard will determine the right address for you. Let's assume in thi
 Running RavenDB for the first time, you will need to do a little setup. Just
 need to answer the questions. More information is available in the [official documentation](https://docs.ravendb.net/7.2/start/getting-started)
 
+## Getting a Free Developer License
+
+Without a license, RavenDB runs under the AGPLv3 license with some restrictions. Among others,
+the server uses at most 3 CPU cores and 6 GB of RAM, you can't build a cluster or use data
+subscriptions, you can keep at most 2 revisions of a document, and the Studio is only available
+for a limited time.
+
+The free Developer license removes these restrictions on your development machine (it's not for
+production use). You will need it for Unit 3, Lesson 6 (data subscriptions) and for Unit 4
+(clusters), so it's a good idea to get it now:
+
+1.  Request a license at <https://ravendb.net/license/request/dev>. You will receive a license key.
+2.  In the Studio, click the notifications (bell) icon in the top right and find the
+    `Your server is running without a license` notification. Click `Register`.
+3.  Paste your license key and click `Submit`.
+
+If you set up RavenDB with the setup wizard, you can also enter the license there.
+
 ## Your First Database
 
 When you open the RavenDB Management Studio, you see the server dashboard.
